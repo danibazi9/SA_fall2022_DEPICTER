@@ -54,3 +54,11 @@ def process_file(file):
 if __name__ == '__main__':
     directory = 'src/ganttproject-master/biz.ganttproject.core/src/main'
     recursive_walk(directory)
+    
+    for first_package in package_classes_dict:
+        for second_package in package_classes_dict:
+            if first_package in second_package and first_package != second_package:
+                package_classes_dict[first_package] += package_classes_dict[second_package]
+
+    for package, num_of_classes in package_classes_dict.items():
+        print(package, '=>', num_of_classes)
