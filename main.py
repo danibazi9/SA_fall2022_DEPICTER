@@ -3,11 +3,13 @@ from antlr4 import *
 import argparse
 import os
 
+from merge_package_heuristic import choose_packages, merge_packages
 from my_listener import MyListener
 from gen.javaLabeled.JavaLexer import JavaLexer
 from gen.javaLabeled.JavaParserLabeled import JavaParserLabeled
 
 package_classes_dict = {}
+directory = 'src/ganttproject-master/biz.ganttproject.core/src/main'
 
 
 def main(args):
@@ -30,7 +32,7 @@ def main(args):
     walker.walk(t=parse_tree, listener=my_listener)
 
     package_classes_dict = my_listener.package_classes_dict
-    print(args.file, '=>', my_listener.method_count)
+    # print(args.file, '=>', my_listener.method_count)
 
 
 def recursive_walk(directory):
@@ -52,9 +54,8 @@ def process_file(file):
 
 
 if __name__ == '__main__':
-    directory = 'src/ganttproject-master/biz.ganttproject.core/src/main'
     recursive_walk(directory)
-    
+
     for first_package in package_classes_dict:
         for second_package in package_classes_dict:
             if first_package in second_package and first_package != second_package:
@@ -62,3 +63,7 @@ if __name__ == '__main__':
 
     for package, num_of_classes in package_classes_dict.items():
         print(package, '=>', num_of_classes)
+
+    print('Less than average p1 & p2:')
+    print(choose_packages(package_classes_dict))
+    merge_packages(package_classes_dict, directory)
