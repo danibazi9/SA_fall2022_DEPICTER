@@ -3,7 +3,7 @@ from antlr4 import *
 import argparse
 import os
 
-from merge_package_heuristic import choose_packages, merge_packages
+from merge_package_heuristic import choose_packages
 from my_listener import MyListener
 from gen.javaLabeled.JavaLexer import JavaLexer
 from gen.javaLabeled.JavaParserLabeled import JavaParserLabeled
@@ -66,4 +66,4 @@ if __name__ == '__main__':
 
     print('Less than average p1 & p2:')
     print(choose_packages(package_classes_dict))
-    merge_packages(package_classes_dict, directory)
+    # merge_packages(package_classes_dict, directory)
