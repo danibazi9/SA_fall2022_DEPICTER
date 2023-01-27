@@ -1,5 +1,5 @@
 /* Before refactoring (Original version) */
-class A
+public class A
 {
     public int f; /* printF , printF, */
     public string h; /* printH */
@@ -25,4 +25,8 @@ class A
     void printH(){
         print(this.h);
     }
+}
+
+class B {
+
 }
