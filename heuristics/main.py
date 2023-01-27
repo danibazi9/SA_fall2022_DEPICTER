@@ -3,6 +3,8 @@ from antlr4 import *
 import argparse
 import os
 
+from antlr4.TokenStreamRewriter import TokenStreamRewriter
+
 from merge_package_heuristic import choose_packages
 from my_listener import MyListener
 from gen.javaLabeled.JavaLexer import JavaLexer
