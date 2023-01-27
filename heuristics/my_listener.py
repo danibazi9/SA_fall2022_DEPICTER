@@ -1,8 +1,8 @@
 from antlr4 import CommonTokenStream
 from antlr4.TokenStreamRewriter import TokenStreamRewriter
 
-from gen.javaLabeled.JavaParserLabeled import JavaParserLabeled
-from gen.javaLabeled.JavaParserLabeledListener import JavaParserLabeledListener
+from gen.javaLabeled import JavaParserLabeled
+from gen.javaLabeled import JavaParserLabeledListener
 
 
 class MyListener(JavaParserLabeledListener):
