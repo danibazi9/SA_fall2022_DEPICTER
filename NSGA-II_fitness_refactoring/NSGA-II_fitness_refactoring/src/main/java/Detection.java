@@ -29,18 +29,7 @@ public class Detection
 		"GanttXFIGSaver", "ResourceLoadGraphicArea", "ResourceLoadGraphicArea", "TaskImpl",
 		"GanttGraphicArea", "GanttGraphicArea", "TimeUnit", "GanttDialogInfo", "GanttProject",
 		"GanttProject"};
-		
-	/*
-	static String [] detec={"GanttGraphicArea", "GanttOptions", "GanttProject blob",
-		"GanttTree", "ResourceLoadGraphicArea", "TaskImpl", "GanttTaskPropertiesBean",
-		"CSVSettingsPanel", "ColorConvertion", "GregorianTimeUnitStack", "ColorValueParser",
-		"DialogAligner", "GanttCalendarDays", "GanttPrintable", "PDFExportProcessor",
-		"OpenFileDialog", "NewProjectWizard", "GanttTXTOpen", "AdjustTaskBoundsAlgorithm",
-		"FindPossibleDependeesAlgorithmImpl", "RecalculateTaskCompletionPercentageAlgorithm",
-		"MonthTextFormatter", "TaskHierarchyManagerImpl", "GraphicPrimitiveContainer",
-		"GanttApplet", "OpenFileDialog", "GanttGraphicArea", "TimeUnit", "GanttDialogInfo", "GanttProject",
-		"GanttProject"};
-	*/
+
 	
 	public static Vector detected=new Vector();
 	public static Vector detectedBlocs=new Vector();

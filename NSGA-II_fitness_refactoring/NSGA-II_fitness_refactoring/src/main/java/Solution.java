@@ -30,11 +30,11 @@ public class Solution {
     static boolean deviance_metric = Execution.deviance_metric;
     static boolean encapsulation_metric = Execution.encapsulation_metric;
     static boolean interfacing_metric = Execution.interfacing_metric;
-    // for activity diagram :
-    static boolean NP_metric_activity = Execution.numberOfParameters_metric_activity;
-    static boolean NED_metric_activity = Execution.numberOfEdges_metric_activity;
-    static boolean NAC_metric_activity = Execution.numberOfActions_metric_activity;
-    static boolean LO_metric_activity = Execution.locality_metric_activity;
+//    // for activity diagram :
+//    static boolean NP_metric_activity = Execution.numberOfParameters_metric_activity;
+//    static boolean NED_metric_activity = Execution.numberOfEdges_metric_activity;
+//    static boolean NAC_metric_activity = Execution.numberOfActions_metric_activity;
+//    static boolean LO_metric_activity = Execution.locality_metric_activity;
 
 
     // Objectives detailed
@@ -222,14 +222,6 @@ public class Solution {
         double coupling = 0; // for all classses
         double cohesion = 0;
 
-        // for activity diagram :
-        int numOfAllMethods = 0;
-        double NP = 0;
-        double NED = 0;
-        double NAC = 0;
-        double LO = 0;
-
-        // end :
 
         double complexity[];
 
@@ -264,24 +256,6 @@ public class Solution {
 
             String className = Info.getClassName(bloc);
 
-            // for activity diagram :
-            int numOfMethods = Info.getNbrMethods(className);
-            String[] methods = Info.getMethodslist(className);
-            for (int k = 0; k < methods.length; k++) {
-                int local_NP = ActivityInfo.NP(className, methods[k]);
-                int local_NED = ActivityInfo.NED(className, methods[k]);
-                int local_NAC = ActivityInfo.NAC(className, methods[k]);
-                double local_LO = ActivityInfo.LO(className, methods[k]);
-                NP += local_NP;
-                NED += local_NED;
-                NAC += local_NAC;
-                LO += local_LO;
-            }
-            numOfAllMethods += numOfMethods;
-
-
-            // end :
-
             number[i] = Metric.NOM(className);
             public_attributes[i] = Info.getNbrPublicAttributes(className);
             total_attributes[i] = Info.getNbrAttributes(className);
@@ -289,7 +263,6 @@ public class Solution {
 
             String match = "Relation(" + className;
             while (bloc1.contains(match)) {
-                //System.out.println("\n call out on class "+i);
                 call_out++;
                 bloc1 = bloc1.replace(match, " ");
             }
@@ -340,33 +313,6 @@ public class Solution {
         coupling = (double) coupling / nbClass;
         cohesion = (double) cohesion / nbClass;
 
-        // for activity diagram :
-        NP /= numOfAllMethods;
-        NED /= numOfAllMethods;
-        NAC /= numOfAllMethods;
-        LO /= numOfAllMethods;
-
-        if (NP_metric_activity){
-            objectives.add(NP);
-            this.objectives_names.add("Average Of Parameters Methods");
-        }
-
-        if (NED_metric_activity){
-            objectives.add(NED);
-            this.objectives_names.add("Average Of Number of Edges");
-        }
-
-        if (NAC_metric_activity){
-            objectives.add(NAC);
-            this.objectives_names.add("Average Of Number of Actions");
-        }
-
-        if (LO_metric_activity){
-            objectives.add(LO);
-            this.objectives_names.add("Average Of Locality");
-        }
-
-        // end :
 
         if (coupling_metric) {
             objectives.add(coupling);
@@ -449,33 +395,7 @@ public class Solution {
                 call_out++;
                 bloc = bloc.replace(match, " ");
             }
-            /*
-            for(int j=0;j<nbClass;j++)
-            {
-                //System.out.println("\n still with class i : "+i+" and calling class j : "+j);
-                if(j!=i)
-                {
-                    String bloc2=new String();
-                    bloc2=(String)ApplyRefactoring.blocs.elementAt(j);
-                    while(bloc2.contains("Relation("))
-                    {
-                        int d=bloc2.indexOf("Relation(");
-			int f=bloc2.indexOf(");",d);
-			String relation = bloc2.substring(d,f);
-                        String source = relation.substring((relation.indexOf("(")+1),relation.indexOf(";"));
-                        String target = relation.substring((relation.indexOf(",")+1),relation.lastIndexOf(","));
-                        if (target.equals(className))
-                        {
-                            call_in ++ ;
-                            System.out.println("\n call in on class "+i);
-                        }
-                        String s1=bloc2.substring(0,d);
-			String s2=bloc2.substring(f,bloc2.length());
-			bloc2=s1+s2;
-                    }
-                }
-            }
-            */
+
             if (call_out + call_in != 0) {
                 //stability[i] = (double) call_out / (call_out + call_in) ;
                 stability[i] = (double) call_out;
@@ -638,41 +558,5 @@ public class Solution {
         }
         return (double) result / nums.length;
     }
-
-    public static void main(String[] args) {
-        Solution test1 = new Solution();
-        Solution test2 = new Solution();
-
-
-        // test of create_solution_express
-        if (true) {
-            System.out.println("\n --- For Test1 ---");
-            test1.create_solution_express();
-            test1.print_metrics();
-
-            System.out.println("\n --- For Test2 ---");
-            test1.create_solution_express();
-            test1.print_metrics();
-        }
-
-        // test of mutation1 and mutation2
-        if (false) {
-
-            System.out.println("\n --- Testing mutation1 ---");
-            test1.create_solution();
-            test1.print_solution();
-            test1.mutation1();
-            test1.print_solution();
-
-            System.out.println("\n --- Testing mutation2 ---");
-            test1.create_solution();
-            test1.print_solution();
-            test1.mutation2();
-            test1.print_solution();
-        }
-
-
-    }
-
 }
 

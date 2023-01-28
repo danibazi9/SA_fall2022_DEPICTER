@@ -21,7 +21,7 @@ public class Metrics
 		int nbr_bloc=0;
 		try
 		  {
-		      lecture=new BufferedReader(new FileReader("1guehene-dpl-GanttProject v1.10.2.blocks"));
+		      lecture=new BufferedReader(new FileReader("GanttProject.blocks"));
 		      
 	          	      
 		      String ch;

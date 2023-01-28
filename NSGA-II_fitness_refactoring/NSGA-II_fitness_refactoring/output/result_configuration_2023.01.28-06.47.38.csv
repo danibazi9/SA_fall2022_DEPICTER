@@ -1,0 +1,22 @@
+--- Execution Configuration ---
+
+Number of Objectives : 7
+
+Considered Objectives :  Coupling Cohesion Complxity Sability Standard Deviation Encapsulation Interfacing 
+
+Population size : 100
+
+Iterations : 2.0
+
+Sigma : 1.0
+
+Reference Point :  0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 
+
+Pareto size : 100
+
+Average number of fronts : 3.0
+
+Selected solutions number (optional) : 1.0
+
+Selected solutions are the set of best solution (minimal distance) in each iteration (duplicated solutions removed) 
+

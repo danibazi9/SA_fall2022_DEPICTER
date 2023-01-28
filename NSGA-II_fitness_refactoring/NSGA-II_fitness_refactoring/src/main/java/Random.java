@@ -61,16 +61,7 @@ public class Random
 				
 		return res;
 	}
-	
-	/*public static String randomMethod()
-	{
-		String res=new String();
-		String className=randomClass();
-		res=randomMethod(className);
-				
-		return res;
-	}
-	*/
+
 	public static String randomRelationship(String className)
 	{
 		String res=new String();

@@ -2,8 +2,7 @@ import java.io.*;
 import java.util.Vector;
 
 
-public class ApplyRefactoring 
-{
+public class ApplyRefactoring{
 	public static BufferedReader lecture;
 	public static BufferedWriter ecriture;
 	public static Vector blocs=readCode();
@@ -269,40 +268,6 @@ public class ApplyRefactoring
 		updateFile(blocs);
 		return effort;
 	}
-	/*
-	public static int moveRelationShip(String className, String line, String targetClass)
-	{
-		int effort=0;
-		String s=new String();
-		String bloc=new String();
-		int numBloc=-1;
-		String res="Add RelationShip failed";
-		for (int i=0;i<blocs.size();i++)
-		{
-			if(getClassName((String)blocs.elementAt(i)).equals(className))
-			{
-				numBloc=i;
-				bloc=(String)blocs.elementAt(i);
-				res="RelationShip added successfully";
-			}
-		}
-		if(numBloc==-1) return 0;
-		int d=bloc.indexOf("end b");
-				
-		effort+=ApplyRefactoring.deleteRelationShip(className, line);
-		
-		if(line.contains("("+className))
-				line=line.replace("("+className, "("+targetClass);
-		
-		if(line.contains(","+className))
-			line=line.replace(","+className, ","+targetClass);
-		
-		effort+=addRelationShip(targetClass, line);
-		
-		updateFile(blocs);
-		return effort;
-	}
-	*/	
 	
 	public static int addParameter(String className, String line)
 	{

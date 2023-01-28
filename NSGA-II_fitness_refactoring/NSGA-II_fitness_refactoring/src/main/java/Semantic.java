@@ -14,7 +14,6 @@ public class Semantic
 	public static void main(String [] args)
 	{
 		String bloc=(String)ApplyRefactoring.blocs.elementAt(18);
-		//bloc="aaa(jbmjm,jhghj,jhghjg,ghfhg,jhgfj,jhgfhj,kjghhj);a";
 		
 		Vector v=blocVocabulary(bloc);
 		for(int i=0; i<v.size();i++)
@@ -31,8 +30,7 @@ public class Semantic
 		}
 		
 		String bloc2=(String)ApplyRefactoring.blocs.elementAt(40);
-		//bloc2="aaa(ali,ouni,jhghjg,aaaa);a";
-		//Vector v2=generateVocabulary(blocVocabulary(bloc));
+
 		System.out.println("__________________________________");
 		int [] t2=TF_IDF(bloc2, v1);
 		for(int i=0; i<v1.size();i++)
@@ -40,28 +38,8 @@ public class Semantic
 			String s=(String)v1.elementAt(i);
 			System.out.println(s+" "+t2[i]);
 		}
-		
-		//bloc="aaa(ali,ouni,ali,ali,ouni,ouni,ok,ok,loi);a";
-		//bloc2="aaa(abc,def,ali);a";
-		
 		System.out.println("Similarity "+similarity(bloc,bloc2)+" "+similarity(bloc2,bloc));
-		/*
-		int a=0;
-		double b=0;
-		for(int i=50;i<ApplyRefactoring.blocs.size();i++)
-		{
-			bloc2=(String)ApplyRefactoring.blocs.elementAt(i);
-			//double val=(similarity(bloc,bloc2)+similarity(bloc2,bloc))/2;
-			double val=similarity(bloc,bloc2);
-			System.out.println(i);
-			if(b<similarity(bloc,bloc2))
-			{
-				a=i;
-				b=val;
-			}
-		}
-		System.out.println("classe "+a+" similarity "+b);
-		*/
+
 		double matrix[][]=generateSimilarityMatrix(ApplyRefactoring.blocs);
 		String s=new String();
 		s="\t";
@@ -74,8 +52,6 @@ public class Semantic
 			s=""+(i+1)+"\t";
 			for(int j=0;j<matrix.length;j++)
 			{
-				//java.text.DecimalFormat df = new java.text.DecimalFormat("########.00");
-				//s+="0"+df.format(matrix[i][j])+"\t";
 				s+=matrix[i][j]+"\t";
 				
 			}
@@ -105,7 +81,6 @@ public class Semantic
 		
 		if(normeT1*normeT2==0 || pScalaire==0)
 			return 0;
-		//cos=Math.cos(pScalaire/(normeT1*normeT2));
 		
 		cos=(pScalaire/(normeT1*normeT2));
 		
@@ -271,10 +246,6 @@ public class Semantic
 			}
 			bloc=copie;
 		}
-		}
-		//catch(java.util.regex.PatternSyntaxException e)
-		{
-			//System.out.println("________Exception________"+e.getDescription());
 		}
 				
 		return res;

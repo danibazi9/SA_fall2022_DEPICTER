@@ -1,106 +1,75 @@
 start b1
-Attribute(GanttTXTOpen,area,GanttGraphicArea,N,package);
-Attribute(GanttTXTOpen,treePanel,GanttTree,N,package);
 Class(GanttTXTOpen,N,N,public);
-Method(GanttTXTOpen,getPreferredSize,Dimension,N,N,N,public);
+Parameter(GanttResourcePanel,isCellEditable,columnIndex,int,declaration);
+Parameter(GanttResourcePanel,getValueAt,row,int,declaration);
+Parameter(DeprecatedProjectExportData,GanttDialogDate,parent,JDialog,declaration);
 Parameter(GanttProject,importcbk,openerGanttTXTOpen,local);
-Relation(GanttTXTOpen;getPreferredSize;RangeSearchFromKey,HTMLSettingsPanel,type);
-Relation(GanttTXTOpen;getPreferredSize;setBounds,ChartModelImpl,type);
-Relation(GanttTXTOpen;getPreferredSize;createNewProject,GanttDialogDate,type);
 end b1
 start b2
 Class(PrjInfos,N,N,public);
-Method(PrjInfos,getWebLink,String,N,N,N,public);
-Parameter(GanttPanelDate,changeDate,differentMonthboolean,local);
-Parameter(newGanttResourcePanel,changeLanguage,language,GanttLanguage,declaration);
-Parameter(MutableTaskDependencyCollection,deleteDependency,dependency,TaskDependency,declaration);
+Parameter(AbstractDocument,createConstraint,constraintID,int,declaration);
+Parameter(GanttResourcePanel,sendMail,peopleHumanResource,local);
+Parameter(TaskManagerImpl,applyChanges,askForApply,boolean,declaration);
+Parameter(RangeSearchFromKey,print,pageIndex,int,declaration);
+Parameter(BackAction,dependencyAdded,e,TaskDependencyEvent,declaration);
+Parameter(newBackAction,actionPerformed,e,ActionEvent,declaration);
 Parameter(GanttCSVExport,GanttCSVExport,prjInfos,PrjInfos,declaration);
 Parameter(GanttHTMLExport,save,prjInfos,PrjInfos,declaration);
 Parameter(GanttXFIGSaver,GanttXFIGSaver,prjInfos,PrjInfos,declaration);
-Relation(GanttHTMLExport;save;getWebLink,PrjInfos,N);
-Relation(GanttProject;getWebLink;getWebLink,PrjInfos,N);
-Relation(PrjInfos;getWebLink;print,newTaskManagerImpl,type);
-Relation(PrjInfos;getWebLink;getDependencyCollection,newGanttTXTOpen,type);
 end b2
 start b3
 Attribute(DeprecatedProjectExportData,myResourceChart,ResourceLoadGraphicArea,N,package);
-Attribute(DeprecatedProjectExportData,myXslFoScript,String,N,package);
 Class(DeprecatedProjectExportData,N,N,public);
-Method(DeprecatedProjectExportData,DeleteHumanAction,N,Y,N,N,public);
-Parameter(DeprecatedProjectExportData,DeleteHumanAction,hrManager,ResourceManager,declaration);
-Parameter(DeprecatedProjectExportData,DeleteHumanAction,iconUrlURL,local);
-Parameter(DeprecatedProjectExportData,DeleteHumanAction,projectFrame,GanttProject,declaration);
-Generalisation(DeprecatedProjectExportData,newPrjInfos);
+Method(DeprecatedProjectExportData,createLength,TaskLength,Y,N,N,public);
+Method(DeprecatedProjectExportData,dependencyRemoved,void,Y,N,N,public);
+Method(DeprecatedProjectExportData,getContainer,Task,Y,N,N,public);
+Method(DeprecatedProjectExportData,stateChanged,void,Y,N,N,public);
+Parameter(AbstractDocument,fireTaskAdded,eTaskHierarchyEvent,local);
+Parameter(TaskManagerImpl,fireTaskScheduleChanged,eTaskScheduleEvent,local);
+Parameter(ProgressBarPanel,print,cptint,local);
+Parameter(newTaskContainmentHierarchyFacadeImpl,createPopupMenu,y,int,declaration);
+Parameter(RangeSearchFromKey,print,imghint,local);
+Parameter(newTaskContainmentHierarchyFacadeImpl,actionPerformed,e,ActionEvent,declaration);
 Parameter(GanttProject,doExport,exportDataDeprecatedProjectExportData,local);
 Parameter(PDFExportProcessor,doExport,exportData,DeprecatedProjectExportData,declaration);
 Parameter(ProjectExportProcessor,doExport,exportData,DeprecatedProjectExportData,declaration);
-Relation(DeprecatedProjectExportData;DeleteHumanAction;correctLabel,GanttProject,String);
-Relation(DeprecatedProjectExportData;DeleteHumanAction;getKeyStroke,KeyStroke,int-int);
-Relation(DeprecatedProjectExportData;DeleteHumanAction;getLanguage,ResourceAction,N);
-Relation(DeprecatedProjectExportData;DeleteHumanAction;getResource,ClassLoader,String);
-Relation(DeprecatedProjectExportData;DeleteHumanAction;getText,GanttLanguage,String);
-Relation(DeprecatedProjectExportData;DeleteHumanAction;putValue,AbstractAction,String-Object);
-Relation(DeprecatedProjectExportData;DeleteHumanAction;RangeSearchFromKey,HTMLSettingsPanel,type);
+Relation(DeprecatedProjectExportData;dependencyRemoved;applyChanges,newnewnewJPaintList,type);
+Relation(DeprecatedProjectExportData;dependencyRemoved;close,newnewProgressBarPanel,type);
 end b3
 start b4
+Attribute(NewProjectWizard,cy,int,N,package);
 Class(NewProjectWizard,N,N,public);
+Generalisation(NewProjectWizard,TaskContainmentHierarchyFacadeImpl);
+Parameter(GanttTXTOpen,GanttTXTOpen,taskManager,TaskManager,declaration);
+Parameter(GraphicPrimitive,GanttDialogDate,contentPaneJComponent,local);
+Parameter(TaskManagerImpl,fireTaskScheduleChanged,changedTask,Task,declaration);
 Parameter(GanttProject,showNewProjectWizard,wizardNewProjectWizard,local);
 end b4
 start b5
-Attribute(GanttApplet,data,ArrayList,N,public);
 Class(GanttApplet,N,N,public);
-Method(GanttApplet,addRow,void,Y,N,N,public);
-Method(GanttApplet,actionPerformed,void,Y,N,N,public);
-Method(GanttApplet,main,void,Y,N,static,public);
-Parameter(GanttApplet,addRow,people,HumanResource,declaration);
-Parameter(newNewProjectWizard,initialize,sSeparatedCharString,local);
-Parameter(HttpDocumentOutputStream,setUserInfo,pass,String,declaration);
-Parameter(GanttTransferableTreePath,load,task,GanttTask,local);
-Parameter(GanttApplet,main,appletGanttApplet,local);
-Parameter(GanttApplet,main,frameJFrame,local);
-Relation(GanttApplet;actionPerformed;getCodeBase,Applet,N);
-Relation(GanttApplet;actionPerformed;getInputStream,URLConnection,N);
-Relation(GanttApplet;actionPerformed;openConnection,URL,N);
-Relation(GanttApplet;actionPerformed;openXMLStream,GanttProject,InputStream-String);
-Relation(GanttApplet;actionPerformed;printStackTrace,Throwable,N);
-Relation(GanttApplet;actionPerformed;toString,URL,N);
-Relation(GanttApplet;main;pack,Window,N);
-Relation(GanttApplet;main;setContentPane,JFrame,Container);
-Relation(GanttApplet;main;setDefaultCloseOperation,JFrame,int);
-Relation(GanttApplet;main;setVisible,Window,boolean);
-Relation(GanttApplet;actionPerformed;setTaskID,newGraphicPrimitive,type);
-Relation(GanttApplet;addRow;add,ArrayList,Object);
-Relation(GanttApplet;addRow;fireTableRowsInserted,AbstractTableModel,int-int);
-Relation(GanttApplet;addRow;size,ArrayList,N);
-Relation(GanttApplet;actionPerformed;initialize,ResourceAssignment,type);
+Parameter(newTaskContainmentHierarchyFacadeImpl,createPopupMenu,menuJPopupMenu,local);
+Parameter(JPaintList,createDependency,dependee,Task,declaration);
 end b5
 start b6
+Attribute(MutableTaskDependencyCollection,myMaxID,int,N,private);
 Class(MutableTaskDependencyCollection,N,N,public);
-Method(MutableTaskDependencyCollection,createDependency,TaskDependency,Y,N,N,package);
-Method(MutableTaskDependencyCollection,getTaskED,boolean,N,N,N,public);
-Parameter(DeleteHumanAction,getDisplayName,resources,ProjectResource[],declaration);
-Parameter(GanttPrintable,print,pageIndex,int,declaration);
-Parameter(ChartModelImpl,setStartDate,startDate,Date,declaration);
-Relation(DependencyTableModel;createDependency;createDependency,MutableTaskDependencyCollection,Task-Task);
-Relation(DependencyTableModel;updateDependency;createDependency,MutableTaskDependencyCollection,Task-Task);
-Relation(DependencyTagHandler;parsingFinished;createDependency,MutableTaskDependencyCollection,Task-Task);
-Relation(GanttGraphicArea;GanttGraphicArea;createDependency,MutableTaskDependencyCollection,Task-Task);
-Relation(GanttProject;linkRelationships;createDependency,MutableTaskDependencyCollection,Task-Task);
+Parameter(AbstractDocument,TaskManagerImpl,alg1FindPossibleDependeesAlgorithm,local);
+Generalisation(MutableTaskDependencyCollection,PrjInfos);
+Generalisation(MutableTaskDependencyCollection,newTaskListenerAdapter);
+Generalisation(MutableTaskDependencyCollection,newnewnewnewMutableTaskDependencyCollection);
+Parameter(GanttChartExportData,actionPerformed,event,ActionEvent,declaration);
+Parameter(GanttPanelDate,rollDate,field,int,declaration);
 end b6
 start b7
-Attribute(ResourceAssignment,myGanttChart,GanttGraphicArea,N,package);
 Class(ResourceAssignment,N,N,public);
-Method(ResourceAssignment,initialize,void,N,N,N,public);
-Method(ResourceAssignment,getResource,ProjectResource,N,N,N,package);
-Method(ResourceAssignment,getTask,Task,N,N,N,package);
-Method(ResourceAssignment,setLoad,void,Y,N,N,package);
-Method(ResourceAssignmentCollectionImpl,addAssignment,ResourceAssignment,Y,N,N,public);
-Method(ResourceAssignmentCollectionImpl,getAssignment,ResourceAssignment,Y,N,N,public);
-Parameter(newProgressBarPanel,taskRemoved,e,TaskHierarchyEvent,declaration);
-Parameter(newJPaintList,deleteResources,context,ProjectResource[],declaration);
+Generalisation(ResourceAssignment,ResourceView);
+Parameter(AbstractDocument,TaskManagerImpl,alg4RecalculateTaskCompletionPercentageAlgorithm,local);
+Parameter(GanttResourcePanel,NewProjectWizard,mainFrame,JFrame,declaration);
+Parameter(newGanttChartExportData,separatCharHasChange,csvOptionsCSVOptions,local);
+Parameter(newTaskContainmentHierarchyFacadeImpl,setBounds,bounds,Dimension,declaration);
+Parameter(TaskManagerImpl,setTask,task,Task,declaration);
 Parameter(AllocationTagHandler,loadAllocation,assignmentResourceAssignment,local);
 Parameter(GanttXMLSaver,writeAllocations,nextResourceAssignment,local);
-Parameter(ResourceAssignment,setLoad,load,float,declaration);
 Parameter(ResourceAssignmentCollectionImpl,MutationInfo,assignment,ResourceAssignment,declaration);
 Parameter(ResourceAssignmentCollectionImpl,ResourceAssignmentCollectionImpl,copyResourceAssignment,local);
 Parameter(ResourceAssignmentCollectionImpl,ResourceAssignmentCollectionImpl,nextResourceAssignment,local);
@@ -113,271 +82,93 @@ Parameter(ResourcesTableModel,createAssignment,newAssignmentResourceAssignment,l
 Parameter(ResourcesTableModel,getValueAt,assignmentResourceAssignment,local);
 Parameter(ResourcesTableModel,updateAssignment,newAssignmentResourceAssignment,local);
 Parameter(ResourcesTableModel,updateAssignment,updateTargetResourceAssignment,local);
-Relation(AllocationTagHandler;loadAllocation;setLoad,ResourceAssignment,float);
-Relation(GanttCSVExport;getAssignments;getResource,ResourceAssignment,N);
-Relation(GanttGraphicArea;paintResources;getResource,ResourceAssignment,N);
-Relation(GanttHTMLExport;writeTasks;getResource,ResourceAssignment,N);
-Relation(GanttPDFExport;writeTasks;getResource,ResourceAssignment,N);
-Relation(GanttTree;getToolTip;getResource,ResourceAssignment,N);
-Relation(GanttXMLSaver;writeAllocations;getResource,ResourceAssignment,N);
-Relation(ResourceAssignmentCollectionImpl;MutationInfo;getResource,ResourceAssignment,N);
-Relation(ResourceAssignmentCollectionImpl;ResourceAssignmentCollectionImpl;addAssignment,ResourceAssignmentCollectionImpl,ResourceAssignment);
-Relation(ResourceAssignmentCollectionImpl;ResourceAssignmentCollectionImpl;getResource,ResourceAssignment,N);
-Relation(ResourceAssignmentCollectionImpl;ResourceAssignmentCollectionImpl;setLoad,ResourceAssignment,float);
-Relation(ResourceAssignmentCollectionImpl;addAssignment;getResource,ResourceAssignment,N);
-Relation(ResourceAssignmentCollectionImpl;auxAddAssignment;addAssignment,ResourceAssignmentCollectionImpl,ResourceAssignment);
-Relation(ResourceAssignmentCollectionImpl;commit;setLoad,ResourceAssignment,float);
-Relation(ResourceAssignmentCollectionImpl;equals;getResource,ResourceAssignment,N);
-Relation(ResourceLoadGraphicArea;calculateLoad;getResource,ResourceAssignment,N);
-Relation(ResourcesTableModel;createAssignment;setLoad,ResourceAssignment,float);
-Relation(ResourcesTableModel;getValueAt;getResource,ResourceAssignment,N);
-Relation(ResourcesTableModel;updateAssignment;setLoad,ResourceAssignment,float);
-Relation(ResourceAssignment;initialize;equals,String,Object);
-Relation(ResourceAssignment;initialize;getCSVOptions,GanttOptions,N);
-Relation(ResourceAssignment;initialize;getOptions,GanttProject,N);
-Relation(ResourceAssignment;initialize;setSelected,AbstractButton,boolean);
-Relation(ResourceAssignment;initialize;setSelectedIndex,JComboBox,int);
-Relation(ResourceAssignment;initialize;setText,JTextComponent,String);
 end b7
 start b8
 Class(GanttChartExportData,N,N,public);
-Method(GanttChartExportData,resourcesRemoved,void,Y,N,N,public);
-Method(GanttChartExportData,deleteDependency,void,Y,N,N,package);
-Parameter(HttpDocumentOutputStream,setUserInfo,user,String,declaration);
-Parameter(RangeSearchFromKey,RangeSearchFromKey,task,Task,declaration);
+Generalisation(GanttChartExportData,newnewResourceAssignment);
+Parameter(NewProjectWizard,clickFunction,Xint,local);
+Parameter(newTaskManagerImpl,getContainer,nestedTask,Task,declaration);
 Parameter(GanttChartExportProcessor,run,exportData,GanttChartExportData,declaration);
 Parameter(PDFExportProcessor,exportGanttChart,chartExportDataGanttChartExportData,local);
-Relation(GanttChartExportData;resourcesRemoved;print,newTaskManagerImpl,type);
 end b8
 start b9
-Attribute(TaskContainmentHierarchyFacadeImpl,buttonXsl,JButton,N,package);
-Attribute(TaskContainmentHierarchyFacadeImpl,appli,GanttProject,N,private);
-Attribute(TaskContainmentHierarchyFacadeImpl,myTimeUnitManager,TimeUnitManager,N,private);
+Attribute(TaskContainmentHierarchyFacadeImpl,myGanttChart,GanttGraphicArea,N,package);
 Class(TaskContainmentHierarchyFacadeImpl,N,static,private);
-Method(TaskContainmentHierarchyFacadeImpl,DeprecatedProjectExportData,N,Y,N,N,public);
-Parameter(TaskContainmentHierarchyFacadeImpl,DeprecatedProjectExportData,myXslFoScript,String,declaration);
-Parameter(TaskContainmentHierarchyFacadeImpl,DeprecatedProjectExportData,myResourceChart,ResourceLoadGraphicArea,declaration);
-Parameter(TaskContainmentHierarchyFacadeImpl,DeprecatedProjectExportData,myGanttChart,GanttGraphicArea,declaration);
-Parameter(TaskContainmentHierarchyFacadeImpl,DeprecatedProjectExportData,myFilename,String,declaration);
-Parameter(TaskContainmentHierarchyFacadeImpl,DeprecatedProjectExportData,myExportOptions,GanttExportSettings,declaration);
+Parameter(PrjInfos,PrjInfos,sWebLink,String,declaration);
+Parameter(newTaskManagerImpl,actionPerformed,ganttFrameGanttProject,local);
+Parameter(ChartModelImpl,calculateTimeFrames,resultArrayList,local);
+Parameter(newDeleteHumanAction,DeleteHumanAction,hrManager,ResourceManager,declaration);
+Parameter(HTMLSettingsPanel,applyChanges,askForApply,boolean,declaration);
 end b9
 start b10
-Attribute(CSVSettingsPanel,cbTaskName,JCheckBox,N,package);
-Attribute(CSVSettingsPanel,cbTaskPercent,JCheckBox,N,package);
-Attribute(CSVSettingsPanel,tfOther,JTextField,N,package);
 Class(CSVSettingsPanel,N,N,public);
-Method(CSVSettingsPanel,unselectOther,void,Y,N,N,public);
-Method(CSVSettingsPanel,getTaskID,boolean,N,N,N,public);
-Method(CSVSettingsPanel,getTaskSD,boolean,N,N,N,public);
-Method(CSVSettingsPanel,getTaskWebLink,boolean,N,N,N,public);
-Method(CSVSettingsPanel,separatCharHasChange,boolean,N,N,N,public);
-Parameter(newGanttPanelDate,GanttDialogDateDay,mlMouseListener,local);
-Parameter(MutableTaskDependencyCollection,createDependency,dependee,Task,declaration);
-Parameter(GraphicPrimitive,DeprecatedProjectExportData,myProject,GanttProject,declaration);
-Relation(CSVSettingsPanel;getTaskSD;isSelected,AbstractButton,N);
-Relation(CSVSettingsPanel;getTaskWebLink;isSelected,AbstractButton,N);
-Relation(CSVSettingsPanel;separatCharHasChange;equals,String,Object);
-Relation(CSVSettingsPanel;separatCharHasChange;getCSVOptions,GanttOptions,N);
-Relation(CSVSettingsPanel;separatCharHasChange;getOptions,GanttProject,N);
-Relation(CSVSettingsPanel;separatCharHasChange;getText,JTextComponent,N);
-Relation(CSVSettingsPanel;getTaskID;isSelected,AbstractButton,N);
-Relation(CSVSettingsPanel;getTaskID;actionPerformed,newnewBackAction,type);
-Relation(CSVSettingsPanel;getTaskID;applyChanges,newnewTaskManagerImpl,type);
-Relation(CSVSettingsPanel;unselectOther;setEnabled,JComponent,boolean);
-Relation(CSVSettingsPanel;unselectOther;setSelected,AbstractButton,boolean);
+Generalisation(CSVSettingsPanel,newResourceAssignment);
+Parameter(BackAction,main,args,String[],declaration);
+Parameter(TaskListenerAdapter,taskRemoved,e,TaskHierarchyEvent,declaration);
 end b10
 start b11
-Attribute(GanttPanelDate,language,GanttLanguage,N,package);
-Attribute(GanttPanelDate,save,GanttCalendar,N,private);
 Class(GanttPanelDate,N,N,public);
-Method(GanttPanelDate,paintComponent,void,Y,N,N,public);
-Method(GanttPanelDate,rollDate,void,Y,N,N,private);
-Parameter(GanttPanelDate,paintComponent,bleuColor,local);
-Parameter(GanttPanelDate,paintComponent,dayWeekString[],local);
-Parameter(GanttPanelDate,paintComponent,dwString,local);
-Parameter(GanttPanelDate,paintComponent,g,Graphics,declaration);
-Parameter(GanttPanelDate,paintComponent,grisColor,local);
-Parameter(GanttPanelDate,paintComponent,sizexint,local);
-Parameter(GanttPanelDate,paintComponent,sizeyint,local);
-Parameter(GanttPanelDate,paintComponent,timeZoneTimeZone,local);
-Parameter(GanttPanelDate,paintComponent,tmpdateGanttCalendar,local);
-Parameter(GanttPanelDate,rollDate,field,int,declaration);
-Relation(GanttPanelDate;NgetInstance,GanttLanguage,N);
-Relation(GanttPanelDate;paintComponent;Clone,GanttCalendar,N);
-Relation(GanttPanelDate;paintComponent;add,GregorianCalendar,int-int);
-Relation(GanttPanelDate;paintComponent;equals,String,Object);
-Relation(GanttPanelDate;paintComponent;fillRect,Graphics,int-int-int-int);
-Relation(GanttPanelDate;paintComponent;getDSTSavings,TimeZone,N);
-Relation(GanttPanelDate;paintComponent;getDate,GanttCalendar,N);
-Relation(GanttPanelDate;paintComponent;getDay,GanttCalendar,N);
-Relation(GanttPanelDate;paintComponent;getDay,GanttLanguage,int);
-Relation(GanttPanelDate;paintComponent;getDayWeekLanguage,GanttCalendar,N);
-Relation(GanttPanelDate;paintComponent;getHeight,JComponent,N);
-Relation(GanttPanelDate;paintComponent;getMonth,GanttCalendar,N);
-Relation(GanttPanelDate;paintComponent;getTime,Calendar,N);
-Relation(GanttPanelDate;paintComponent;getTimeZone,GregorianCalendar,N);
-Relation(GanttPanelDate;paintComponent;getWidth,JComponent,N);
-Relation(GanttPanelDate;paintComponent;getdayWeek,GanttCalendar,N);
-Relation(GanttPanelDate;paintComponent;go,GanttCalendar,int-int);
-Relation(GanttPanelDate;paintComponent;inDaylightTime,TimeZone,Date);
-Relation(GanttPanelDate;paintComponent;length,String,N);
-Relation(GanttPanelDate;paintComponent;setColor,Graphics,Color);
-Relation(GanttPanelDate;paintComponent;substring,String,int-int);
-Relation(GanttPanelDate;rollDate;add,GregorianCalendar,int-int);
-Relation(GanttPanelDate;rollDate;getTime,Calendar,N);
-Relation(GanttPanelDate;rollDate;repaint,Component,N);
-Relation(GanttPanelDate;rollDate;setValue,JFormattedTextField,Object);
+Parameter(GanttTXTOpen,GanttTXTOpen,appli,GanttProject,declaration);
 end b11
 start b12
+Attribute(GanttDialogDate,myExportOptions,GanttExportSettings,N,package);
+Attribute(GanttDialogDate,tree,GanttTree,N,package);
 Class(GanttDialogDate,N,N,public);
-Method(GanttDialogDate,changePeople,void,Y,N,N,public);
-Method(NewProjectWizard,createNewProject,PrjInfos,Y,N,N,public);
-Method(GanttDialogDate,createNewProject,PrjInfos,Y,N,N,public);
-Generalisation(GanttDialogDate,newGanttResourcePanel);
-Method(GanttDialogDate,stateChanged,void,Y,N,N,public);
-Parameter(GanttDialogDate,changePeople,list,ArrayList,declaration);
-Parameter(GanttApplet,actionPerformed,urlURL,local);
-Parameter(GanttDialogDate,createNewProject,newProjectWizardNewProjectWizardWindow,local);
-Parameter(GanttDialogDate,createNewProject,project,IGanttProject,declaration);
-Parameter(GanttDialogDate,createNewProject,roleSetsRoleSet[],local);
-Parameter(ChartModelImpl,setTopTimeUnit,topTimeUnit,TimeUnit,declaration);
-Parameter(GanttPanelDate,GanttPanelDate,vb1Box,local);
-Parameter(GanttTransferableTreePath,load,f,File,declaration);
-Parameter(GanttDialogDate,stateChanged,e,ChangeEvent,declaration);
+Method(GanttDialogDate,acquireLock,boolean,N,N,N,public);
+Parameter(GanttResourcePanel,resourcesRemoved,event,ResourceEvent,declaration);
+Parameter(CSVSettingsPanel,initialize,bfixedboolean,local);
+Parameter(MutableTaskDependencyCollection,createDependency,dependant,Task,declaration);
 Parameter(GanttDialogProperties,actionPerformed,ddGanttDialogDate,local);
-Relation(GanttDialogDate;NgetInstance,GanttLanguage,N);
-Relation(GanttDialogDate;stateChanged;actionPerformed,newnewBackAction,type);
-Relation(GanttProject;showNewProjectWizard;createNewProject,GanttDialogDate,IGanttProject);
-Relation(GanttDialogDate;createNewProject;addRoleSetPage,NewProjectWizardWindow,RoleSet[]);
-Relation(GanttDialogDate;createNewProject;getRoleManager,IGanttProject,N);
-Relation(GanttDialogDate;createNewProject;getRoleSets,RoleManager,N);
-Relation(GanttDialogDate;createNewProject;show,WizardImpl,N);
-Relation(GanttDialogDate;changePeople;fireTableDataChanged,AbstractTableModel,N);
+Relation(GanttDialogDate;acquireLock;registerTask,TaskManagerImpl,type);
+Relation(GanttDialogDate;acquireLock;getDefaultColor,newDeleteHumanAction,type);
 end b12
 start b13
-Attribute(GanttPrintable,myHierarchyManager,TaskHierarchyManagerImpl,N,private);
-Attribute(GanttPrintable,myMaxID,int,N,private);
 Class(GanttPrintable,N,N,public);
-Generalisation(GanttPrintable,newnewRangeSearchFromKey);
+Generalisation(GanttPrintable,HTMLSettingsPanel);
+Generalisation(GanttPrintable,PrjInfos);
+Generalisation(GanttPrintable,ParsingContext);
+Parameter(GanttResourcePanel,getColumnName,col,int,declaration);
+Parameter(newCSVSettingsPanel,CSVSettingsPanel,lblTaskFieldJLabel,local);
+Parameter(ResourceAssignment,GanttDialogDateDay,language,GanttLanguage,declaration);
 end b13
 start b14
-Attribute(GanttTransferableTreePath,myContext,ResourceContext,N,private);
+Attribute(GanttTransferableTreePath,myConfig,TaskManagerConfig,N,private);
 Class(GanttTransferableTreePath,N,static,private);
-Parameter(MutableTaskDependencyCollection,createDependency,dependant,Task,declaration);
+Method(GanttTransferableTreePath,fireDependencyAdded,void,Y,N,N,public);
+Parameter(newTaskContainmentHierarchyFacadeImpl,refresh,language,GanttLanguage,declaration);
 end b14
 start b15
 Class(HttpDocumentOutputStream,N,N,package);
-Method(HttpDocumentOutputStream,getSelectedPaint,Paint,N,N,N,public);
-Method(HttpDocumentOutputStream,clear,void,N,N,N,package);
-Method(HttpDocumentOutputStream,close,void,N,N,N,public);
-Method(HttpDocumentOutputStream,setUserInfo,void,Y,N,N,public);
-Parameter(ResourceAssignment,HTMLSettingsPanel,defaultPanelJPanel,local);
-Parameter(GanttPrintable,GanttPrintable,image,BufferedImage,declaration);
-Relation(HttpDocumentOutputStream;close;getReasonCode,URIException,N);
-Relation(HttpDocumentOutputStream;close;putMethod,WebdavResource,byte[]);
-Relation(HttpDocumentOutputStream;close;toByteArray,ByteArrayOutputStream,N);
-Relation(HttpDocumentOutputStream;getSelectedPaint;applyChanges,newnewTaskManagerImpl,type);
-Relation(HttpDocumentOutputStream;getSelectedPaint;deleteRows,newGanttResourcePanel,type);
-Relation(HttpDocumentOutputStream;clear;registerTask,newnewHttpDocumentOutputStream,type);
+Generalisation(HttpDocumentOutputStream,newnewnewnewGanttTransferableTreePath);
 end b15
 start b16
 Class(JPaintList,N,N,public);
-Parameter(TaskManagerImpl,setMaxID,id,int,declaration);
-Parameter(TaskManagerImpl,getTask,taskId,int,declaration);
-Generalisation(JPaintList,TaskManagerImpl);
+Parameter(GanttPrintable,HTMLSettingsPanel,fcJFileChooser,local);
+Parameter(ParsingContext,setTaskID,id,int,declaration);
 end b16
 start b17
-Attribute(GanttResourcePanel,myExportSettings,GanttExportSettings,N,package);
-Attribute(GanttResourcePanel,lang,GanttLanguage,N,package);
-Attribute(GanttResourcePanel,myContext,ResourceContext,N,private);
-Attribute(GanttResourcePanel,myResourceActionSet,ResourceActionSet,N,private);
-Attribute(GanttResourcePanel,scrollpane,JScrollPane,N,package);
+Attribute(GanttResourcePanel,myListeners,List,N,private);
+Attribute(GanttResourcePanel,_sDescription,String,N,public);
 Class(GanttResourcePanel,N,N,public);
-Method(GanttResourcePanel,moveUp,boolean,Y,N,N,public);
-Method(GanttResourcePanel,upResource,void,N,N,N,public);
-Method(GanttResourcePanel,setPeople,void,Y,N,N,public);
-Method(GanttResourcePanel,getUserByNumber,HumanResource,Y,N,N,public);
-Method(GanttResourcePanel,getValueAt,Object,Y,N,N,public);
-Method(GanttResourcePanel,isCellEditable,boolean,Y,N,N,public);
-Method(GanttResourcePanel,mousePressed,void,Y,N,N,public);
-Method(GanttResourcePanel,moveDown,boolean,Y,N,N,public);
-Method(GanttResourcePanel,nbPeople,int,N,N,N,public);
-Method(GanttResourcePanel,refresh,void,Y,N,N,public);
-Method(GanttResourcePanel,reset,void,N,N,N,public);
-Method(GanttResourcePanel,resourceAdded,void,Y,N,N,public);
-Method(GanttResourcePanel,resourcesRemoved,void,Y,N,N,public);
 Method(GanttResourcePanel,sendMail,void,Y,N,N,public);
-Method(GanttResourcePanel,setResourceActions,void,Y,N,N,public);
-Method(GanttResourcePanel,setTree,void,Y,N,N,public);
+Method(GanttResourcePanel,setPeople,void,Y,N,N,public);
+Method(GanttResourcePanel,upResource,void,N,N,N,public);
 Method(GanttResourcePanel,updateRow,void,Y,N,N,public);
-Parameter(newGanttResourcePanel,GanttResourcePanel,mlMouseListener,local);
-Parameter(newTaskListenerAdapter,dependencyRemoved,e,TaskDependencyEvent,declaration);
-Parameter(GanttResourcePanel,moveUp,row,int,declaration);
-Parameter(GanttResourcePanel,moveUp,objObject,local);
-Parameter(newTaskManagerImpl,fireTaskAdded,nextTaskListener,local);
-Parameter(GanttResourcePanel,upResource,resManHumanResourceManager,local);
-Parameter(GanttResourcePanel,upResource,peopleHumanResource,local);
-Parameter(GanttResourcePanel,setPeople,list,ArrayList,declaration);
-Parameter(newGanttPrintable,JPaintList,list,Paint[],declaration);
+Parameter(GraphicPrimitive,GanttDialogDate,fixedDateJCheckBox,local);
+Parameter(NewProjectWizard,taskAdded,e,TaskHierarchyEvent,declaration);
+Parameter(ChartModelImpl,setStartDate,startDate,Date,declaration);
 Parameter(GanttCSVExport,GanttCSVExport,peop,GanttResourcePanel,declaration);
-Parameter(GanttResourcePanel,getUserByNumber,id,int,declaration);
-Parameter(GanttResourcePanel,getValueAt,col,int,declaration);
-Parameter(GanttResourcePanel,getValueAt,peopleHumanResource,local);
-Parameter(GanttResourcePanel,getValueAt,row,int,declaration);
-Parameter(GanttResourcePanel,isCellEditable,columnIndex,int,declaration);
-Parameter(GanttResourcePanel,isCellEditable,rowIndex,int,declaration);
-Parameter(GanttResourcePanel,mousePressed,e,MouseEvent,declaration);
-Parameter(GanttResourcePanel,moveDown,objObject,local);
-Parameter(GanttResourcePanel,moveDown,row,int,declaration);
-Parameter(GanttResourcePanel,refresh,language,GanttLanguage,declaration);
-Parameter(GanttResourcePanel,reset,sizeint,local);
-Parameter(GanttResourcePanel,resourceAdded,event,ResourceEvent,declaration);
-Parameter(GanttResourcePanel,resourcesRemoved,event,ResourceEvent,declaration);
-Parameter(GanttResourcePanel,sendMail,peopleHumanResource,local);
-Parameter(GanttResourcePanel,setResourceActions,actionSet,ResourceActionSet,declaration);
-Parameter(GanttResourcePanel,setTree,tree,GanttTree,declaration);
-Parameter(GanttResourcePanel,updateRow,people,HumanResource,declaration);
-Parameter(GanttResourcePanel,updateRow,row,int,declaration);
 Parameter(GanttXFIGSaver,GanttXFIGSaver,peop,GanttResourcePanel,declaration);
 Parameter(GanttXMLOpen,GanttXMLOpen,resources,GanttResourcePanel,declaration);
 Parameter(GanttXMLSaver,GanttXMLSaver,peop,GanttResourcePanel,declaration);
-Relation(GanttProject;changeLanguage;refresh,GanttResourcePanel,GanttLanguage);
-Relation(GanttProject;closeProject;reset,GanttResourcePanel,N);
-Relation(GanttProject;openXMLStream;reset,GanttResourcePanel,N);
-Relation(GanttProject;refreshProjectInfos;nbPeople,GanttResourcePanel,N);
-Relation(GanttResourcePanel;getUserByNumber;get,ArrayList,int);
-Relation(GanttResourcePanel;getValueAt;get,ArrayList,int);
-Relation(GanttResourcePanel;getValueAt;getMail,HumanResource,N);
-Relation(GanttResourcePanel;getValueAt;getName,ProjectResource,N);
-Relation(GanttResourcePanel;getValueAt;getName,Role,N);
-Relation(GanttResourcePanel;getValueAt;getPhone,HumanResource,N);
-Relation(GanttResourcePanel;getValueAt;getRole,HumanResource,N);
-Relation(GanttResourcePanel;getValueAt;size,ArrayList,N);
-Relation(GanttResourcePanel;moveDown;add,ArrayList,int-Object);
-Relation(GanttResourcePanel;moveDown;fireTableDataChanged,AbstractTableModel,N);
-Relation(GanttResourcePanel;moveDown;remove,ArrayList,int);
-Relation(GanttResourcePanel;moveDown;size,ArrayList,N);
-Relation(GanttResourcePanel;nbPeople;size,ArrayList,N);
-Relation(GanttResourcePanel;refresh;changeLanguage,GanttTableModel,GanttLanguage);
-Relation(GanttResourcePanel;reset;fireTableRowsDeleted,AbstractTableModel,int-int);
-Relation(GanttResourcePanel;reset;reset,GanttTableModel,N);
-Relation(GanttResourcePanel;reset;size,ArrayList,N);
-Relation(GanttResourcePanel;resourceAdded;getResource,ResourceEvent,N);
-Relation(GanttResourcePanel;resourcesRemoved;deleteRows,GanttTableModel,ProjectResource[]);
-Relation(GanttResourcePanel;resourcesRemoved;getResources,ResourceEvent,N);
-Relation(GanttResourcePanel;sendMail;displayURL,BrowserControl,String);
+Relation(GanttProject;downDatas;setPeople,GanttResourcePanel,ArrayList);
+Relation(GanttProject;upDatas;setPeople,GanttResourcePanel,ArrayList);
+Relation(GanttProject;upDatas;upResource,GanttResourcePanel,N);
 Relation(GanttResourcePanel;sendMail;get,ArrayList,int);
 Relation(GanttResourcePanel;sendMail;getMail,HumanResource,N);
 Relation(GanttResourcePanel;sendMail;println,PrintStream,Object);
 Relation(GanttResourcePanel;sendMail;size,ArrayList,N);
-Relation(GanttResourcePanel;updateRow;fireTableRowsUpdated,AbstractTableModel,int-int);
-Relation(GanttResourcePanel;updateRow;set,ArrayList,int-Object);
-Relation(GanttResourcePanel;reset;acquireLock,newGanttPanelDate,type);
-Relation(GanttResourcePanel;refresh;getTaskED,MutableTaskDependencyCollection,type);
-Relation(GanttProject;downDatas;setPeople,GanttResourcePanel,ArrayList);
-Relation(GanttProject;upDatas;setPeople,GanttResourcePanel,ArrayList);
 Relation(GanttResourcePanel;setPeople;changePeople,GanttTableModel,ArrayList);
-Relation(GanttProject;upDatas;upResource,GanttResourcePanel,N);
 Relation(GanttResourcePanel;upResource;changeSelection,JTable,int-int-boolean-boolean);
 Relation(GanttResourcePanel;upResource;get,ArrayList,int);
 Relation(GanttResourcePanel;upResource;getHumanResourceManager,GanttProject,N);
@@ -385,80 +176,105 @@ Relation(GanttResourcePanel;upResource;moveUp,GanttTableModel,int);
 Relation(GanttResourcePanel;upResource;println,PrintStream,String);
 Relation(GanttResourcePanel;upResource;size,ArrayList,N);
 Relation(GanttResourcePanel;upResource;up,HumanResourceManager,int);
-Relation(GanttResourcePanel;moveUp;add,ArrayList,int-Object);
-Relation(GanttResourcePanel;moveUp;fireTableDataChanged,AbstractTableModel,N);
-Relation(GanttResourcePanel;moveUp;remove,ArrayList,int);
+Relation(GanttResourcePanel;updateRow;fireTableRowsUpdated,AbstractTableModel,int-int);
+Relation(GanttResourcePanel;updateRow;set,ArrayList,int-Object);
+Relation(GanttResourcePanel;sendMail;cancel,newGanttTransferableTreePath,type);
 end b17
 start b18
 Class(AbstractDocument,abstract,N,public);
+Method(AbstractDocument,getRootTask,Task,N,N,N,public);
+Generalisation(AbstractDocument,newTaskContainmentHierarchyFacadeImpl);
+Generalisation(AbstractDocument,BackAction);
+Generalisation(AbstractDocument,newnewTaskManagerImpl);
+Generalisation(AbstractDocument,newnewnewnewMutableTaskDependencyCollection);
+Parameter(GraphicPrimitive,GanttDialogDate,cancelJButton,local);
 Generalisation(AbstractURLDocument,AbstractDocument);
 Generalisation(FileDocument,AbstractDocument);
+Parameter(GanttResourcePanel,downResource,resManHumanResourceManager,local);
+Parameter(HTMLSettingsPanel,fireDependencyAdded,dep,TaskDependency,declaration);
+Parameter(DeleteHumanAction,actionPerformed,gdiGanttDialogInfo,local);
+Relation(AbstractDocument;getRootTask;getInstance,Calendar,N);
+Relation(AbstractDocument;getRootTask;getTimeUnit,TimeUnitManager,int);
+Relation(AbstractDocument;getRootTask;getTimeUnitManager,newMutableTaskDependencyCollection,N);
+Relation(AbstractDocument;getRootTask;setDuration,MutableTask,TaskLength);
+Relation(AbstractDocument;getRootTask;setExpand,MutableTask,boolean);
+Relation(AbstractDocument;getRootTask;getProjectFrame,TaskManagerImpl,type);
+Relation(AbstractDocument;getRootTask;getContainer,DeprecatedProjectExportData,type);
 end b18
 start b19
-Attribute(HTMLSettingsPanel,date,GanttCalendar,N,public);
-Attribute(HTMLSettingsPanel,webdavResource,WebdavResource,N,private);
 Class(HTMLSettingsPanel,N,N,public);
-Method(ResourceAssignmentCollection,getAssignment,ResourceAssignment,Y,N,N,package);
-Method(HTMLSettingsPanel,RangeSearchFromKey,N,Y,N,N,public);
-Generalisation(HTMLSettingsPanel,TaskContainmentHierarchyFacadeImpl);
-Method(HTMLSettingsPanel,actionPerformed,void,Y,N,N,public);
-Method(HTMLSettingsPanel,getXslDirectory,String,Y,N,N,public);
-Parameter(newGanttApplet,getDate,resultGanttCalendar,local);
-Parameter(newGanttPanelDate,clickFunction,dString,local);
-Method(ResourceAssignmentCollectionImpl,auxAddAssignment,ResourceAssignment,Y,N,N,private);
-Parameter(HTMLSettingsPanel,getXslDirectory,useDefault,boolean,declaration);
-Relation(HTMLSettingsPanel;getXslDirectory;exists,File,N);
-Relation(HTMLSettingsPanel;getXslDirectory;getResource,Class<HTMLSettingsPanel>,String);
-Relation(HTMLSettingsPanel;getXslDirectory;getText,JTextComponent,N);
-Relation(HTMLSettingsPanel;getXslDirectory;toString,URL,N);
-Relation(HTMLSettingsPanel;RangeSearchFromKey;getTaskID,Task,N);
-Relation(HTMLSettingsPanel;RangeSearchFromKey;NewProjectWizard,newNewProjectWizard,type);
+Parameter(AbstractDocument,fireTaskRemoved,nextTaskListener,local);
+Parameter(GraphicPrimitive,GanttDialogDate,showFixedDateCheckBox,boolean,declaration);
+Parameter(GanttApplet,main,frameJFrame,local);
+Parameter(GanttTXTOpen,load,br,BufferedReader,local);
+Parameter(newHTMLSettingsPanel,HTMLSettingsPanel,htmlThemeJPanel,local);
 end b19
 start b20
-Attribute(GraphicPrimitive,jbNextYear,JButton,N,private);
 Class(GraphicPrimitive,N,static,package);
-Method(GraphicPrimitive,initialize,void,N,N,N,public);
-Parameter(GanttResourcePanel,sendMail,parent,GanttProject,declaration);
+Parameter(newHTMLSettingsPanel,resourcesRemoved,event,ResourceEvent,declaration);
 Generalisation(GraphicPrimitiveContainer,GraphicPrimitive);
 Relation(ChartHeaderImpl;createGreyRectangleWithNiceBorders;setBackgroundColor,GraphicPrimitive,Color);
 Relation(ChartHeaderImpl;createGreyRectangleWithNiceBorders;setForegroundColor,GraphicPrimitive,Color);
-Relation(GraphicPrimitive;initialize;getOptions,GanttProject,N);
-Relation(GraphicPrimitive;initialize;getProperty,System,String);
-Relation(GraphicPrimitive;initialize;getXslDir,GanttOptions,N);
-Relation(GraphicPrimitive;initialize;println,PrintStream,String);
-Relation(GraphicPrimitive;initialize;setText,JTextComponent,String);
-Relation(GraphicPrimitive;initialize;getDependencyCollection,newGanttTXTOpen,type);
 end b20
 start b21
 Class(MouseOverHandler,N,N,package);
+Parameter(ProgressBarPanel,print,iint,local);
+Parameter(GanttChartExportData,GanttChartExportData,myExportSettings,GanttExportSettings,declaration);
 end b21
 start b22
 Class(ParsingContext,N,N,public);
-Generalisation(ParsingContext,HttpDocumentOutputStream);
+Method(ParsingContext,GanttTXTOpen,N,Y,N,N,public);
+Parameter(AbstractDocument,TaskManagerImpl,alg3AdjustTaskBoundsAlgorithm,local);
+Parameter(AbstractDocument,createLength,count,long,declaration);
+Parameter(AbstractDocument,fireTaskRemoved,task,Task,declaration);
+Parameter(newJPaintList,GanttPrintable,image,BufferedImage,declaration);
+Parameter(GanttPanelDate,GanttPanelDate,hb1Box,local);
 Parameter(ResourceView,resourceAdded,event,ResourceEvent,declaration);
 Parameter(DependencyTagHandler,DependencyTagHandler,context,ParsingContext,declaration);
 Parameter(TaskTagHandler,TaskTagHandler,context,ParsingContext,declaration);
 end b22
 start b23
-Attribute(ProgressBarPanel,myImageFormat,String,N,package);
-Attribute(ProgressBarPanel,myAtomUnitPixels,int,N,private);
 Class(ProgressBarPanel,N,N,private);
-Generalisation(ProgressBarPanel,ChartModelImpl);
-Relation(GanttStatusBar;run;setValue,ProgressBarPanel,int);
+Method(ProgressBarPanel,GanttDialogDate,N,Y,N,N,public);
+Generalisation(ProgressBarPanel,newResourceAssignment);
+Parameter(AbstractDocument,fireTaskRemoved,eTaskHierarchyEvent,local);
+Generalisation(ProgressBarPanel,TaskManagerImpl);
+Parameter(GanttResourcePanel,updateRow,row,int,declaration);
+Parameter(TaskManagerImpl,applyChanges,csvOptionsCSVOptions,local);
+Relation(ProgressBarPanel;GanttDialogDate;add,Container,Component);
+Relation(ProgressBarPanel;GanttDialogDate;addActionListener,AbstractButton,ActionListener);
+Relation(ProgressBarPanel;GanttDialogDate;cancel,newGanttTransferableTreePath,N);
+Relation(ProgressBarPanel;GanttDialogDate;center,DialogAligner,JDialog-Container);
+Relation(ProgressBarPanel;GanttDialogDate;createVerticalBox,Box,N);
+Relation(ProgressBarPanel;GanttDialogDate;getContentPane,JDialog,N);
+Relation(ProgressBarPanel;GanttDialogDate;getInstance,GanttLanguage,N);
+Relation(ProgressBarPanel;GanttDialogDate;getRootPane,JDialog,N);
+Relation(ProgressBarPanel;GanttDialogDate;isFixed,GanttCalendar,N);
+Relation(ProgressBarPanel;GanttDialogDate;setDefaultButton,JRootPane,JButton);
+Relation(ProgressBarPanel;GanttDialogDate;setSelected,AbstractButton,boolean);
+Relation(ProgressBarPanel;GanttDialogDate;setVisible,Dialog,boolean);
+Relation(ProgressBarPanel;GanttDialogDate;getContext,newGraphicPrimitive,type);
+Relation(ProgressBarPanel;GanttDialogDate;getPreferredSize,newGraphicPrimitive,type);
+Relation(ProgressBarPanel;GanttDialogDate;getTaskSD,newCSVSettingsPanel,type);
+Relation(ProgressBarPanel;GanttDialogDate;getBounds,newGanttChartExportData,type);
+Relation(ProgressBarPanel;GanttDialogDate;getResourcePhone,newTaskManagerImpl,type);
+Relation(ProgressBarPanel;GanttDialogDate;close,newnewProgressBarPanel,type);
+Relation(ProgressBarPanel;GanttDialogDate;actionPerformed,newnewnewnewMutableTaskDependencyCollection,type);
+Relation(ProgressBarPanel;GanttDialogDate;close,newnewProgressBarPanel,type);
 end b23
 start b24
 Class(DeleteHumanAction,N,N,public);
-Method(DeleteHumanAction,getProjectFrame,GanttProject,N,N,N,private);
-Parameter(MutableTaskDependencyCollection,DeleteHumanAction,context,ResourceContext,declaration);
-Parameter(CSVSettingsPanel,initialize,bfixedboolean,local);
-Parameter(GraphicPrimitive,actionPerformed,e,ActionEvent,declaration);
-Parameter(newNewProjectWizard,dependencyAdded,e,TaskDependencyEvent,declaration);
-Relation(DeleteHumanAction;NgetDefaultToolkit,Toolkit,N);
-Relation(DeleteHumanAction;NgetMenuShortcutKeyMask,Toolkit,N);
-Relation(DeleteHumanAction;getProjectFrame;getDate,newGanttApplet,type);
+Generalisation(DeleteHumanAction,newGraphicPrimitive);
+Parameter(GanttResourcePanel,propertiesHuman,peopleHumanResource,local);
+Parameter(TaskManagerImpl,registerTask,task,Task,declaration);
+Parameter(NewProjectWizard,clickFunction,dString,local);
+Parameter(CSVSettingsPanel,enableSeparatedButton,enabled,boolean,declaration);
 end b24
 start b25
 Class(ResourceView,N,N,public);
+Parameter(GanttResourcePanel,upResource,peopleHumanResource,local);
+Parameter(GanttResourcePanel,propertiesHuman,dpGanttDialogPerson,local);
+Parameter(GraphicPrimitive,GanttDialogDate,date,GanttCalendar,declaration);
 Parameter(HumanResourceManager,addView,view,ResourceView,declaration);
 Parameter(HumanResourceManager,fireResourceAdded,nextViewResourceView,local);
 Parameter(HumanResourceManager,fireResourcesRemoved,nextViewResourceView,local);
@@ -466,333 +282,511 @@ Parameter(ResourceManager,addView,view,ResourceView,declaration);
 end b25
 start b26
 Class(TaskManagerImpl,N,N,public);
-Generalisation(TaskManagerImpl,newGanttResourcePanel);
-Method(TaskManagerImpl,getMaxID,int,N,N,N,public);
-Method(TaskManagerImpl,getTaskPercent,boolean,N,N,N,public);
-Method(TaskManagerImpl,getNestedTasks,Task[],Y,N,N,public);
-Method(TaskManagerImpl,getHierarchyManager,TaskHierarchyManagerImpl,N,N,N,public);
-Method(TaskManagerImpl,getRoot,Task,N,N,N,public);
-Method(TaskManagerImpl,getRootTask,Task,N,N,N,public);
-Method(TaskManagerImpl,getTask,GanttTask,Y,N,N,public);
-Method(TaskManagerImpl,getTimeUnitManager,TimeUnitManager,N,N,N,public);
-Method(TaskManagerImpl,setMaxID,void,Y,N,N,private);
-Parameter(newnewHttpDocumentOutputStream,registerTask,taskIDint,local);
+Method(TaskManagerImpl,getProjectFrame,GanttProject,N,N,N,private);
+Method(TaskManagerImpl,registerTask,void,Y,N,N,public);
+Parameter(AbstractDocument,createTask,taskId,int,declaration);
+Parameter(AbstractDocument,fireTaskAdded,task,Task,declaration);
+Parameter(GanttResourcePanel,sendMail,parent,GanttProject,declaration);
+Parameter(GanttApplet,main,appletGanttApplet,local);
+Parameter(ChartModelImpl,calculateTimeFrames,totalFramesWidthint,local);
 Parameter(GanttTree,insertClonedNode,tmiTaskManagerImpl,local);
-Parameter(TaskManagerImpl,getRootTask,todayDate,local);
-Relation(TaskImpl;TaskImpl;getHierarchyManager,TaskManagerImpl,N);
-Relation(TaskImpl;TaskImpl;getTimeUnitManager,TaskManagerImpl,N);
-Relation(TaskManagerImpl;getRootTask;getInstance,Calendar,N);
-Relation(TaskManagerImpl;getRootTask;getTime,Calendar,N);
-Relation(TaskManagerImpl;getRootTask;getTimeUnit,TimeUnitManager,int);
-Relation(TaskManagerImpl;getRootTask;getTimeUnitManager,TaskManagerImpl,N);
-Relation(TaskManagerImpl;getRootTask;setDuration,MutableTask,TaskLength);
-Relation(TaskManagerImpl;getRootTask;setExpand,MutableTask,boolean);
-Relation(TaskManagerImpl;getRootTask;setStart,MutableTask,GanttCalendar);
-Relation(TaskManagerImpl;getTask;get,Map,Object);
-Relation(TaskManagerImpl;getNestedTasks;getNestedTasks,Task,N);
-Relation(TaskManagerImpl;getTaskPercent;isSelected,AbstractButton,N);
-Relation(TaskManagerImpl;setMaxID;setTaskID,newGraphicPrimitive,type);
-Relation(TaskManagerImpl;getHierarchyManager;setUserInfo,HttpDocumentOutputStream,type);
-Relation(newnewHttpDocumentOutputStream;registerTask;getMaxID,TaskManagerImpl,N);
-Relation(GanttTree;insertClonedNode;getMaxID,TaskManagerImpl,N);
-Relation(GanttXMLOpen;GanttXMLOpen;getMaxID,TaskManagerImpl,N);
-Relation(TaskImpl;TaskImpl;getMaxID,TaskManagerImpl,N);
-Relation(TaskManagerImpl;getNestedTasks;RangeSearchFromKey,HTMLSettingsPanel,type);
+Relation(TaskManagerImpl;registerTask;increaseMaxID,newTaskListenerAdapter,type);
+Relation(TaskManagerImpl;registerTask;getColumnName,newGanttResourcePanel,type);
+Relation(TaskManagerImpl;registerTask;getResources,AbstractDocument,type);
 end b26
 start b27
-Attribute(GanttProject,myCachedFacade,ChartModelImpl,N,private);
-Attribute(ChartHeaderImpl,myChartModel,ChartModelImpl,N,private);
-Attribute(ChartModelImpl,myTaskManager,TaskManager,N,private);
-Attribute(ChartModelImpl,myBottomUnit,TimeUnit,N,private);
-Attribute(ChartModelImpl,myBounds,Dimension,N,private);
-Attribute(ChartModelImpl,myChartUIConfiguration,ChartUIConfiguration,N,private);
-Attribute(ChartModelImpl,myTimeFrames,TimeFrame[],N,private);
-Attribute(ChartModelImpl,myTimeUnitStack,GregorianTimeUnitStack,N,private);
-Attribute(ChartModelImpl,myTopUnit,TimeUnit,N,private);
 Class(ChartModelImpl,N,N,public);
-Method(ChartModelImpl,setTask,void,Y,N,N,public);
-Method(ChartModelImpl,ChartModelImpl,N,N,N,N,public);
-Method(ChartModelImpl,calculateTimeFrames,TimeFrame[],N,N,N,private);
-Method(ChartModelImpl,getBounds,Dimension,N,N,N,package);
-Method(ChartModelImpl,getChartHeader,ChartHeader,N,N,N,public);
-Method(ChartModelImpl,getChartUIConfiguration,ChartUIConfiguration,N,N,N,package);
-Method(ChartModelImpl,setBottomUnitWidth,void,Y,N,N,public);
-Method(ChartModelImpl,setBounds,void,Y,N,N,public);
-Method(ChartModelImpl,setStartDate,void,Y,N,N,public);
-Method(ChartModelImpl,setTopTimeUnit,void,Y,N,N,public);
-Parameter(JPaintList,actionPerformed,event,ActionEvent,declaration);
-Parameter(ChartModelImpl,setTask,taskIDint,local);
-Parameter(ChartModelImpl,setTask,task,Task,declaration);
-Parameter(ChartModelImpl,setBounds,bounds,Dimension,declaration);
+Parameter(GanttResourcePanel,moveUp,objObject,local);
+Parameter(GanttChartExportData,GanttChartExportData,myOutputFile,File,declaration);
+Parameter(TaskListenerAdapter,taskScheduleChanged,e,TaskScheduleEvent,declaration);
 Parameter(ChartHeaderImpl,ChartHeaderImpl,model,ChartModelImpl,declaration);
-Parameter(ChartModelImpl,calculateTimeFrames,currentDateDate,local);
-Parameter(ChartModelImpl,calculateTimeFrames,currentFrameTimeFrame,local);
-Parameter(ChartModelImpl,calculateTimeFrames,resultArrayList,local);
-Parameter(ChartModelImpl,calculateTimeFrames,totalFramesWidthint,local);
-Parameter(ChartModelImpl,setBottomUnitWidth,pixelsWidth,int,declaration);
-Relation(ChartHeaderImpl;createFrames;getChartUIConfiguration,ChartModelImpl,N);
-Relation(ChartHeaderImpl;createGreyRectangleWithNiceBorders;getChartUIConfiguration,ChartModelImpl,N);
-Relation(ChartHeaderImpl;getHeight;getBounds,ChartModelImpl,N);
-Relation(ChartHeaderImpl;getWidth;getBounds,ChartModelImpl,N);
-Relation(ChartModelImpl;calculateTimeFrames;add,ArrayList,Object);
-Relation(ChartModelImpl;calculateTimeFrames;createTimeFrame,GregorianTimeUnitStack,Date-TimeUnit-TimeUnit);
-Relation(ChartModelImpl;calculateTimeFrames;getBounds,ChartModelImpl,N);
-Relation(ChartModelImpl;calculateTimeFrames;getFinishDate,TimeFrame,N);
-Relation(ChartModelImpl;calculateTimeFrames;getUnitCount,TimeFrame,TimeUnit);
-Relation(ChartModelImpl;calculateTimeFrames;getWidth,Dimension,N);
-Relation(ChartModelImpl;calculateTimeFrames;toArray,ArrayList,Object[]);
-Relation(ChartModelImpl;setStartDate;equals,Date,Object);
-Relation(ChartModelImpl;setStartDate;println,PrintStream,String);
-Relation(ChartModelImpl;setTopTimeUnit;createTimeUnit,TimeUnitFunctionOfDate,Date);
-Relation(ChartModelImpl;setBottomUnitWidth;resourceAdded,GanttResourcePanel,type);
-Relation(ChartModelImpl;setTask;getMaxID,TaskManagerImpl,N);
-Relation(ChartModelImpl;setTask;getTaskID,Task,N);
-Relation(ChartModelImpl;setTask;put,Map,Object-Object);
-Relation(ChartModelImpl;setTask;setMaxID,TaskManagerImpl,int);
-Relation(ChartModelImpl;getChartUIConfiguration;actionPerformed,GanttApplet,type);
-Relation(ChartModelImpl;setTopTimeUnit;equals,newGanttPanelDate,type);
 end b27
 start b28
-Attribute(RangeSearchFromKey,myProject,GanttProject,N,package);
-Class(RangeSearchFromKey,N,N,package);
+Class(newnewnewnewMutableTaskDependencyCollection,N,N,package);
+Method(newnewnewnewMutableTaskDependencyCollection,actionPerformed,void,Y,N,N,public);
+Parameter(GanttPanelDate,rollDate,amount,int,declaration);
+Parameter(TaskManagerImpl,getNestedTasks,container,Task,declaration);
+Relation(newnewnewnewMutableTaskDependencyCollection;actionPerformed;load,newGanttTXTOpen,type);
+Relation(newnewnewnewMutableTaskDependencyCollection;actionPerformed;addAssignment,newnewnewJPaintList,type);
+Relation(newnewnewnewMutableTaskDependencyCollection;actionPerformed;getFilePath,newnewnewnewMutableTaskDependencyCollection,type);
 end b28
 start b29
-Attribute(TaskListenerAdapter,_sWebLink,String,N,public);
 Class(TaskListenerAdapter,abstract,N,public);
-Method(TaskListenerAdapter,taskScheduleChanged,void,Y,N,N,public);
-Parameter(TaskListenerAdapter,taskScheduleChanged,e,TaskScheduleEvent,declaration);
+Parameter(AbstractDocument,fireDependencyRemoved,dep,TaskDependency,declaration);
+Parameter(TaskManagerImpl,registerTask,taskIDint,local);
+Parameter(GanttTXTOpen,load,task,GanttTask,local);
+Parameter(newGanttPanelDate,setBottomUnitWidth,pixelsWidth,int,declaration);
+Parameter(GanttResourcePanel,getResources,resultProjectResource[],local);
+Parameter(TaskManagerImpl,setMaxID,id,int,declaration);
+Parameter(ChartModelImpl,calculateTimeFrames,currentDateDate,local);
+Parameter(GanttPrintable,print,pageFormat,PageFormat,declaration);
 end b29
 start b30
-Attribute(BackAction,myTaskID,int,N,private);
-Attribute(BackAction,language,GanttLanguage,N,private);
 Class(BackAction,N,N,public);
+Method(BackAction,setTask,void,Y,N,N,public);
+Generalisation(BackAction,newGanttChartExportData);
+Parameter(GanttResourcePanel,getDisplayName,resources,ProjectResource[],declaration);
+Parameter(GanttDialogDate,stateChanged,e,ChangeEvent,declaration);
+Parameter(GanttTXTOpen,FacadeImpl,root,Task,declaration);
+Parameter(TaskListenerAdapter,taskMoved,e,TaskHierarchyEvent,declaration);
+Parameter(RangeSearchFromKey,RangeSearchFromKey,task,Task,declaration);
+Parameter(HTMLSettingsPanel,getXslDirectory,useDefault,boolean,declaration);
+Relation(BackAction;setTask;getTaskID,Task,N);
+Relation(BackAction;setTask;setMaxID,newTaskListenerAdapter,int);
+Relation(BackAction;setTask;getRowCount,newnewMutableTaskDependencyCollection,type);
 end b30
 start b31
-Attribute(newHttpDocumentOutputStream,myExportOptions,GanttExportSettings,N,package);
-Attribute(newHttpDocumentOutputStream,nbobj,int,N,package);
-Class(newHttpDocumentOutputStream,N,N,package);
-Method(newHttpDocumentOutputStream,adjustmentValueChanged,void,Y,N,N,public);
-Parameter(newPrjInfos,setBottomTimeUnit,bottomTimeUnit,TimeUnit,declaration);
-Parameter(newHttpDocumentOutputStream,adjustmentValueChanged,e,AdjustmentEvent,declaration);
-Relation(newHttpDocumentOutputStream;adjustmentValueChanged;getValue,AdjustmentEvent,N);
-Relation(newHttpDocumentOutputStream;adjustmentValueChanged;setScrollBar,ResourceLoadGraphicArea,int);
+Class(newMutableTaskDependencyCollection,N,N,public);
+Method(newMutableTaskDependencyCollection,clear,void,N,N,N,package);
 end b31
 start b32
-Attribute(Shape,backgroundList,newJPaintList,N,protected);
-Class(newJPaintList,N,N,public);
-Method(newJPaintList,deleteResources,void,Y,N,N,private);
-Method(newJPaintList,GanttTXTOpen,N,Y,N,N,public);
-Parameter(newGraphicPrimitive,setTaskID,id,int,declaration);
-Parameter(newJPaintList,GanttTXTOpen,appli,GanttProject,declaration);
-Parameter(newJPaintList,GanttTXTOpen,gra,GanttGraphicArea,declaration);
-Parameter(newJPaintList,GanttTXTOpen,taskManager,TaskManager,declaration);
-Parameter(newJPaintList,GanttTXTOpen,tree,GanttTree,declaration);
-Relation(newnewBackAction;actionPerformed;deleteResources,newJPaintList,ProjectResource[]);
-Relation(newJPaintList;deleteResources;getManager,ResourceAction,N);
-Relation(newJPaintList;deleteResources;remove,ResourceManager,ProjectResource);
-Relation(newJPaintList;deleteResources;fireDependencyAdded,newTaskManagerImpl,type);
-Relation(newJPaintList;deleteResources;JPaintList,newGanttApplet,type);
+Class(AbstractDocument,N,N,public);
+Method(AbstractDocument,applyChanges,boolean,Y,N,N,public);
+Method(AbstractDocument,resourcesRemoved,void,Y,N,N,public);
+Method(AbstractDocument,getResources,ProjectResource[],N,N,N,public);
+Method(AbstractDocument,GanttApplet,N,N,N,N,public);
+Method(AbstractDocument,getName,String,N,N,N,public);
+Method(AbstractDocument,setResourceActions,void,Y,N,N,public);
+Method(AbstractDocument,createPopupMenu,void,Y,N,N,public);
+Method(AbstractDocument,getOrganization,String,N,N,N,public);
+Method(AbstractDocument,fireDependencyRemoved,void,Y,N,N,public);
+Method(AbstractDocument,createContainmentFacade,TaskContainmentHierarchyFacade,N,N,N,protected);
+Method(AbstractDocument,createConstraint,TaskDependencyConstraint,Y,N,N,public);
+Method(AbstractDocument,addTaskListener,void,Y,N,N,public);
+Method(AbstractDocument,TaskManagerImpl,N,N,N,N,package);
+Parameter(AbstractDocument,getRootTask,todayDate,local);
+Relation(AbstractDocument;addTaskListener;add,List,Object);
+Relation(AbstractDocument;getRootTask;createLength,newTaskManagerImpl,TimeUnit-long);
+Relation(AbstractDocument;addTaskListener;getContext,newGraphicPrimitive,type);
+Relation(AbstractDocument;createContainmentFacade;getAssignment,newMutableTaskDependencyCollection,type);
+Relation(AllocationTagHandler;loadAllocation;setLoad,newTaskManagerImpl,float);
+Relation(ResourceAssignmentCollectionImpl;ResourceAssignmentCollectionImpl;setLoad,newTaskManagerImpl,float);
+Relation(ResourceAssignmentCollectionImpl;commit;setLoad,newTaskManagerImpl,float);
+Relation(ResourcesTableModel;updateAssignment;setLoad,newTaskManagerImpl,float);
+Relation(AbstractDocument;getOrganization;actionPerformed,newGanttResourcePanel,type);
+Relation(AbstractDocument;getOrganization;taskRemoved,newnewTaskManagerImpl,type);
+Relation(newGanttResourcePanel;GanttResourcePanel;createPopupMenu,AbstractDocument,int-int);
+Relation(AbstractDocument;createPopupMenu;add,JPopupMenu,JMenuItem);
+Relation(AbstractDocument;createPopupMenu;addSeparator,JPopupMenu,N);
+Relation(AbstractDocument;createPopupMenu;applyComponentOrientation,Container,ComponentOrientation);
+Relation(AbstractDocument;createPopupMenu;correctLabel,GanttProject,String);
+Relation(AbstractDocument;createPopupMenu;getText,GanttLanguage,String);
+Relation(AbstractDocument;createPopupMenu;show,JPopupMenu,Component-int-int);
+Relation(GanttProject;getResourcePanel;setResourceActions,AbstractDocument,ResourceActionSet);
+Relation(AbstractDocument;GanttApplet;FacadeImpl,newDeleteHumanAction,type);
+Relation(AbstractDocument;GanttApplet;GanttApplet,AbstractDocument,type);
+Relation(AbstractDocument;GanttApplet;getFilePath,newnewnewnewMutableTaskDependencyCollection,type);
+Relation(AbstractDocument;GanttApplet;resourceAdded,newDeleteHumanAction,type);
+Relation(AbstractDocument;GanttApplet;getRowCount,newnewMutableTaskDependencyCollection,type);
+Relation(AbstractDocument;getResources;get,ArrayList,int);
+Relation(AbstractDocument;getResources;size,ArrayList,N);
+Relation(AbstractDocument;getResources;addTaskListener,AbstractDocument,type);
+Relation(AbstractDocument;resourcesRemoved;deleteRows,GanttTableModel,ProjectResource[]);
+Relation(AbstractDocument;resourcesRemoved;getResources,ResourceEvent,N);
+Relation(AbstractDocument;applyChanges;askForApplyChanges,GeneralOptionPanel,N);
+Relation(AbstractDocument;applyChanges;equals,String,Object);
+Relation(AbstractDocument;applyChanges;getCSVOptions,GanttOptions,N);
+Relation(AbstractDocument;applyChanges;getFixed,newCSVSettingsPanel,N);
+Relation(AbstractDocument;applyChanges;getOptions,GanttProject,N);
+Relation(AbstractDocument;applyChanges;getResourceID,newCSVSettingsPanel,N);
+Relation(AbstractDocument;applyChanges;getResourceMail,newCSVSettingsPanel,N);
+Relation(AbstractDocument;applyChanges;getResourceName,newCSVSettingsPanel,N);
+Relation(AbstractDocument;applyChanges;getResourceRole,newCSVSettingsPanel,N);
+Relation(AbstractDocument;applyChanges;getSeparat,newnewProgressBarPanel,N);
+Relation(AbstractDocument;applyChanges;getTaskED,newCSVSettingsPanel,N);
+Relation(AbstractDocument;applyChanges;getTaskID,newnewChartModelImpl,N);
+Relation(AbstractDocument;applyChanges;getTaskNotes,newCSVSettingsPanel,N);
+Relation(AbstractDocument;applyChanges;getTaskPercent,newCSVSettingsPanel,N);
+Relation(AbstractDocument;applyChanges;getTaskResources,newCSVSettingsPanel,N);
+Relation(AbstractDocument;applyChanges;getTaskSD,newCSVSettingsPanel,N);
+Relation(AbstractDocument;applyChanges;getTaskWebLink,newTaskManagerImpl,N);
+Relation(AbstractDocument;setResourceActions;fireTaskRemoved,newDeprecatedProjectExportData,type);
+Relation(AbstractDocument;applyChanges;acquireLock,GanttDialogDate,type);
 end b32
 start b33
-Class(newGanttChartExportData,N,N,public);
-Method(newGanttChartExportData,GanttChartExportData,N,Y,N,N,public);
-Parameter(newGanttResourcePanel,deleteRows,deletedSetSet,local);
-Parameter(GraphicPrimitive,DeprecatedProjectExportData,myTree,GanttTree,declaration);
-Parameter(newGanttChartExportData,GanttChartExportData,myOutputFile,File,declaration);
-Relation(newGanttChartExportData;GanttChartExportData;getWebLink,PrjInfos,type);
-Relation(newGanttChartExportData;GanttChartExportData;getOrganization,newTaskManagerImpl,type);
+Attribute(newGanttDialogDate,tfXsl,JTextField,N,package);
+Class(newGanttDialogDate,N,N,public);
+Generalisation(newGanttDialogDate,newHTMLSettingsPanel);
+Parameter(DeleteHumanAction,DeleteHumanAction,iconUrlURL,local);
 end b33
 start b34
-Class(newBackAction,N,N,public);
+Attribute(newGanttApplet,myBounds,Dimension,N,private);
+Class(newGanttApplet,N,N,public);
 end b34
 start b35
-Class(newNewProjectWizard,N,N,public);
-Method(newNewProjectWizard,HttpDocumentOutputStream,N,Y,N,N,public);
-Method(newNewProjectWizard,NewProjectWizard,N,Y,N,N,public);
-Parameter(newNewProjectWizard,HttpDocumentOutputStream,webdavResource,WebdavResource,declaration);
-Parameter(newNewProjectWizard,NewProjectWizard,mainFrame,JFrame,declaration);
+Class(newHTMLSettingsPanel,N,N,public);
+Parameter(AbstractDocument,TaskManagerImpl,factoryFactory,local);
+Generalisation(newHTMLSettingsPanel,newDeleteHumanAction);
+Generalisation(newHTMLSettingsPanel,newAbstractDocument);
+Parameter(DeleteHumanAction,deleteResources,context,ProjectResource[],declaration);
 end b35
 start b36
-Class(newGraphicPrimitive,N,static,package);
-Method(newGraphicPrimitive,setTaskID,void,Y,N,N,public);
-Relation(TaskTagHandler;loadTask;setTaskID,newGraphicPrimitive,int);
-Relation(newGraphicPrimitive;setTaskID;getTimeFrames,newDeleteHumanAction,type);
+Class(newMutableTaskDependencyCollection,N,N,public);
+Parameter(RangeSearchFromKey,print,heightint,local);
+Parameter(newTaskContainmentHierarchyFacadeImpl,createPopupMenu,resourceActionsAbstractAction[],local);
+Parameter(TaskManagerImpl,setTask,taskIDint,local);
 end b36
 start b37
-Attribute(newParsingContext,cbDefault,JCheckBox,N,package);
-Attribute(DependencyTagHandler,myContext,newParsingContext,N,private);
-Class(newParsingContext,N,N,public);
-Generalisation(newParsingContext,newCSVSettingsPanel);
-Method(DependencyTagHandler,getContext,ParsingContext,N,N,N,private);
-Relation(newParsingContext;getContext;actionPerformed,GanttApplet,type);
-Relation(newParsingContext;getContext;getTaskWebLink,CSVSettingsPanel,type);
-Relation(newParsingContext;getContext;getProjectFrame,DeleteHumanAction,type);
+Attribute(newProgressBarPanel,webdavResource,WebdavResource,N,private);
+Class(newProgressBarPanel,N,N,private);
+Generalisation(newProgressBarPanel,HttpDocumentOutputStream);
 end b37
 start b38
-Class(newBackAction,N,N,public);
+Class(newTaskContainmentHierarchyFacadeImpl,N,static,private);
+Generalisation(newTaskContainmentHierarchyFacadeImpl,GanttPanelDate);
+Parameter(PrjInfos,isCellEditable,rowIndex,int,declaration);
+Parameter(HTMLSettingsPanel,changeDate,differentMonthboolean,local);
 end b38
 start b39
-Class(newProgressBarPanel,N,N,private);
+Class(newGanttTransferableTreePath,N,static,private);
+Method(newGanttTransferableTreePath,deleteDependency,void,Y,N,N,package);
+Parameter(AbstractDocument,fireTaskRemoved,oldSupertask,Task,declaration);
+Relation(newGanttTransferableTreePath;deleteDependency;GanttTXTOpen,ParsingContext,type);
+Relation(newGanttTransferableTreePath;deleteDependency;setTree,newGanttTransferableTreePath,type);
 end b39
 start b40
-Class(newNewProjectWizard,N,N,public);
+Attribute(GanttStatusBar,pbp,newBackAction,N,protected);
+Class(newBackAction,N,N,public);
 end b40
 start b41
-Class(newAbstractDocument,abstract,N,public);
-Generalisation(newAbstractDocument,newGanttPanelDate);
-Method(newAbstractDocument,getPassword,String,N,N,N,public);
-Method(newAbstractDocument,getFilePath,String,N,N,N,public);
-Method(newAbstractDocument,getLastError,String,N,N,N,public);
-Parameter(newnewBackAction,actionPerformed,contextProjectResource[],local);
-Parameter(CSVSettingsPanel,unselectOther,selectedButton,JRadioButton,declaration);
+Class(newnewGanttTransferableTreePath,N,static,private);
 end b41
 start b42
-Attribute(newGanttResourcePanel,cbTaskID,JCheckBox,N,package);
-Attribute(newGanttResourcePanel,cy,int,N,package);
-Attribute(newGanttResourcePanel,tfXsl,JTextField,N,package);
-Attribute(newGanttResourcePanel,_sOrganization,String,N,public);
-Attribute(newGanttResourcePanel,left,JPanel,N,package);
-Attribute(newGanttResourcePanel,cbTaskWebLink,JCheckBox,N,package);
-Attribute(newGanttResourcePanel,cx,int,N,package);
-Attribute(newGanttResourcePanel,colums,ArrayList,N,public);
-Class(newGanttResourcePanel,N,N,public);
-Method(newGanttResourcePanel,getRowCount,int,N,N,N,public);
-Method(newGanttResourcePanel,taskAdded,void,Y,N,N,public);
-Method(newGanttResourcePanel,getDisplayName,String,Y,N,N,private);
-Generalisation(newGanttResourcePanel,newPrjInfos);
-Method(newGanttResourcePanel,GanttResourcePanel,N,Y,N,N,public);
-Generalisation(newGanttResourcePanel,ParsingContext);
-Method(newGanttResourcePanel,getResources,ProjectResource[],N,N,N,public);
-Method(newGanttResourcePanel,getPeople,ArrayList,N,N,N,public);
-Method(newGanttResourcePanel,getContext,ResourceContext,N,N,N,public);
-Method(newGanttResourcePanel,getColumnName,String,Y,N,N,public);
-Method(newGanttResourcePanel,getColumnCount,int,N,N,N,public);
-Method(newGanttResourcePanel,deleteRows,void,Y,N,N,public);
-Method(newGanttResourcePanel,createPopupMenu,void,Y,N,N,public);
-Method(newGanttResourcePanel,changeLanguage,void,Y,N,N,public);
-Method(newGanttResourcePanel,addHumans,void,Y,N,N,public);
-Method(newGanttResourcePanel,enableSeparatedButton,void,Y,N,N,public);
-Parameter(newGanttResourcePanel,taskAdded,e,TaskHierarchyEvent,declaration);
-Parameter(newGanttResourcePanel,GanttResourcePanel,tree,GanttTree,declaration);
-Parameter(newGanttResourcePanel,GanttResourcePanel,splitPaneJSplitPane,local);
-Parameter(newGanttResourcePanel,GanttResourcePanel,selRowint,local);
-Parameter(newGanttResourcePanel,GanttResourcePanel,selColint,local);
-Parameter(newGanttResourcePanel,GanttResourcePanel,pPoint,local);
-Parameter(newGanttResourcePanel,GanttResourcePanel,butGanttImagePanel,local);
-Parameter(newGanttResourcePanel,getResources,resultProjectResource[],local);
-Parameter(newGanttResourcePanel,getColumnName,col,int,declaration);
-Parameter(newGanttResourcePanel,deleteRows,rowint,local);
-Parameter(newGanttResourcePanel,deleteRows,nextDataObject,local);
-Parameter(newGanttResourcePanel,deleteRows,deleted,ProjectResource[],declaration);
-Parameter(newGanttResourcePanel,createPopupMenu,y,int,declaration);
-Parameter(newGanttResourcePanel,createPopupMenu,x,int,declaration);
-Parameter(newGanttResourcePanel,createPopupMenu,resourceActionsAbstractAction[],local);
-Parameter(newGanttResourcePanel,createPopupMenu,menuJPopupMenu,local);
-Parameter(newGanttResourcePanel,changeLanguage,colsString[],local);
-Parameter(newGanttResourcePanel,addHumans,humans,ArrayList,declaration);
-Parameter(newGanttResourcePanel,enableSeparatedButton,enabled,boolean,declaration);
-Relation(newCSVSettingsPanel;actionPerformed;enableSeparatedButton,newGanttResourcePanel,boolean);
-Relation(newGanttResourcePanel;enableSeparatedButton;isSelected,AbstractButton,N);
-Relation(newGanttResourcePanel;enableSeparatedButton;setEnabled,AbstractButton,boolean);
-Relation(newGanttResourcePanel;enableSeparatedButton;setEnabled,JComponent,boolean);
-Relation(newCSVSettingsPanel;initialize;enableSeparatedButton,newGanttResourcePanel,boolean);
-Relation(newGanttResourcePanel;addHumans;get,ArrayList,int);
-Relation(newGanttResourcePanel;addHumans;newHuman,newJPaintList,HumanResource);
-Relation(newGanttResourcePanel;addHumans;size,ArrayList,N);
-Relation(newGanttResourcePanel;changeLanguage;add,ArrayList,Object);
-Relation(newGanttResourcePanel;changeLanguage;clear,ArrayList,N);
-Relation(newGanttResourcePanel;changeLanguage;fireTableRowsUpdated,AbstractTableModel,int-int);
-Relation(newGanttResourcePanel;changeLanguage;fireTableStructureChanged,AbstractTableModel,N);
-Relation(newGanttResourcePanel;changeLanguage;getText,GanttLanguage,String);
-Relation(newGanttResourcePanel;changeLanguage;size,ArrayList,N);
-Relation(newGanttResourcePanel;createPopupMenu;add,JPopupMenu,JMenuItem);
-Relation(newGanttResourcePanel;createPopupMenu;addSeparator,JPopupMenu,N);
-Relation(newGanttResourcePanel;createPopupMenu;applyComponentOrientation,Container,ComponentOrientation);
-Relation(newGanttResourcePanel;createPopupMenu;createNewItem,GanttProject,String-String);
-Relation(newGanttResourcePanel;createPopupMenu;getActions,ResourceActionSet,N);
-Relation(newGanttResourcePanel;createPopupMenu;getComponentOrientation,GanttLanguage,N);
-Relation(newGanttResourcePanel;createPopupMenu;getText,GanttLanguage,String);
-Relation(newGanttResourcePanel;createPopupMenu;getValue,JScrollBar,N);
-Relation(newGanttResourcePanel;createPopupMenu;show,JPopupMenu,Component-int-int);
-Relation(newGanttResourcePanel;getColumnCount;size,ArrayList,N);
-Relation(newGanttResourcePanel;getColumnName;get,ArrayList,int);
-Relation(GanttProject;addButtons;getContext,newGanttResourcePanel,N);
-Relation(GanttCSVExport;beginToSave;getPeople,newGanttResourcePanel,N);
-Relation(GanttProject;downDatas;getPeople,newGanttResourcePanel,N);
-Relation(GanttProject;upDatas;getPeople,newGanttResourcePanel,N);
-Relation(GanttXMLSaver;writeResources;getPeople,newGanttResourcePanel,N);
-Relation(newGanttResourcePanel;getResources;get,ArrayList,int);
-Relation(newGanttResourcePanel;getResources;size,ArrayList,N);
-Relation(newGanttResourcePanel;getColumnCount;actionPerformed,newGanttPanelDate,type);
-Relation(newGanttResourcePanel;GanttResourcePanel;add,Container,Component-Object);
-Relation(newGanttResourcePanel;GanttResourcePanel;addAdjustmentListener,JScrollBar,AdjustmentListener);
-Relation(newGanttResourcePanel;GanttResourcePanel;addMouseListener,Component,MouseListener);
-Relation(newGanttResourcePanel;GanttResourcePanel;applyComponentOrientation,Container,ComponentOrientation);
-Relation(newGanttResourcePanel;GanttResourcePanel;columnAtPoint,JTable,Point);
-Relation(newGanttResourcePanel;GanttResourcePanel;createPopupMenu,newGanttResourcePanel,int-int);
-Relation(newGanttResourcePanel;GanttResourcePanel;getButton,MouseEvent,N);
-Relation(newGanttResourcePanel;GanttResourcePanel;getClickCount,MouseEvent,N);
-Relation(newGanttResourcePanel;GanttResourcePanel;getComponentOrientation,GanttLanguage,N);
-Relation(newGanttResourcePanel;GanttResourcePanel;getDefaultToolkit,Toolkit,N);
-Relation(newGanttResourcePanel;GanttResourcePanel;getInstance,GanttLanguage,N);
-Relation(newGanttResourcePanel;GanttResourcePanel;getPreferredSize,JComponent,N);
-Relation(newGanttResourcePanel;GanttResourcePanel;getScreenSize,Toolkit,N);
-Relation(newGanttResourcePanel;GanttResourcePanel;getVerticalScrollBar,JScrollPane,N);
-Relation(newGanttResourcePanel;GanttResourcePanel;getViewport,JScrollPane,N);
-Relation(newGanttResourcePanel;GanttResourcePanel;getWidth,Dimension,N);
-Relation(newGanttResourcePanel;GanttResourcePanel;getX,MouseEvent,N);
-Relation(newGanttResourcePanel;GanttResourcePanel;getY,MouseEvent,N);
-Relation(newGanttResourcePanel;GanttResourcePanel;rowAtPoint,JTable,Point);
-Relation(newGanttResourcePanel;GanttResourcePanel;setBackground,JComponent,Color);
-Relation(newGanttResourcePanel;GanttResourcePanel;setDividerLocation,JSplitPane,int);
-Relation(newGanttResourcePanel;GanttResourcePanel;setLayout,Container,LayoutManager);
-Relation(newGanttResourcePanel;GanttResourcePanel;setLeftComponent,JSplitPane,Component);
-Relation(newGanttResourcePanel;GanttResourcePanel;setOneTouchExpandable,JSplitPane,boolean);
-Relation(newGanttResourcePanel;GanttResourcePanel;setPreferredSize,JComponent,Dimension);
-Relation(newGanttResourcePanel;GanttResourcePanel;setRightComponent,JSplitPane,Component);
-Relation(newGanttResourcePanel;GanttResourcePanel;setRowHeight,JTable,int);
-Relation(newGanttResourcePanel;GanttResourcePanel;setSelectionMode,JTable,int);
-Relation(newGanttResourcePanel;getResources;GanttPanelDate,newGanttPanelDate,type);
-Relation(newGanttResourcePanel;getDisplayName;append,StringBuffer,String);
-Relation(newGanttResourcePanel;getDisplayName;toString,ProjectResource,N);
-Relation(newGanttResourcePanel;getDisplayName;toString,StringBuffer,N);
-Relation(newGanttResourcePanel;getDisplayName;print,newTaskManagerImpl,type);
-Relation(newGanttResourcePanel;getDisplayName;DeprecatedProjectExportData,TaskContainmentHierarchyFacadeImpl,type);
-Relation(newGanttResourcePanel;getRowCount;size,ArrayList,N);
-Relation(newGanttResourcePanel;getRowCount;applyChanges,newnewTaskManagerImpl,type);
+Attribute(newnewMutableTaskDependencyCollection,buttonXsl,JButton,N,package);
+Class(newnewMutableTaskDependencyCollection,N,N,public);
+Generalisation(newnewMutableTaskDependencyCollection,newnewnewProgressBarPanel);
 end b42
 start b43
-Attribute(newGanttPrintable,myAlgorithmCollection,AlgorithmCollection,N,private);
-Class(newGanttPrintable,N,N,public);
-Method(newGanttPrintable,dependencyAdded,void,Y,N,N,public);
-Relation(newGanttPrintable;dependencyAdded;acquireLock,newGanttPanelDate,type);
+Class(newJPaintList,N,N,public);
+Method(newJPaintList,GanttPrintable,N,Y,N,N,public);
+Parameter(GanttTXTOpen,setTopTimeUnit,topTimeUnit,TimeUnit,declaration);
 end b43
 start b44
-Attribute(newCSVSettingsPanel,cbResName,JCheckBox,N,package);
+Class(newProgressBarPanel,N,N,private);
+Method(newProgressBarPanel,HttpDocumentOutputStream,N,Y,N,N,public);
+Parameter(newProgressBarPanel,HttpDocumentOutputStream,webdavResource,WebdavResource,declaration);
+end b44
+start b45
+Attribute(newnewnewGanttTransferableTreePath,myTaskManager,TaskManager,N,private);
+Class(newnewnewGanttTransferableTreePath,N,static,private);
+end b45
+start b46
+Class(newGanttChartExportData,N,N,public);
+end b46
+start b47
+Attribute(newTaskManagerImpl,area,GanttGraphicArea,N,package);
+Attribute(newTaskManagerImpl,x,int,N,private);
+Attribute(newnewTaskManagerImpl,panel,newTaskManagerImpl,N,private);
+Attribute(newTaskManagerImpl,scrollpane,JScrollPane,N,package);
+Attribute(newTaskManagerImpl,cbTaskResources,JCheckBox,N,package);
+Attribute(newTaskManagerImpl,myChartHeader,ChartHeader,N,private);
+Attribute(newTaskManagerImpl,cbTaskDuration,JCheckBox,N,package);
+Attribute(newTaskManagerImpl,left,JPanel,N,package);
+Class(newTaskManagerImpl,N,N,public);
+Method(newTaskManagerImpl,createDependency,TaskDependency,Y,N,N,package);
+Method(newTaskManagerImpl,getResourcePhone,boolean,N,N,N,public);
+Method(newTaskManagerImpl,getTimeFrames,TimeFrame[],N,N,N,package);
+Method(newTaskManagerImpl,resourcesRemoved,void,Y,N,N,public);
+Method(newTaskManagerImpl,getTaskWebLink,boolean,N,N,N,public);
+Parameter(GanttResourcePanel,reset,sizeint,local);
+Parameter(GanttTXTOpen,GanttTXTOpen,tree,GanttTree,declaration);
+Relation(newTaskManagerImpl;getTaskWebLink;isSelected,AbstractButton,N);
+Relation(newTaskManagerImpl;getTaskWebLink;actionPerformed,newGanttResourcePanel,type);
+Relation(newTaskManagerImpl;getTimeFrames;calculateTimeFrames,newPrjInfos,N);
+Relation(newTaskManagerImpl;getTimeFrames;getWebLink,newDeleteHumanAction,type);
+Relation(newTaskManagerImpl;getResourcePhone;isSelected,AbstractButton,N);
+Relation(newTaskManagerImpl;getResourcePhone;taskRemoved,newnewTaskManagerImpl,type);
+Relation(newTaskManagerImpl;getResourcePhone;taskRemoved,newnewTaskManagerImpl,type);
+Relation(DependencyTableModel;updateDependency;createDependency,newTaskManagerImpl,Task-Task);
+Relation(DependencyTagHandler;parsingFinished;createDependency,newTaskManagerImpl,Task-Task);
+Relation(newTaskManagerImpl;createDependency;deleteResources,newnewnewnewGanttTransferableTreePath,type);
+Relation(newTaskManagerImpl;createDependency;getResources,AbstractDocument,type);
+Relation(newTaskManagerImpl;getTimeFrames;getName,AbstractDocument,type);
+end b47
+start b48
+Class(newBackAction,N,N,public);
+Parameter(newTaskManagerImpl,actionPerformed,inSInputStream,local);
+Parameter(GanttResourcePanel,downResource,peopleHumanResource,local);
+end b48
+start b49
+Class(newnewProgressBarPanel,N,N,private);
+end b49
+start b50
+Attribute(newnewGanttTransferableTreePath,myHierarchyManager,TaskHierarchyManagerImpl,N,private);
+Class(newnewGanttTransferableTreePath,N,static,private);
+Parameter(AbstractDocument,TaskManagerImpl,containmentFacadeFactory,Factory,declaration);
+Parameter(AbstractDocument,createTask,resultGanttTask,local);
+Parameter(GraphicPrimitive,GanttDialogDate,pJPanel,local);
+Parameter(TaskManagerImpl,fireTaskScheduleChanged,nextTaskListener,local);
+Parameter(NewProjectWizard,fireDependencyAdded,eTaskDependencyEvent,local);
+end b50
+start b51
+Class(newTaskListenerAdapter,abstract,N,public);
+Parameter(DeprecatedProjectExportData,GanttDialogDate,okJButton,local);
+Parameter(ChartModelImpl,calculateTimeFrames,currentFrameTimeFrame,local);
+Parameter(GanttChartExportData,GanttChartExportData,myImageFormat,String,declaration);
+end b51
+start b52
+Class(newDeleteHumanAction,N,N,public);
+Generalisation(newDeleteHumanAction,PrjInfos);
+Parameter(ResourceAssignment,GanttDialogDateDay,date,GanttCalendar,declaration);
+Parameter(ChartModelImpl,setBottomTimeUnit,bottomTimeUnit,TimeUnit,declaration);
+end b52
+start b53
+Attribute(newGraphicPrimitive,myTaskID,int,N,private);
+Class(newGraphicPrimitive,N,static,package);
+end b53
+start b54
+Class(newnewnewProgressBarPanel,N,N,private);
+end b54
+start b55
+Class(newProgressBarPanel,N,N,private);
+end b55
+start b56
+Class(newnewnewMutableTaskDependencyCollection,N,N,public);
+end b56
+start b57
+Class(newnewTaskManagerImpl,N,N,public);
+Method(newnewTaskManagerImpl,getDependencyCollection,TaskDependencyCollection,N,N,N,public);
+Method(newnewTaskManagerImpl,getHierarchyManager,TaskHierarchyManagerImpl,N,N,N,public);
+Method(newnewTaskManagerImpl,getMaxID,int,N,N,N,public);
+Relation(GanttTree;insertClonedNode;getMaxID,newnewTaskManagerImpl,N);
+Relation(GanttXMLOpen;GanttXMLOpen;getMaxID,newnewTaskManagerImpl,N);
+Relation(TaskImpl;TaskImpl;getMaxID,newnewTaskManagerImpl,N);
+Relation(BackAction;registerTask;getMaxID,newnewTaskManagerImpl,N);
+Relation(BackAction;setTask;getMaxID,newnewTaskManagerImpl,N);
+Relation(TaskImpl;TaskImpl;getHierarchyManager,newnewTaskManagerImpl,N);
+Relation(TaskImpl;TaskImpl;getDependencyCollection,newnewTaskManagerImpl,N);
+end b57
+start b58
+Class(newnewTaskManagerImpl,N,N,public);
+Parameter(TaskManagerImpl,fireTaskScheduleChanged,oldStartDate,GanttCalendar,declaration);
+Parameter(RangeSearchFromKey,print,widthint,local);
+Parameter(PrjInfos,DeprecatedProjectExportData,myResourceChart,ResourceLoadGraphicArea,declaration);
+end b58
+start b59
+Attribute(newAbstractDocument,jbNextMonth,JButton,N,private);
+Class(newAbstractDocument,abstract,N,public);
+Method(newAbstractDocument,getRoot,Task,N,N,N,public);
+Parameter(AbstractDocument,createLength,unit,TimeUnit,declaration);
+Parameter(GanttResourcePanel,createNewProject,roleSetsRoleSet[],local);
+end b59
+start b60
+Attribute(DependencyTagHandler,myContext,newnewGanttDialogDate,N,private);
+Class(newnewGanttDialogDate,N,N,public);
+end b60
+start b61
+Class(BackAction,N,N,public);
+Generalisation(BackAction,newnewProgressBarPanel);
+Relation(GanttXMLOpen;startElement;setTaskID,newResourceAssignment,int);
+end b61
+start b62
+Class(newnewnewGanttDialogDate,N,N,public);
+end b62
+start b63
+Attribute(newGanttChartExportData,language,GanttLanguage,N,private);
+Attribute(newGanttChartExportData,ICON_URL,String,static,private);
+Class(newGanttChartExportData,N,N,public);
+end b63
+start b64
+Class(newnewnewProgressBarPanel,N,N,private);
+end b64
+start b65
+Class(newJPaintList,N,N,public);
+end b65
+start b66
+Class(newnewResourceAssignment,N,N,public);
+Method(newnewResourceAssignment,getLoad,float,N,N,N,package);
+Method(newnewResourceAssignment,getResource,ProjectResource,N,N,N,package);
+Relation(GanttCSVExport;getAssignments;getResource,newnewResourceAssignment,N);
+Relation(GanttGraphicArea;paintResources;getResource,newnewResourceAssignment,N);
+Relation(GanttHTMLExport;writeTasks;getResource,newnewResourceAssignment,N);
+Relation(GanttPDFExport;writeTasks;getResource,newnewResourceAssignment,N);
+Relation(GanttTree;getToolTip;getResource,newnewResourceAssignment,N);
+Relation(GanttXMLSaver;writeAllocations;getResource,newnewResourceAssignment,N);
+Relation(ResourceAssignmentCollectionImpl;MutationInfo;getResource,newnewResourceAssignment,N);
+Relation(ResourceAssignmentCollectionImpl;ResourceAssignmentCollectionImpl;getResource,newnewResourceAssignment,N);
+Relation(ResourceAssignmentCollectionImpl;addAssignment;getResource,newnewResourceAssignment,N);
+Relation(ResourceAssignmentCollectionImpl;equals;getResource,newnewResourceAssignment,N);
+Relation(ResourceLoadGraphicArea;calculateLoad;getResource,newnewResourceAssignment,N);
+Relation(ResourcesTableModel;getValueAt;getResource,newnewResourceAssignment,N);
+Relation(GanttXMLSaver;writeAllocations;getLoad,newnewResourceAssignment,N);
+Relation(ResourceAssignmentCollectionImpl;ResourceAssignmentCollectionImpl;getLoad,newnewResourceAssignment,N);
+Relation(ResourceAssignmentCollectionImpl;commit;getLoad,newnewResourceAssignment,N);
+Relation(ResourceLoadGraphicArea;calculateLoad;getLoad,newnewResourceAssignment,N);
+Relation(ResourcesTableModel;getValueAt;getLoad,newnewResourceAssignment,N);
+Relation(ResourcesTableModel;updateAssignment;getLoad,newnewResourceAssignment,N);
+end b66
+start b67
+Class(newnewProgressBarPanel,N,N,private);
+Method(newnewProgressBarPanel,getUsername,String,N,N,N,public);
+Generalisation(newnewProgressBarPanel,AbstractDocument);
+Relation(newnewProgressBarPanel;getUsername;getChartUIConfiguration,newnewnewnewnewMutableTaskDependencyCollection,type);
+Relation(newnewProgressBarPanel;getUsername;getChartHeader,newnewnewnewnewMutableTaskDependencyCollection,type);
+end b67
+start b68
+Attribute(GanttProject,resp,newnewResourceAssignment,N,private);
+Class(newnewResourceAssignment,N,N,public);
+end b68
+start b69
+Attribute(newChartModelImpl,myTopUnit,TimeUnit,N,private);
+Attribute(ChartHeaderImpl,myChartModel,newChartModelImpl,N,private);
+Attribute(newChartModelImpl,jtDate,JFormattedTextField,N,private);
+Class(newChartModelImpl,N,N,public);
+Parameter(GanttResourcePanel,setPeople,list,ArrayList,declaration);
+end b69
+start b70
+Class(newnewnewMutableTaskDependencyCollection,N,N,public);
+end b70
+start b71
+Class(newnewnewGanttTransferableTreePath,N,static,private);
+Method(newnewnewGanttTransferableTreePath,taskMoved,void,Y,N,N,public);
+Parameter(CSVSettingsPanel,unselectOther,selectedButton,JRadioButton,declaration);
+Relation(newnewnewGanttTransferableTreePath;taskMoved;getConfig,newGanttChartExportData,type);
+end b71
+start b72
+Class(newnewnewGanttDialogDate,N,N,public);
+end b72
+start b73
+Attribute(newDeprecatedProjectExportData,myXslFoScript,String,N,package);
+Attribute(newDeprecatedProjectExportData,jbPrevYear,JButton,N,private);
+Attribute(newDeprecatedProjectExportData,jbNextYear,JButton,N,private);
+Class(newDeprecatedProjectExportData,N,N,public);
+end b73
+start b74
+Class(newnewBackAction,N,N,public);
+Parameter(NewProjectWizard,clickFunction,Yint,local);
+end b74
+start b75
+Class(newnewMutableTaskDependencyCollection,N,N,public);
+Method(newnewMutableTaskDependencyCollection,enableSeparatedButton,void,Y,N,N,public);
+Method(newnewMutableTaskDependencyCollection,getDescription,String,N,N,N,public);
+Parameter(NewProjectWizard,fireDependencyAdded,newDependency,TaskDependency,declaration);
+Parameter(newTaskManagerImpl,actionPerformed,urlURL,local);
+Relation(GanttProject;getDescription;getDescription,newnewMutableTaskDependencyCollection,N);
+Relation(newnewMutableTaskDependencyCollection;getDescription;getXslDirectory,newnewHTMLSettingsPanel,type);
+Relation(newnewMutableTaskDependencyCollection;getDescription;print,newTaskManagerImpl,type);
+Relation(newCSVSettingsPanel;actionPerformed;enableSeparatedButton,newnewMutableTaskDependencyCollection,boolean);
+Relation(newnewMutableTaskDependencyCollection;enableSeparatedButton;isSelected,AbstractButton,N);
+Relation(newnewMutableTaskDependencyCollection;enableSeparatedButton;setEnabled,AbstractButton,boolean);
+Relation(newnewMutableTaskDependencyCollection;enableSeparatedButton;setEnabled,JComponent,boolean);
+Relation(newMutableTaskDependencyCollection;initialize;enableSeparatedButton,newnewMutableTaskDependencyCollection,boolean);
+end b75
+start b76
+Class(newnewJPaintList,N,N,public);
+Method(newnewJPaintList,getNestedTasks,Task[],Y,N,N,public);
+Relation(newnewJPaintList;getNestedTasks;getNestedTasks,Task,N);
+end b76
+start b77
+Class(newnewJPaintList,N,N,public);
+Method(newnewJPaintList,taskAdded,void,Y,N,N,public);
+Method(newnewJPaintList,setStartDate,void,Y,N,N,public);
+Relation(newnewJPaintList;setStartDate;separatCharHasChange,newGanttChartExportData,type);
+Relation(newnewJPaintList;taskAdded;cancel,newGanttTransferableTreePath,type);
+end b77
+start b78
+Attribute(newResourceAssignment,image,BufferedImage,N,private);
+Attribute(newResourceAssignment,myAlgorithmCollection,AlgorithmCollection,N,private);
+Class(newResourceAssignment,N,N,public);
+Generalisation(newResourceAssignment,ResourceAssignment);
+Generalisation(newResourceAssignment,GanttTXTOpen);
+Parameter(GanttResourcePanel,mousePressed,e,MouseEvent,declaration);
+Parameter(GanttPrintable,HTMLSettingsPanel,parent,GanttProject,declaration);
+Parameter(GanttResourcePanel,updateRow,people,HumanResource,declaration);
+end b78
+start b79
+Class(newMouseOverHandler,N,N,package);
+end b79
+start b80
+Class(newnewnewnewMutableTaskDependencyCollection,N,N,public);
+Method(newnewnewnewMutableTaskDependencyCollection,DeleteHumanAction,N,Y,N,N,public);
+Parameter(newnewnewnewMutableTaskDependencyCollection,DeleteHumanAction,context,ResourceContext,declaration);
+Parameter(newnewnewnewMutableTaskDependencyCollection,DeleteHumanAction,projectFrame,GanttProject,declaration);
+Relation(newnewnewnewMutableTaskDependencyCollection;DeleteHumanAction;correctLabel,GanttProject,String);
+Relation(newnewnewnewMutableTaskDependencyCollection;DeleteHumanAction;getClass,Object,N);
+Relation(newnewnewnewMutableTaskDependencyCollection;DeleteHumanAction;getClassLoader,Class<>,N);
+Relation(newnewnewnewMutableTaskDependencyCollection;DeleteHumanAction;getKeyStroke,KeyStroke,int-int);
+Relation(newnewnewnewMutableTaskDependencyCollection;DeleteHumanAction;getLanguage,ResourceAction,N);
+Relation(newnewnewnewMutableTaskDependencyCollection;DeleteHumanAction;getResource,ClassLoader,String);
+Relation(newnewnewnewMutableTaskDependencyCollection;DeleteHumanAction;getText,GanttLanguage,String);
+Relation(newnewnewnewMutableTaskDependencyCollection;DeleteHumanAction;putValue,AbstractAction,String-Object);
+Relation(newnewnewnewMutableTaskDependencyCollection;DeleteHumanAction;getChartHeader,newnewnewnewnewMutableTaskDependencyCollection,type);
+end b80
+start b81
+Class(newGanttChartExportData,N,N,public);
+end b81
+start b82
+Attribute(newnewResourceAssignment,model,GanttTableModel,N,package);
+Class(newnewResourceAssignment,N,N,public);
+end b82
+start b83
+Class(newGanttPanelDate,N,N,public);
+Parameter(TaskManagerImpl,getTask,taskId,int,declaration);
+end b83
+start b84
+Attribute(newnewnewnewMutableTaskDependencyCollection,myExportSettings,GanttExportSettings,N,package);
+Class(newnewnewnewMutableTaskDependencyCollection,N,N,public);
+end b84
+start b85
+Class(newnewGanttDialogDate,N,N,public);
+end b85
+start b86
+Class(newnewnewnewnewMutableTaskDependencyCollection,N,N,public);
+Method(newnewnewnewnewMutableTaskDependencyCollection,getChartUIConfiguration,ChartUIConfiguration,N,N,N,package);
+end b86
+start b87
+Attribute(newGanttChartExportData,cbDefault,JCheckBox,N,package);
+Class(newGanttChartExportData,N,N,public);
+Method(newGanttChartExportData,getBounds,Dimension,N,N,N,package);
+Method(newGanttChartExportData,getPassword,String,N,N,N,public);
+Method(newGanttChartExportData,getConfig,TaskManagerConfig,N,N,N,public);
+Method(newGanttChartExportData,separatCharHasChange,boolean,N,N,N,public);
+Parameter(NewProjectWizard,clickFunction,y,int,declaration);
+Parameter(RangeSearchFromKey,print,imgwint,local);
+Parameter(BackAction,actionPerformed,contextProjectResource[],local);
+Parameter(GanttApplet,setUserInfo,pass,String,declaration);
+Parameter(HTMLSettingsPanel,changeDate,newDate,GregorianCalendar,declaration);
+Relation(newGanttChartExportData;separatCharHasChange;equals,String,Object);
+Relation(newGanttChartExportData;separatCharHasChange;getOptions,GanttProject,N);
+Relation(newGanttChartExportData;separatCharHasChange;isSelected,AbstractButton,N);
+Relation(newGanttChartExportData;separatCharHasChange;auxAddAssignment,newParsingContext,type);
+Relation(newGanttChartExportData;separatCharHasChange;getTaskSD,newCSVSettingsPanel,type);
+Relation(newGanttChartExportData;getPassword;addUsingGBL,newCSVSettingsPanel,type);
+Relation(ChartHeaderImpl;getHeight;getBounds,newGanttChartExportData,N);
+Relation(ChartHeaderImpl;getWidth;getBounds,newGanttChartExportData,N);
+Relation(newPrjInfos;calculateTimeFrames;getBounds,newGanttChartExportData,N);
+Relation(newGanttChartExportData;getBounds;getLastError,newnewProgressBarPanel,type);
+end b87
+start b88
+Class(newnewnewnewGanttDialogDate,N,N,public);
+end b88
+start b89
+Class(newnewnewnewGanttTransferableTreePath,N,static,private);
+end b89
+start b90
+Attribute(newCSVSettingsPanel,myOutputFile,File,N,package);
 Attribute(newCSVSettingsPanel,cbResID,JCheckBox,N,package);
 Attribute(newCSVSettingsPanel,cbEndDate,JCheckBox,N,package);
-Attribute(newCSVSettingsPanel,bSpace,JRadioButton,N,package);
-Attribute(newCSVSettingsPanel,bSeparatedText,JRadioButton,N,package);
 Attribute(newCSVSettingsPanel,bOther,JRadioButton,N,package);
 Attribute(newCSVSettingsPanel,bFixedSize,JRadioButton,N,package);
 Attribute(newCSVSettingsPanel,bDotComa,JRadioButton,N,package);
 Attribute(newCSVSettingsPanel,bComa,JRadioButton,N,package);
 Attribute(newCSVSettingsPanel,appli,GanttProject,N,private);
-Attribute(GanttStatusBar,pbp,newCSVSettingsPanel,N,protected);
+Attribute(Shape,foregroundList,newCSVSettingsPanel,N,protected);
+Attribute(GanttXMLSaver,peop,newCSVSettingsPanel,N,private);
+Attribute(GanttDialogCalendar,panelDate,newCSVSettingsPanel,N,private);
+Attribute(newCSVSettingsPanelCollectionImpl,myAssignment,newCSVSettingsPanel,N,private);
 Class(newCSVSettingsPanel,N,N,public);
-Method(newCSVSettingsPanel,getTaskDuration,boolean,N,N,N,public);
-Method(newCSVSettingsPanel,getSeparat,String,N,N,N,public);
-Method(newCSVSettingsPanel,getResourceRole,boolean,N,N,N,public);
+Method(newCSVSettingsPanel,RangeSearchFromKey,N,Y,N,N,public);
 Method(newCSVSettingsPanel,getResourceName,boolean,N,N,N,public);
 Method(newCSVSettingsPanel,getResourceMail,boolean,N,N,N,public);
 Method(newCSVSettingsPanel,getResourceID,boolean,N,N,N,public);
 Method(newCSVSettingsPanel,getFixed,boolean,N,N,N,public);
-Method(newCSVSettingsPanel,applyChanges,boolean,Y,N,N,public);
 Method(newCSVSettingsPanel,addUsingGBL,void,Y,N,N,private);
 Method(newCSVSettingsPanel,actionPerformed,void,Y,N,N,public);
-Parameter(GanttApplet,actionPerformed,e,ActionEvent,declaration);
-Parameter(newCSVSettingsPanel,applyChanges,csvOptionsCSVOptions,local);
-Parameter(newCSVSettingsPanel,applyChanges,askForApply,boolean,declaration);
+Method(newCSVSettingsPanel,CSVSettingsPanel,N,Y,N,N,public);
+Method(newCSVSettingsPanel,createContainer,Container,N,N,N,private);
+Parameter(newGanttTXTOpen,setUserInfo,user,String,declaration);
 Parameter(newCSVSettingsPanel,addUsingGBL,y,int,declaration);
 Parameter(newCSVSettingsPanel,addUsingGBL,x,int,declaration);
 Parameter(newCSVSettingsPanel,addUsingGBL,w,int,declaration);
@@ -802,630 +796,1274 @@ Parameter(newCSVSettingsPanel,addUsingGBL,container,Container,declaration);
 Parameter(newCSVSettingsPanel,addUsingGBL,component,Component,declaration);
 Parameter(newCSVSettingsPanel,actionPerformed,selectedButtonJRadioButton,local);
 Parameter(newCSVSettingsPanel,actionPerformed,e,ActionEvent,declaration);
+Parameter(newCSVSettingsPanel,CSVSettingsPanel,textSeparatorFieldPanelJPanel,local);
+Parameter(newCSVSettingsPanel,CSVSettingsPanel,taskPanelJPanel,local);
+Parameter(newCSVSettingsPanel,CSVSettingsPanel,taskFieldPanelJPanel,local);
+Parameter(newCSVSettingsPanel,CSVSettingsPanel,separatorFieldPanelJPanel,local);
+Parameter(newCSVSettingsPanel,CSVSettingsPanel,separatedPanelJPanel,local);
+Parameter(newCSVSettingsPanel,CSVSettingsPanel,resPanelJPanel,local);
+Parameter(newCSVSettingsPanel,CSVSettingsPanel,resFieldPanelJPanel,local);
+Parameter(newCSVSettingsPanel,CSVSettingsPanel,parent,GanttProject,declaration);
+Parameter(newCSVSettingsPanel,CSVSettingsPanel,lblSeparatedFieldJLabel,local);
+Parameter(newCSVSettingsPanel,CSVSettingsPanel,lblResFieldJLabel,local);
+Parameter(newCSVSettingsPanel,CSVSettingsPanel,genePanelJPanel,local);
+Parameter(newCSVSettingsPanel,CSVSettingsPanel,gbcGridBagConstraints,local);
+Parameter(newCSVSettingsPanel,CSVSettingsPanel,fixedPanelJPanel,local);
+Parameter(newCSVSettingsPanel,createContainer,panelJPanel,local);
+Relation(newGanttTXTOpen;main;createContainer,newCSVSettingsPanel,N);
+Relation(newCSVSettingsPanel;createContainer;mousePressed,JPanel,type);
+Relation(newCSVSettingsPanel;CSVSettingsPanel;add,Container,Component);
+Relation(newCSVSettingsPanel;CSVSettingsPanel;add,Container,Component-Object);
+Relation(newCSVSettingsPanel;CSVSettingsPanel;addActionListener,AbstractButton,ActionListener);
+Relation(newCSVSettingsPanel;CSVSettingsPanel;addUsingGBL,newCSVSettingsPanel,Container-Component-GridBagConstraints-int-int-int-int);
+Relation(newCSVSettingsPanel;CSVSettingsPanel;applyComponentOrientation,Container,ComponentOrientation);
+Relation(newCSVSettingsPanel;CSVSettingsPanel;correctLabel,GanttProject,String);
+Relation(newCSVSettingsPanel;CSVSettingsPanel;getComponentOrientation,GanttLanguage,N);
+Relation(newCSVSettingsPanel;CSVSettingsPanel;getFontName,Font,N);
+Relation(newCSVSettingsPanel;CSVSettingsPanel;getInstance,GanttLanguage,N);
+Relation(newCSVSettingsPanel;CSVSettingsPanel;getOptions,GanttProject,N);
+Relation(newCSVSettingsPanel;CSVSettingsPanel;getSeparatedTextChars,CSVOptions,N);
+Relation(newCSVSettingsPanel;CSVSettingsPanel;getSize,Font,N);
+Relation(newCSVSettingsPanel;CSVSettingsPanel;getText,GanttLanguage,String);
+Relation(newCSVSettingsPanel;CSVSettingsPanel;setFont,JComponent,Font);
 Relation(newCSVSettingsPanel;actionPerformed;getSource,EventObject,N);
 Relation(newCSVSettingsPanel;actionPerformed;isSelected,AbstractButton,N);
 Relation(newCSVSettingsPanel;actionPerformed;setSelected,AbstractButton,boolean);
-Relation(newCSVSettingsPanel;actionPerformed;unselectOther,CSVSettingsPanel,JRadioButton);
+Relation(newCSVSettingsPanel;actionPerformed;unselectOther,newnewnewnewnewMutableTaskDependencyCollection,JRadioButton);
 Relation(newCSVSettingsPanel;addUsingGBL;add,Container,Component-Object);
-Relation(newCSVSettingsPanel;applyChanges;askForApplyChanges,GeneralOptionPanel,N);
-Relation(newCSVSettingsPanel;applyChanges;equals,String,Object);
-Relation(newCSVSettingsPanel;applyChanges;getCSVOptions,GanttOptions,N);
-Relation(newCSVSettingsPanel;applyChanges;getFixed,newCSVSettingsPanel,N);
-Relation(newCSVSettingsPanel;applyChanges;getOptions,GanttProject,N);
-Relation(newCSVSettingsPanel;applyChanges;getResourceID,newCSVSettingsPanel,N);
-Relation(newCSVSettingsPanel;applyChanges;getResourceMail,newCSVSettingsPanel,N);
-Relation(newCSVSettingsPanel;applyChanges;getResourceName,newCSVSettingsPanel,N);
-Relation(newCSVSettingsPanel;applyChanges;getResourceRole,newCSVSettingsPanel,N);
-Relation(newCSVSettingsPanel;applyChanges;getSeparat,newCSVSettingsPanel,N);
-Relation(newCSVSettingsPanel;applyChanges;getTaskDuration,newCSVSettingsPanel,N);
-Relation(newCSVSettingsPanel;applyChanges;getTaskED,MutableTaskDependencyCollection,N);
-Relation(newCSVSettingsPanel;applyChanges;getTaskID,CSVSettingsPanel,N);
-Relation(newCSVSettingsPanel;applyChanges;getTaskName,newGanttPanelDate,N);
-Relation(newCSVSettingsPanel;applyChanges;getTaskPercent,TaskManagerImpl,N);
-Relation(newCSVSettingsPanel;applyChanges;getTaskResources,newCSVSettingsPanel,N);
-Relation(newCSVSettingsPanel;applyChanges;getTaskSD,CSVSettingsPanel,N);
-Relation(newCSVSettingsPanel;applyChanges;getTaskWebLink,CSVSettingsPanel,N);
-Relation(newCSVSettingsPanel;applyChanges;getTextSeparat,newCSVSettingsPanel,N);
-Relation(newCSVSettingsPanel;applyChanges;separatCharHasChange,CSVSettingsPanel,N);
 Relation(newCSVSettingsPanel;getFixed;isSelected,AbstractButton,N);
 Relation(newCSVSettingsPanel;getResourceID;isSelected,AbstractButton,N);
+Relation(newCSVSettingsPanel;getResourceID;actionPerformed,newGanttResourcePanel,type);
 Relation(newCSVSettingsPanel;getResourceMail;isSelected,AbstractButton,N);
 Relation(newCSVSettingsPanel;getResourceName;isSelected,AbstractButton,N);
-Relation(newCSVSettingsPanel;getResourceRole;isSelected,AbstractButton,N);
-Relation(newCSVSettingsPanel;getSeparat;getText,JTextComponent,N);
-Relation(newCSVSettingsPanel;getSeparat;isSelected,AbstractButton,N);
-Relation(newCSVSettingsPanel;getTaskDuration;isSelected,AbstractButton,N);
-end b44
-start b45
-Attribute(newTaskManagerImpl,myDependencyCollection,TaskDependencyCollectionImpl,N,private);
-Attribute(TaskImpl,myManager,newTaskManagerImpl,N,private);
-Attribute(Shape,patternList,newTaskManagerImpl,N,protected);
-Attribute(newTaskManagerImpl,image,BufferedImage,N,private);
-Class(newTaskManagerImpl,N,N,public);
-Method(newTaskManagerImpl,fireTaskAdded,void,Y,N,N,private);
-Method(newTaskManagerImpl,fireDependencyRemoved,void,Y,N,N,public);
-Method(newTaskManagerImpl,fireDependencyRemoved,void,Y,N,N,private);
-Method(newTaskManagerImpl,fireDependencyAdded,void,Y,N,N,public);
-Method(newTaskManagerImpl,fireDependencyAdded,void,Y,N,N,private);
-Method(newTaskManagerImpl,createTask,GanttTask,N,N,N,public);
-Method(newTaskManagerImpl,createLength,TaskLength,Y,N,N,public);
-Method(newTaskManagerImpl,createFacede,TaskContainmentHierarchyFacade,N,N,N,public);
-Method(newTaskManagerImpl,createContainmentFacade,TaskContainmentHierarchyFacade,N,N,N,protected);
-Method(newTaskManagerImpl,createConstraint,TaskDependencyConstraint,Y,N,N,public);
-Method(newTaskManagerImpl,clear,void,N,N,N,public);
-Method(newTaskManagerImpl,addTaskListener,void,Y,N,N,public);
-Method(newTaskManagerImpl,TaskManagerImpl,N,Y,N,N,package);
-Method(newTaskManagerImpl,TaskManagerImpl,N,N,N,N,package);
-Method(newTaskManagerImpl,FacadeImpl,N,Y,N,N,public);
-Method(newTaskManagerImpl,getTaskID,int,N,N,N,public);
-Method(GanttXMLOpen,getContext,ParsingContext,N,N,N,public);
-Method(newTaskManagerImpl,createTask,GanttTask,Y,N,N,public);
-Parameter(newTaskManagerImpl,fireTaskAdded,task,Task,declaration);
-Parameter(newTaskManagerImpl,fireTaskAdded,eTaskHierarchyEvent,local);
-Parameter(newTaskManagerImpl,fireDependencyRemoved,nextTaskListener,local);
-Parameter(newTaskManagerImpl,fireDependencyRemoved,eTaskDependencyEvent,local);
-Parameter(newTaskManagerImpl,fireDependencyRemoved,dep,TaskDependency,declaration);
-Parameter(newTaskManagerImpl,fireDependencyAdded,nextTaskListener,local);
-Parameter(newTaskManagerImpl,fireDependencyAdded,newDependency,TaskDependency,declaration);
-Parameter(newTaskManagerImpl,fireDependencyAdded,dep,TaskDependency,declaration);
-Parameter(newTaskManagerImpl,createLength,unit,TimeUnit,declaration);
-Parameter(newTaskManagerImpl,createLength,count,long,declaration);
-Parameter(newTaskManagerImpl,createConstraint,resultTaskDependencyConstraint,local);
-Parameter(newTaskManagerImpl,createConstraint,constraintID,int,declaration);
-Parameter(newTaskManagerImpl,addTaskListener,listener,TaskListener,declaration);
-Parameter(newTaskManagerImpl,TaskManagerImpl,factoryFactory,local);
-Parameter(newTaskManagerImpl,TaskManagerImpl,containmentFacadeFactory,Factory,declaration);
-Parameter(newTaskManagerImpl,TaskManagerImpl,config,TaskManagerConfig,declaration);
-Parameter(newTaskManagerImpl,TaskManagerImpl,alg4RecalculateTaskCompletionPercentageAlgorithm,local);
-Parameter(newTaskManagerImpl,TaskManagerImpl,alg3AdjustTaskBoundsAlgorithm,local);
-Parameter(newTaskManagerImpl,TaskManagerImpl,alg2RecalculateTaskScheduleAlgorithm,local);
-Parameter(newTaskManagerImpl,TaskManagerImpl,alg1FindPossibleDependeesAlgorithm,local);
-Parameter(newTaskManagerImpl,FacadeImpl,root,Task,declaration);
-Parameter(newTaskManagerImpl,createTask,resultGanttTask,local);
-Parameter(newTaskManagerImpl,createTask,taskId,int,declaration);
-Relation(newTaskManagerImpl;createTask;createTask,newTaskManagerImpl,int);
-Relation(newTaskManagerImpl;createTask;fireTaskAdded,newTaskManagerImpl,Task);
-Relation(newTaskManagerImpl;createTask;getMaxID,TaskManagerImpl,N);
-Relation(newTaskManagerImpl;createTask;getRootTask,TaskManagerImpl,N);
-Relation(newTaskManagerImpl;createTask;increaseMaxID,newBackAction,N);
-Relation(newTaskManagerImpl;createTask;move,TaskImpl,Task);
-Relation(newTaskManagerImpl;createTask;setTaskID,GanttTask,int);
-Relation(DependencyTagHandler;getDependencyAddressee;getTaskID,newTaskManagerImpl,N);
-Relation(GanttXMLOpen;startElement;getTaskID,newTaskManagerImpl,N);
-Relation(newTaskManagerImpl;FacadeImpl;releaseLock,newGanttPanelDate,type);
-Relation(newTaskManagerImpl;TaskManagerImpl;clear,newTaskManagerImpl,N);
-Relation(newTaskManagerImpl;TaskManagerImpl;createFacede,Factory,N);
-Relation(newTaskManagerImpl;TaskManagerImpl;fireDependencyRemoved,newTaskManagerImpl,TaskDependency);
-Relation(newTaskManagerImpl;addTaskListener;add,List,Object);
-Relation(newTaskManagerImpl;clear;clear,Map,N);
-Relation(newTaskManagerImpl;clear;clear,TaskDependencyCollectionImpl,N);
-Relation(newTaskManagerImpl;clear;setMaxID,TaskManagerImpl,int);
-Relation(TaskManagerImpl;getRootTask;createLength,newTaskManagerImpl,TimeUnit-long);
-Relation(newTaskManagerImpl;fireDependencyAdded;dependencyAdded,TaskListener,TaskDependencyEvent);
-Relation(newTaskManagerImpl;fireDependencyAdded;getDependencyCollection,newGanttTXTOpen,N);
-Relation(newTaskManagerImpl;fireDependencyAdded;size,List,N);
-Relation(newTaskManagerImpl;fireDependencyRemoved;dependencyRemoved,TaskListener,TaskDependencyEvent);
-Relation(newTaskManagerImpl;fireDependencyRemoved;get,List,int);
-Relation(newTaskManagerImpl;fireDependencyRemoved;getDependencyCollection,newGanttTXTOpen,N);
-Relation(newTaskManagerImpl;fireDependencyRemoved;size,List,N);
-Relation(newTaskManagerImpl;fireTaskAdded;get,List,int);
-Relation(newTaskManagerImpl;fireTaskAdded;getSupertask,Task,N);
-Relation(newTaskManagerImpl;fireTaskAdded;size,List,N);
-Relation(newTaskManagerImpl;fireTaskAdded;taskAdded,TaskListener,TaskHierarchyEvent);
-Relation(newTaskManagerImpl;createTask;getSeparat,newCSVSettingsPanel,type);
-end b45
-start b46
-Class(newGanttPrintable,N,N,public);
-Parameter(newGanttChartExportData,GanttChartExportData,myExportSettings,GanttExportSettings,declaration);
-Parameter(HTMLSettingsPanel,actionPerformed,gdiGanttDialogInfo,local);
-end b46
-start b47
-Class(newDeleteHumanAction,N,N,public);
-Method(newDeleteHumanAction,getTimeFrames,TimeFrame[],N,N,N,package);
-Parameter(GanttApplet,actionPerformed,inSInputStream,local);
-Relation(ChartHeaderImpl;createFrames;getTimeFrames,newDeleteHumanAction,N);
-Relation(newDeleteHumanAction;getTimeFrames;calculateTimeFrames,ChartModelImpl,N);
-end b47
-start b48
-Class(newJPaintList,N,N,public);
-Generalisation(newJPaintList,newBackAction);
-Generalisation(newJPaintList,GanttDialogDate);
-Parameter(GanttPanelDate,rollDate,amount,int,declaration);
-end b48
-start b49
-Class(newNewProjectWizard,N,N,public);
-Parameter(newTaskManagerImpl,applyChanges,askForApply,boolean,declaration);
-end b49
-start b50
-Attribute(newProgressBarPanel,myFilename,String,N,package);
-Class(newProgressBarPanel,N,N,private);
-Method(newProgressBarPanel,taskRemoved,void,Y,N,N,public);
-Generalisation(newProgressBarPanel,TaskListenerAdapter);
-end b50
-start b51
-Attribute(newGanttTransferableTreePath,cbTaskNotes,JCheckBox,N,package);
-Attribute(GanttCSVExport,peop,newGanttTransferableTreePath,N,private);
-Class(newGanttTransferableTreePath,N,static,private);
-end b51
-start b52
-Attribute(newnewNewProjectWizardCollectionImpl,myAssignment,newnewNewProjectWizard,N,private);
-Class(newnewNewProjectWizard,N,N,public);
-end b52
-start b53
-Class(newBackAction,N,N,public);
-Method(newBackAction,increaseMaxID,void,N,N,N,package);
-Relation(TaskImpl;TaskImpl;increaseMaxID,newBackAction,N);
-end b53
-start b54
-Class(newBackAction,N,N,public);
-end b54
-start b55
-Attribute(GanttCSVExport,prjInfos,newPrjInfos,N,private);
-Attribute(newPrjInfos,myChartHeader,ChartHeader,N,private);
-Attribute(Shape,foregroundList,newPrjInfos,N,protected);
-Attribute(newPrjInfos,tree,GanttTree,N,package);
-Class(newPrjInfos,N,N,public);
-Method(newPrjInfos,getContext,ResourceContext,N,N,N,private);
-Generalisation(newPrjInfos,newParsingContext);
-Method(newPrjInfos,PrjInfos,N,N,N,N,public);
-Method(newPrjInfos,setBottomTimeUnit,void,Y,N,N,public);
-Method(newPrjInfos,getBottomUnitWidth,int,N,N,N,package);
-Parameter(GanttApplet,actionPerformed,ganttFrameGanttProject,local);
-Parameter(newPrjInfos,PrjInfos,sWebLink,String,declaration);
-Parameter(newPrjInfos,PrjInfos,sProjectName,String,declaration);
-Parameter(newPrjInfos,PrjInfos,sOrganization,String,declaration);
-Parameter(newPrjInfos,PrjInfos,sDescription,String,declaration);
-Relation(ChartHeaderImpl;createFrames;getBottomUnitWidth,newPrjInfos,N);
-Relation(newPrjInfos;PrjInfos;GanttChartExportData,newGanttChartExportData,type);
-Relation(newPrjInfos;PrjInfos;close,HttpDocumentOutputStream,type);
-Relation(newPrjInfos;setBottomTimeUnit;getPassword,newAbstractDocument,type);
-Relation(newPrjInfos;getContext;getDisplayName,newGanttResourcePanel,type);
-end b55
-start b56
-Class(newCSVSettingsPanel,N,N,public);
-Method(newCSVSettingsPanel,resourceAdded,void,Y,N,N,public);
-Method(newCSVSettingsPanel,getTextSeparat,String,N,N,N,public);
-Method(newCSVSettingsPanel,getTaskResources,boolean,N,N,N,public);
-Parameter(GanttPanelDate,mousePressed,e,MouseEvent,declaration);
-Parameter(newGanttResourcePanel,deleteHuman,parent,GanttProject,declaration);
-Parameter(newTaskManagerImpl,getContainer,nestedTask,Task,declaration);
-Parameter(newTaskManagerImpl,fireDependencyAdded,eTaskDependencyEvent,local);
-Relation(newCSVSettingsPanel;getTextSeparat;equals,newGanttPanelDate,type);
-end b56
-start b57
-Attribute(newJPaintList,x,int,N,private);
-Class(newJPaintList,N,N,public);
-Method(newJPaintList,newHuman,void,Y,N,N,public);
-Parameter(GanttTransferableTreePath,load,s,TaskNameString,local);
-Parameter(newJPaintList,newHuman,people,HumanResource,declaration);
-Relation(newJPaintList;newHuman;addRow,GanttTableModel,HumanResource);
-Relation(GanttResourcePanel;resourceAdded;newHuman,newJPaintList,HumanResource);
-end b57
-start b58
-Class(newnewGanttTransferableTreePath,N,static,private);
-end b58
-start b59
-Class(newnewParsingContext,N,N,public);
-end b59
-start b60
-Class(newnewHttpDocumentOutputStream,N,N,package);
-Method(newnewHttpDocumentOutputStream,registerTask,void,Y,N,N,public);
-Parameter(newnewHttpDocumentOutputStream,registerTask,task,Task,declaration);
-Relation(newnewHttpDocumentOutputStream;registerTask;get,Map,Object);
-Relation(newnewHttpDocumentOutputStream;registerTask;getTaskID,Task,N);
-Relation(newnewHttpDocumentOutputStream;registerTask;put,Map,Object-Object);
-Relation(newnewHttpDocumentOutputStream;registerTask;setMaxID,TaskManagerImpl,int);
-end b60
-start b61
-Class(newBackAction,N,N,public);
-Parameter(TaskManagerImpl,getNestedTasks,container,Task,declaration);
-end b61
-start b62
-Attribute(newTaskListenerAdapter,cbStartDate,JCheckBox,N,package);
-Class(newTaskListenerAdapter,abstract,N,public);
-Method(newTaskListenerAdapter,dependencyRemoved,void,Y,N,N,public);
-Method(newTaskListenerAdapter,GanttApplet,N,N,N,N,public);
-Parameter(newGanttResourcePanel,getDisplayName,resultStringBuffer,local);
-Parameter(newAbstractDocument,equals,o,Object,declaration);
-end b62
-start b63
+Relation(newCSVSettingsPanel;RangeSearchFromKey;getTaskID,Task,N);
+Relation(newCSVSettingsPanel;RangeSearchFromKey;GanttDialogDate,ProgressBarPanel,type);
+end b90
+start b91
+Class(newnewGanttChartExportData,N,N,public);
+end b91
+start b92
+Class(newnewResourceAssignment,N,N,public);
+Parameter(ProgressBarPanel,print,jint,local);
+Parameter(newDeleteHumanAction,PrjInfos,sOrganization,String,declaration);
+Parameter(newGanttDialogDate,resourceAdded,event,ResourceEvent,declaration);
+end b92
+start b93
+Class(newnewnewnewnewMutableTaskDependencyCollection,N,N,public);
+end b93
+start b94
+Class(newnewnewProgressBarPanel,N,N,private);
+Generalisation(newnewnewProgressBarPanel,JPaintList);
+Generalisation(newnewnewProgressBarPanel,newDeprecatedProjectExportData);
+Parameter(MutableTaskDependencyCollection,deleteDependency,dependency,TaskDependency,declaration);
+end b94
+start b95
+Class(newnewMutableTaskDependencyCollection,N,N,public);
+Method(newnewMutableTaskDependencyCollection,GanttChartExportData,N,Y,N,N,public);
+end b95
+start b96
+Attribute(newnewnewJPaintList,language,GanttLanguage,N,private);
+Class(newnewnewJPaintList,N,N,public);
+Generalisation(newnewnewJPaintList,newJPaintList);
+end b96
+start b97
+Attribute(newnewChartModelImpl,bSeparatedText,JRadioButton,N,package);
+Class(newnewChartModelImpl,N,N,public);
+Method(newnewChartModelImpl,getTaskID,boolean,N,N,N,public);
+Method(newnewChartModelImpl,setBottomTimeUnit,void,Y,N,N,public);
+Relation(newnewChartModelImpl;setBottomTimeUnit;acquireLock,GanttDialogDate,type);
+end b97
+start b98
+Class(newnewnewnewGanttTransferableTreePath,N,static,private);
+Method(newnewnewnewGanttTransferableTreePath,deleteResources,void,Y,N,N,private);
+Parameter(ResourceAssignment,GanttDialogDateDay,mlMouseListener,local);
+Relation(newnewnewnewGanttTransferableTreePath;deleteResources;getManager,ResourceAction,N);
+Relation(newnewnewnewGanttTransferableTreePath;deleteResources;remove,ResourceManager,ProjectResource);
+Relation(newnewnewnewGanttTransferableTreePath;deleteResources;setBottomTimeUnit,newnewChartModelImpl,type);
+end b98
+start b99
+Class(newnewnewGanttDialogDate,N,N,public);
+end b99
+start b100
+Class(newnewnewnewnewMutableTaskDependencyCollection,N,N,public);
+end b100
+start b101
+Class(newnewMutableTaskDependencyCollection,N,N,public);
+Method(newnewMutableTaskDependencyCollection,changeDate,void,Y,N,N,private);
+Parameter(newTaskContainmentHierarchyFacadeImpl,createPopupMenu,x,int,declaration);
+Parameter(GanttPrintable,HTMLSettingsPanel,returnValint,local);
+Relation(newnewMutableTaskDependencyCollection;changeDate;get,Calendar,int);
+Relation(newnewMutableTaskDependencyCollection;changeDate;getTime,Calendar,N);
+Relation(newnewMutableTaskDependencyCollection;changeDate;repaint,Component,N);
+Relation(newnewMutableTaskDependencyCollection;changeDate;setValue,JFormattedTextField,Object);
+Relation(newnewMutableTaskDependencyCollection;changeDate;deleteDependency,newGanttTransferableTreePath,type);
+end b101
+start b102
+Class(newnewnewnewGanttTransferableTreePath,N,static,private);
+end b102
+start b103
+Class(newnewnewnewGanttDialogDate,N,N,public);
+end b103
+start b104
+Class(newMouseOverHandler,N,N,package);
+end b104
+start b105
+Class(newnewnewnewnewnewMutableTaskDependencyCollection,N,N,public);
+end b105
+start b106
 Class(newnewJPaintList,N,N,public);
-end b63
-start b64
-Class(newnewGanttPrintable,N,N,public);
-Method(newnewGanttPrintable,taskMoved,void,Y,N,N,public);
-Parameter(newnewGanttPrintable,taskMoved,e,TaskHierarchyEvent,declaration);
-Relation(newnewGanttPrintable;taskMoved;load,newResourceAssignment,type);
-end b64
-start b65
+end b106
+start b107
+Class(newProgressBarPanel,N,N,private);
+Generalisation(newProgressBarPanel,newnewGanttDialogDate);
+end b107
+start b108
+Class(newnewProgressBarPanel,N,N,private);
+Method(newnewProgressBarPanel,getLastError,String,N,N,N,public);
+Method(newnewProgressBarPanel,releaseLock,void,N,N,N,public);
+Parameter(ResourceAssignment,equals,o,Object,declaration);
+Relation(newnewProgressBarPanel;releaseLock;getTaskID,newResourceAssignment,type);
+end b108
+start b109
+Class(newnewnewJPaintList,N,N,public);
+Generalisation(newnewnewJPaintList,GraphicPrimitive);
+end b109
+start b110
+Class(newnewnewnewnewGanttTransferableTreePath,N,static,private);
+end b110
+start b111
+Class(newDeprecatedProjectExportData,N,N,public);
+Generalisation(newDeprecatedProjectExportData,newnewnewGanttTransferableTreePath);
+Generalisation(newDeprecatedProjectExportData,newnewProgressBarPanel);
+end b111
+start b112
+Class(newnewGanttChartExportData,N,N,public);
+Method(newnewGanttChartExportData,initialize,void,N,N,N,public);
+Relation(newGanttChartExportData;separatCharHasChange;initialize,newnewGanttChartExportData,type);
+Relation(newnewGanttChartExportData;initialize;getMessage,Throwable,N);
+Relation(newnewGanttChartExportData;initialize;getOptions,GanttProject,N);
+Relation(newnewGanttChartExportData;initialize;getProperty,System,String);
+Relation(newnewGanttChartExportData;initialize;getXslDir,GanttOptions,N);
+Relation(newnewGanttChartExportData;initialize;setText,JTextComponent,String);
+Relation(newnewGanttChartExportData;initialize;load,newGanttTXTOpen,type);
+Relation(newnewGanttChartExportData;initialize;delete,newnewBackAction,type);
+end b112
+start b113
+Class(newnewGanttChartExportData,N,N,public);
+Method(newnewGanttChartExportData,equals,boolean,Y,N,N,public);
+Relation(newnewGanttChartExportData;equals;getPath,Document,N);
+Relation(newnewGanttChartExportData;equals;acquireLock,GanttDialogDate,type);
+end b113
+start b114
+Class(newChartModelImpl,N,N,public);
+Parameter(CSVSettingsPanel,initialize,sSeparatedCharString,local);
+end b114
+start b115
+Attribute(newGanttApplet,appli,GanttProject,N,private);
+Class(newGanttApplet,N,N,public);
+Method(newGanttApplet,taskScheduleChanged,void,Y,N,N,public);
+Generalisation(newGanttApplet,GanttApplet);
+end b115
+start b116
+Class(newJPaintList,N,N,public);
+end b116
+start b117
+Class(newnewnewGanttChartExportData,N,N,public);
+end b117
+start b118
+Class(newHttpDocumentOutputStream,N,N,package);
+end b118
+start b119
+Attribute(newnewnewChartModelImpl,myAtomUnitPixels,int,N,private);
+Class(newnewnewChartModelImpl,N,N,public);
+end b119
+start b120
+Class(RangeSearchFromKey,N,N,private);
+Method(RangeSearchFromKey,getSeparat,String,N,N,N,public);
+Generalisation(RangeSearchFromKey,newChartModelImpl);
+Parameter(GanttResourcePanel,setTree,tree,GanttTree,declaration);
+Parameter(GanttChartExportData,dependencyRemoved,e,TaskDependencyEvent,declaration);
+Relation(RangeSearchFromKey;getSeparat;getText,JTextComponent,N);
+Relation(RangeSearchFromKey;getSeparat;isSelected,AbstractButton,N);
+Relation(RangeSearchFromKey;getSeparat;createNewProject,newnewnewMutableTaskDependencyCollection,type);
+Relation(RangeSearchFromKey;getSeparat;taskRemoved,newnewTaskManagerImpl,type);
+Relation(RangeSearchFromKey;getSeparat;load,newGanttTXTOpen,type);
+end b120
+start b121
+Class(newnewDeleteHumanAction,N,N,public);
+end b121
+start b122
+Class(newnewnewResourceAssignment,N,N,public);
+end b122
+start b123
+Class(newnewnewProgressBarPanel,N,N,private);
+Method(ResourceAssignmentCollection,getAssignment,ResourceAssignment,Y,N,N,package);
+Relation(newnewnewProgressBarPanel;getAssignment;getDefaultColor,newDeleteHumanAction,type);
+end b123
+start b124
+Attribute(newGraphicPrimitive,date,GanttCalendar,N,public);
+Class(newGraphicPrimitive,N,static,package);
+Method(newGraphicPrimitive,getPreferredSize,Dimension,N,N,N,public);
+Method(newGraphicPrimitive,getContext,ResourceContext,N,N,N,private);
+Parameter(NewProjectWizard,clickFunction,tmpdateGanttCalendar,local);
+Relation(newGraphicPrimitive;getContext;getConfig,newGanttChartExportData,type);
+Relation(newGraphicPrimitive;getContext;print,newTaskManagerImpl,type);
+Relation(newGraphicPrimitive;getPreferredSize;setResourceActions,AbstractDocument,type);
+end b124
+start b125
+Attribute(WizardImpl,mynewnewnewTaskManagerImpl,newnewnewTaskManagerImpl,N,private);
+Class(newnewnewTaskManagerImpl,N,N,public);
+end b125
+start b126
+Class(newnewnewnewMutableTaskDependencyCollection,N,N,public);
+Generalisation(newnewnewnewMutableTaskDependencyCollection,GanttApplet);
+end b126
+start b127
+Attribute(newnewDeprecatedProjectExportData,jbNextMonth,JButton,N,private);
+Class(newnewDeprecatedProjectExportData,N,N,public);
+end b127
+start b128
+Class(newnewnewnewnewnewMutableTaskDependencyCollection,N,N,public);
+end b128
+start b129
+Class(newnewnewProgressBarPanel,N,N,private);
+Method(newnewnewProgressBarPanel,getTask,Task,N,N,N,package);
+end b129
+start b130
+Class(newGanttDialogDate,N,N,public);
+Method(newGanttDialogDate,getURLPath,String,N,N,N,public);
+Relation(newGanttDialogDate;getURLPath;auxAddAssignment,newParsingContext,type);
+Relation(newGanttDialogDate;getURLPath;getChartHeader,newnewnewnewnewMutableTaskDependencyCollection,type);
+end b130
+start b131
+Class(newnewnewnewProgressBarPanel,N,N,private);
+end b131
+start b132
+Attribute(newnewnewProgressBarPanel,jbPrevYear,JButton,N,private);
+Class(newnewnewProgressBarPanel,N,N,private);
+Parameter(GanttResourcePanel,getNameByNumber,peopleHumanResource,local);
+Parameter(newTaskListenerAdapter,getValueAt,peopleHumanResource,local);
+Parameter(newTaskContainmentHierarchyFacadeImpl,setResourceActions,actionSet,ResourceActionSet,declaration);
+Parameter(GanttTXTOpen,GanttTXTOpen,gra,GanttGraphicArea,declaration);
+Parameter(PrjInfos,PrjInfos,sProjectName,String,declaration);
+end b132
+start b133
+Attribute(newnewGanttPanelDate,treePanel,GanttTree,N,package);
+Class(newnewGanttPanelDate,N,N,public);
+end b133
+start b134
+Attribute(newCSVSettingsPanel,cbStartDate,JCheckBox,N,package);
+Attribute(newCSVSettingsPanel,cbResRole,JCheckBox,N,package);
+Attribute(newCSVSettingsPanel,cbResPhone,JCheckBox,N,package);
+Attribute(newCSVSettingsPanel,cbResName,JCheckBox,N,package);
+Attribute(newCSVSettingsPanel,cbResMail,JCheckBox,N,package);
+Attribute(newCSVSettingsPanel,myProjectFrame,GanttProject,N,private);
+Class(newCSVSettingsPanel,N,N,public);
+Method(newCSVSettingsPanel,getTaskPercent,boolean,N,N,N,public);
+Method(newCSVSettingsPanel,getTaskNotes,boolean,N,N,N,public);
+Method(newCSVSettingsPanel,getTaskED,boolean,N,N,N,public);
+Method(newCSVSettingsPanel,getResourceRole,boolean,N,N,N,public);
+Relation(newCSVSettingsPanel;getResourceRole;isSelected,AbstractButton,N);
+Relation(newCSVSettingsPanel;getTaskED;isSelected,AbstractButton,N);
+Relation(newCSVSettingsPanel;getTaskNotes;isSelected,AbstractButton,N);
+Relation(newCSVSettingsPanel;getTaskPercent;isSelected,AbstractButton,N);
+end b134
+start b135
+Attribute(newTaskListenerAdapter,jbPrevMonth,JButton,N,private);
+Attribute(newTaskListenerAdapter,ddd,GanttDialogDateDay,N,private);
+Class(newTaskListenerAdapter,abstract,N,public);
+Method(newTaskListenerAdapter,fireTaskScheduleChanged,void,Y,N,N,package);
+Generalisation(newTaskListenerAdapter,newnewChartModelImpl);
+Method(newTaskListenerAdapter,increaseMaxID,void,N,N,N,package);
+Generalisation(newTaskListenerAdapter,newnewnewnewMutableTaskDependencyCollection);
+Relation(newTaskListenerAdapter;increaseMaxID;increaseMaxID,newTaskListenerAdapter,type);
+Relation(TaskImpl;setDuration;fireTaskScheduleChanged,newTaskListenerAdapter,Task-GanttCalendar-GanttCalendar);
+Relation(TaskImpl;setEnd;fireTaskScheduleChanged,newTaskListenerAdapter,Task-GanttCalendar-GanttCalendar);
+Relation(newTaskListenerAdapter;fireTaskScheduleChanged;get,List,int);
+Relation(newTaskListenerAdapter;fireTaskScheduleChanged;getEnd,Task,N);
+Relation(newTaskListenerAdapter;fireTaskScheduleChanged;getStart,Task,N);
+Relation(newTaskListenerAdapter;fireTaskScheduleChanged;size,List,N);
+Relation(newTaskListenerAdapter;fireTaskScheduleChanged;taskScheduleChanged,TaskListener,TaskScheduleEvent);
+Relation(newTaskListenerAdapter;fireTaskScheduleChanged;getChartHeader,newnewnewnewnewMutableTaskDependencyCollection,type);
+Relation(newTaskListenerAdapter;fireTaskScheduleChanged;applyChanges,newnewnewJPaintList,type);
+Relation(newTaskListenerAdapter;fireTaskScheduleChanged;clear,newnewnewJPaintList,type);
+end b135
+start b136
+Class(newnewnewnewGanttDialogDate,N,N,public);
+Generalisation(newnewnewnewGanttDialogDate,MouseOverHandler);
+Parameter(AbstractDocument,TaskManagerImpl,config,TaskManagerConfig,declaration);
+end b136
+start b137
+Attribute(newnewGanttPanelDate,jbNextYear,JButton,N,private);
+Class(newnewGanttPanelDate,N,N,public);
+end b137
+start b138
+Class(newnewnewnewnewGanttDialogDate,N,N,public);
+end b138
+start b139
+Attribute(Shape,patternList,newCSVSettingsPanel,N,protected);
+Attribute(GanttXMLOpen,myContext,newCSVSettingsPanel,N,private);
+Attribute(newCSVSettingsPanel,cbTaskNotes,JCheckBox,N,package);
+Attribute(newCSVSettingsPanel,cbTaskName,JCheckBox,N,package);
+Attribute(newCSVSettingsPanel,cbTaskID,JCheckBox,N,package);
+Class(newCSVSettingsPanel,N,N,public);
+Method(newCSVSettingsPanel,getTaskSD,boolean,N,N,N,public);
+Method(newCSVSettingsPanel,getTaskResources,boolean,N,N,N,public);
+Parameter(GanttTXTOpen,load,f,File,declaration);
+Relation(newCSVSettingsPanel;getTaskResources;isSelected,AbstractButton,N);
+end b139
+start b140
+Attribute(newnewnewnewMutableTaskDependencyCollection,myFilename,String,N,package);
+Class(newnewnewnewMutableTaskDependencyCollection,N,N,public);
+end b140
+start b141
+Class(newBackAction,N,N,public);
+Generalisation(newBackAction,newnewResourceAssignment);
+end b141
+start b142
+Class(newnewHTMLSettingsPanel,N,N,public);
+end b142
+start b143
+Attribute(newDeleteHumanAction,_sOrganization,String,N,public);
 Class(newDeleteHumanAction,N,N,public);
-end b65
-start b66
+end b143
+start b144
+Class(newProgressBarPanel,N,N,private);
+Generalisation(newProgressBarPanel,newAbstractDocument);
+Generalisation(newProgressBarPanel,newTaskListenerAdapter);
+Generalisation(newProgressBarPanel,newnewnewGanttDialogDate);
+Generalisation(newProgressBarPanel,newnewnewnewMutableTaskDependencyCollection);
+end b144
+start b145
+Class(newDeleteHumanAction,N,N,public);
+Generalisation(newDeleteHumanAction,newGanttApplet);
+Method(newDeleteHumanAction,FacadeImpl,N,Y,N,N,public);
+Method(newDeleteHumanAction,resourceAdded,void,Y,N,N,public);
+Method(newDeleteHumanAction,getWebLink,String,N,N,N,public);
+Parameter(TaskManagerImpl,fireTaskScheduleChanged,oldFinishDate,GanttCalendar,declaration);
+Parameter(GanttPrintable,HTMLSettingsPanel,defaultPanelJPanel,local);
+Relation(newDeleteHumanAction;resourceAdded;newHuman,newGanttResourcePanel,HumanResource);
+Relation(newDeleteHumanAction;FacadeImpl;RangeSearchFromKey,newCSVSettingsPanel,type);
+Relation(newDeleteHumanAction;FacadeImpl;createDependency,newTaskManagerImpl,type);
+Relation(newDeleteHumanAction;FacadeImpl;increaseMaxID,newTaskListenerAdapter,type);
+end b145
+start b146
+Parameter(GanttTXTOpen,load,s,TaskNameString,local);
+Class(newGanttPanelDate,N,N,public);
+Method(newGanttPanelDate,createTask,GanttTask,N,N,N,public);
+Relation(newGanttPanelDate;createTask;createTask,newGanttPanelDate,type);
+end b146
+start b147
+Class(newnewnewnewnewGanttDialogDate,N,N,public);
+end b147
+start b148
+Class(newGanttApplet,N,N,public);
+end b148
+start b149
+Attribute(newCSVSettingsPanel,_sProjectName,String,N,public);
+Attribute(newCSVSettingsPanel,area,ResourceLoadGraphicArea,N,public);
+Class(newCSVSettingsPanel,N,N,public);
+Method(newCSVSettingsPanel,dependencyAdded,void,Y,N,N,public);
+end b149
+start b150
+Class(newGanttApplet,N,N,public);
+end b150
+start b151
+Class(newnewDeprecatedProjectExportData,N,N,public);
+end b151
+start b152
+Class(newGanttChartExportData,N,N,public);
+Method(newGanttChartExportData,fireDependencyAdded,void,Y,N,N,private);
+Parameter(newGanttChartExportData,fireDependencyAdded,nextTaskListener,local);
+Relation(newTaskManagerImpl;TaskManagerImpl;fireDependencyAdded,newGanttChartExportData,TaskDependency);
+Relation(newGanttChartExportData;fireDependencyAdded;dependencyAdded,TaskListener,TaskDependencyEvent);
+Relation(newGanttChartExportData;fireDependencyAdded;get,List,int);
+Relation(newGanttChartExportData;fireDependencyAdded;getDependencyCollection,newnewTaskManagerImpl,N);
+end b152
+start b153
+Class(newGanttChartExportData,N,N,public);
+Generalisation(newGanttChartExportData,newnewGanttDialogDate);
+end b153
+start b154
+Class(newnewChartModelImpl,N,N,public);
+end b154
+start b155
+Class(newnewnewBackAction,N,N,public);
+end b155
+start b156
+Class(newnewJPaintList,N,N,public);
+end b156
+start b157
+Class(newnewJPaintList,N,N,public);
+end b157
+start b158
+Class(newBackAction,N,N,public);
+Parameter(GanttResourcePanel,getValueAt,col,int,declaration);
+Parameter(newDeleteHumanAction,PrjInfos,sDescription,String,declaration);
+Parameter(ProgressBarPanel,print,graphics,Graphics,declaration);
+Parameter(RangeSearchFromKey,print,g2dGraphics2D,local);
+end b158
+start b159
+Attribute(newnewnewMutableTaskDependencyCollection,myProject,GanttProject,N,package);
+Attribute(newnewnewMutableTaskDependencyCollection,vbar,JScrollBar,N,package);
+Class(newnewnewMutableTaskDependencyCollection,N,N,public);
+Method(NewProjectWizard,createNewProject,PrjInfos,Y,N,N,public);
+end b159
+start b160
+Attribute(newGraphicPrimitive,myTree,GanttTree,N,package);
+Attribute(GanttXMLOpen,peop,newGraphicPrimitive,N,package);
+Attribute(newGraphicPrimitive,myStartDate,Date,N,private);
+Attribute(newGraphicPrimitive,myId2task,Map,N,private);
+Class(newGraphicPrimitive,N,static,package);
+end b160
+start b161
+Class(newMouseOverHandler,N,N,package);
+end b161
+start b162
+Class(newnewnewnewnewGanttTransferableTreePath,N,static,private);
+end b162
+start b163
+Class(newCSVSettingsPanel,N,N,public);
+end b163
+start b164
+Class(newnewnewTaskManagerImpl,N,N,public);
+end b164
+start b165
+Class(newNewProjectWizard,N,N,public);
+Method(newNewProjectWizard,clickFunction,void,Y,N,N,public);
+Parameter(newNewProjectWizard,clickFunction,x,int,declaration);
+Relation(newNewProjectWizard;clickFunction;changeDate,newnewMutableTaskDependencyCollection,GregorianCalendar);
+Relation(newNewProjectWizard;clickFunction;Clone,GanttCalendar,N);
+Relation(newNewProjectWizard;clickFunction;equals,String,Object);
+Relation(newNewProjectWizard;clickFunction;getDay,GanttLanguage,int);
+Relation(newNewProjectWizard;clickFunction;go,GanttCalendar,int-int);
+Relation(newNewProjectWizard;clickFunction;repaint,Component,N);
+Relation(newNewProjectWizard;clickFunction;setDay,GanttCalendar,int);
+Relation(newNewProjectWizard;clickFunction;applyChanges,newnewnewJPaintList,type);
+end b165
+start b166
+Class(newnewnewnewnewnewMutableTaskDependencyCollection,N,N,public);
+end b166
+start b167
+Class(newnewnewMutableTaskDependencyCollection,N,N,public);
+Generalisation(newnewnewMutableTaskDependencyCollection,GanttTXTOpen);
+Method(newnewnewMutableTaskDependencyCollection,getTaskDuration,boolean,N,N,N,public);
+Relation(AbstractDocument;applyChanges;getTaskDuration,newnewnewMutableTaskDependencyCollection,N);
+Relation(newnewnewMutableTaskDependencyCollection;getTaskDuration;isSelected,AbstractButton,N);
+Relation(newnewnewMutableTaskDependencyCollection;getTaskDuration;setUserInfo,newMutableTaskDependencyCollection,type);
+end b167
+start b168
+Class(newGanttChartExportData,N,N,public);
+end b168
+start b169
+Attribute(TaskImpl,myManager,newTaskManagerImpl,N,private);
+Class(newDeprecatedProjectExportData,N,N,public);
+Method(newDeprecatedProjectExportData,fireTaskRemoved,void,Y,N,N,private);
+Parameter(AbstractDocument,setLoad,load,float,declaration);
+Relation(newDeprecatedProjectExportData;fireTaskRemoved;get,List,int);
+Relation(newDeprecatedProjectExportData;fireTaskRemoved;size,List,N);
+Relation(newDeprecatedProjectExportData;fireTaskRemoved;GanttChartExportData,newnewMutableTaskDependencyCollection,type);
+end b169
+start b170
+Class(newnewGanttApplet,N,N,public);
+end b170
+start b171
+Class(newGanttPrintable,N,N,public);
+Method(newGanttPrintable,setBottomUnitWidth,void,Y,N,N,public);
+Method(newGanttPrintable,rollDate,void,Y,N,N,private);
+Relation(newGanttPrintable;rollDate;getTime,Calendar,N);
+Relation(newGanttPrintable;rollDate;repaint,Component,N);
+Relation(newGanttPrintable;rollDate;setValue,JFormattedTextField,Object);
+Relation(newGanttPrintable;rollDate;taskMoved,newnewnewGanttTransferableTreePath,type);
+Relation(newGanttPrintable;rollDate;deleteDependency,newGanttTransferableTreePath,type);
+Relation(newGanttPrintable;setBottomUnitWidth;actionPerformed,newGanttResourcePanel,type);
+Relation(newGanttPrintable;setBottomUnitWidth;delete,newnewBackAction,type);
+end b171
+start b172
+Class(newnewnewnewProgressBarPanel,N,N,private);
+end b172
+start b173
+Attribute(newCSVSettingsPanel,cbTaskWebLink,JCheckBox,N,package);
+Class(newCSVSettingsPanel,N,N,public);
+end b173
+start b174
+Class(newnewBackAction,N,N,public);
+Method(newnewBackAction,delete,void,N,N,N,package);
+Relation(newnewBackAction;delete;getContainer,DeprecatedProjectExportData,type);
+end b174
+start b175
+Attribute(newnewBackAction,MENU_MASK,int,N,private);
+Attribute(newnewBackAction,appli,GanttProject,N,package);
+Class(newnewBackAction,N,N,public);
+Parameter(GanttResourcePanel,newHuman,people,HumanResource,declaration);
+end b175
+start b176
+Class(newGanttChartExportData,N,N,public);
+Generalisation(newGanttChartExportData,newJPaintList);
+Parameter(AbstractDocument,fireDependencyRemoved,nextTaskListener,local);
+end b176
+start b177
+Attribute(newnewnewnewMutableTaskDependencyCollection,myTimeUnitManager,TimeUnitManager,N,private);
+Attribute(newnewnewnewMutableTaskDependencyCollection,language,GanttLanguage,N,package);
+Class(newnewnewnewMutableTaskDependencyCollection,N,N,public);
+Method(newnewnewnewMutableTaskDependencyCollection,getFilePath,String,N,N,N,public);
+Method(newnewnewnewMutableTaskDependencyCollection,getTaskName,boolean,N,N,N,public);
+Method(newnewnewnewMutableTaskDependencyCollection,actionPerformed,void,Y,N,N,public);
+Relation(newnewnewnewMutableTaskDependencyCollection;actionPerformed;deleteResources,newnewnewnewGanttTransferableTreePath,ProjectResource[]);
+Relation(newnewnewnewMutableTaskDependencyCollection;actionPerformed;getLanguage,ResourceAction,N);
+Relation(newnewnewnewMutableTaskDependencyCollection;actionPerformed;getProjectFrame,TaskManagerImpl,N);
+Relation(newnewnewnewMutableTaskDependencyCollection;actionPerformed;refreshProjectInfos,GanttProject,N);
+Relation(newnewnewnewMutableTaskDependencyCollection;actionPerformed;setSelectedIndex,JTabbedPane,int);
+Relation(newnewnewnewMutableTaskDependencyCollection;actionPerformed;show,Dialog,N);
+Relation(newnewnewnewMutableTaskDependencyCollection;actionPerformed;getOrganization,AbstractDocument,type);
+Relation(newnewnewnewMutableTaskDependencyCollection;getTaskName;isSelected,AbstractButton,N);
+Relation(newnewnewnewMutableTaskDependencyCollection;getFilePath;TaskManagerImpl,newnewnewnewnewnewMutableTaskDependencyCollection,type);
+Relation(newnewnewnewMutableTaskDependencyCollection;actionPerformed;getSelectedPaint,newnewnewProgressBarPanel,type);
+end b177
+start b178
+Class(newnewnewnewnewMutableTaskDependencyCollection,N,N,public);
+Method(newnewnewnewnewMutableTaskDependencyCollection,getChartHeader,ChartHeader,N,N,N,public);
+Method(newnewnewnewnewMutableTaskDependencyCollection,unselectOther,void,Y,N,N,public);
+Relation(newMutableTaskDependencyCollection;initialize;unselectOther,newnewnewnewnewMutableTaskDependencyCollection,JRadioButton);
+Relation(newnewnewnewnewMutableTaskDependencyCollection;unselectOther;setSelected,AbstractButton,boolean);
+Relation(newnewnewnewnewMutableTaskDependencyCollection;unselectOther;acquireLock,GanttDialogDate,type);
+Relation(newnewnewnewnewMutableTaskDependencyCollection;getChartHeader;FacadeImpl,newDeleteHumanAction,type);
+Relation(newnewnewnewnewMutableTaskDependencyCollection;getChartHeader;getRowCount,newnewMutableTaskDependencyCollection,type);
+Relation(newnewnewnewnewMutableTaskDependencyCollection;getChartHeader;ChartModelImpl,newnewnewChartModelImpl,type);
+end b178
+start b179
+Class(newnewnewGanttDialogDate,N,N,public);
+end b179
+start b180
+Class(newnewnewnewProgressBarPanel,N,N,private);
+end b180
+start b181
+Attribute(newnewGanttChartExportData,myTimeUnitStack,GregorianTimeUnitStack,N,private);
+Attribute(newnewGanttChartExportData,myDependencyCollection,TaskDependencyCollectionImpl,N,private);
+Class(newnewGanttChartExportData,N,N,public);
+Method(newnewGanttChartExportData,createTask,GanttTask,Y,N,N,public);
+Method(newnewGanttChartExportData,refresh,void,Y,N,N,public);
+Relation(newnewGanttChartExportData;refresh;increaseMaxID,newTaskListenerAdapter,type);
+Relation(newnewGanttChartExportData;refresh;getFilePath,newnewnewnewMutableTaskDependencyCollection,type);
+Relation(newnewGanttChartExportData;refresh;taskRemoved,newnewTaskManagerImpl,type);
+Relation(newnewGanttChartExportData;createTask;createTask,newTaskManagerImpl,int);
+Relation(newnewGanttChartExportData;createTask;fireTaskAdded,newTaskManagerImpl,Task);
+Relation(newnewGanttChartExportData;createTask;getMaxID,newnewTaskManagerImpl,N);
+Relation(newnewGanttChartExportData;createTask;getRootTask,AbstractDocument,N);
+Relation(newnewGanttChartExportData;createTask;getTaskID,TaskImpl,N);
+Relation(newnewGanttChartExportData;createTask;move,TaskImpl,Task);
+Relation(newnewGanttChartExportData;createTask;setTaskID,GanttTask,int);
+Relation(newnewGanttChartExportData;createTask;ChartModelImpl,newnewnewChartModelImpl,type);
+end b181
+start b182
+Attribute(newGanttResourcePanel,myChartUIConfiguration,ChartUIConfiguration,N,private);
+Attribute(GanttCSVExport,prjInfos,newGanttResourcePanel,N,private);
+Attribute(GanttProject,myCachedFacade,newGanttResourcePanel,N,private);
+Attribute(newGanttResourcePanel,cx,int,N,package);
+Attribute(newGanttResourcePanel,fileLocation,String,N,private);
+Class(newGanttResourcePanel,N,N,public);
+Method(newGanttResourcePanel,getColumnCount,int,N,N,N,public);
+Method(newGanttResourcePanel,downResource,void,N,N,N,public);
+Method(newGanttResourcePanel,deleteRows,void,Y,N,N,public);
+Method(newGanttResourcePanel,deleteHuman,void,Y,N,N,public);
+Method(newGanttResourcePanel,changePeople,void,Y,N,N,public);
+Method(newGanttResourcePanel,changeLanguage,void,Y,N,N,public);
+Method(newGanttResourcePanel,addHumans,void,Y,N,N,public);
+Method(newGanttResourcePanel,GanttTableModel,N,Y,N,N,package);
+Method(newGanttResourcePanel,GanttResourcePanel,N,Y,N,N,public);
+Method(GanttProject,getResourcePanel,GanttResourcePanel,N,N,N,public);
+Method(newGanttResourcePanel,createNewProject,PrjInfos,Y,N,N,public);
+Method(newGanttResourcePanel,adjustmentValueChanged,void,Y,N,N,public);
+Method(newGanttResourcePanel,NewProjectWizard,N,Y,N,N,public);
+Method(newGanttResourcePanel,getBottomUnitWidth,int,N,N,N,package);
+Method(newGanttResourcePanel,deleteRow,void,Y,N,N,public);
+Method(newGanttResourcePanel,getDisplayName,String,Y,N,N,private);
+Method(newGanttResourcePanel,DeprecatedProjectExportData,N,Y,N,N,public);
+Method(newGanttResourcePanel,GanttDialogDateDay,N,Y,N,N,public);
+Method(newGanttResourcePanel,moveDown,boolean,Y,N,N,public);
+Parameter(newGanttResourcePanel,deleteRows,rowint,local);
+Parameter(newGanttResourcePanel,deleteRows,nextDataObject,local);
+Parameter(newGanttResourcePanel,deleteRows,deletedSetSet,local);
+Parameter(newGanttResourcePanel,deleteRows,deleted,ProjectResource[],declaration);
+Parameter(newGanttResourcePanel,deleteHuman,peopleHumanResource,local);
+Parameter(newGanttResourcePanel,deleteHuman,parent,GanttProject,declaration);
+Parameter(newGanttResourcePanel,deleteHuman,gdiGanttDialogInfo,local);
+Parameter(newGanttResourcePanel,changePeople,list,ArrayList,declaration);
+Parameter(newGanttResourcePanel,changeLanguage,language,GanttLanguage,declaration);
+Parameter(newGanttResourcePanel,changeLanguage,colsString[],local);
+Parameter(newGanttResourcePanel,addHumans,humans,ArrayList,declaration);
+Parameter(newGanttResourcePanel,GanttTableModel,language,GanttLanguage,declaration);
+Parameter(newGanttResourcePanel,GanttResourcePanel,tree,GanttTree,declaration);
+Parameter(newGanttResourcePanel,GanttResourcePanel,splitPaneJSplitPane,local);
+Parameter(newGanttResourcePanel,GanttResourcePanel,selRowint,local);
+Parameter(newGanttResourcePanel,GanttResourcePanel,selColint,local);
+Parameter(newGanttResourcePanel,GanttResourcePanel,prj,GanttProject,declaration);
+Parameter(newGanttResourcePanel,GanttResourcePanel,pPoint,local);
+Parameter(newGanttResourcePanel,GanttResourcePanel,mlMouseListener,local);
+Parameter(newGanttResourcePanel,GanttResourcePanel,butGanttImagePanel,local);
+Parameter(newGanttResourcePanel,createNewProject,newProjectWizardNewProjectWizardWindow,local);
+Parameter(newGanttResourcePanel,createNewProject,project,IGanttProject,declaration);
+Parameter(newGanttResourcePanel,adjustmentValueChanged,e,AdjustmentEvent,declaration);
+Parameter(newGanttResourcePanel,deleteRow,row,int,declaration);
+Parameter(newGanttResourcePanel,getDisplayName,resultStringBuffer,local);
+Parameter(newGanttResourcePanel,DeprecatedProjectExportData,myXslFoScript,String,declaration);
+Parameter(newGanttResourcePanel,DeprecatedProjectExportData,myTree,GanttTree,declaration);
+Parameter(newGanttResourcePanel,DeprecatedProjectExportData,myProject,GanttProject,declaration);
+Parameter(newGanttResourcePanel,DeprecatedProjectExportData,myGanttChart,GanttGraphicArea,declaration);
+Parameter(newGanttResourcePanel,DeprecatedProjectExportData,myFilename,String,declaration);
+Parameter(newGanttResourcePanel,DeprecatedProjectExportData,myExportOptions,GanttExportSettings,declaration);
+Parameter(newGanttResourcePanel,moveDown,row,int,declaration);
+Parameter(newGanttResourcePanel,moveDown,objObject,local);
+Relation(newGanttResourcePanel;moveDown;add,ArrayList,int-Object);
+Relation(newGanttResourcePanel;moveDown;fireTableDataChanged,AbstractTableModel,N);
+Relation(newGanttResourcePanel;moveDown;size,ArrayList,N);
+Relation(newGanttResourcePanel;GanttDialogDateDay;clickFunction,GanttDialogDateDay,int-int);
+Relation(newGanttResourcePanel;GanttDialogDateDay;getX,MouseEvent,N);
+Relation(newGanttResourcePanel;GanttDialogDateDay;getY,MouseEvent,N);
+Relation(newnewnewnewMutableTaskDependencyCollection;actionPerformed;getDisplayName,newGanttResourcePanel,ProjectResource[]);
+Relation(newGanttResourcePanel;getDisplayName;append,StringBuffer,String);
+Relation(newGanttResourcePanel;getDisplayName;toString,ProjectResource,N);
+Relation(newGanttResourcePanel;getDisplayName;toString,StringBuffer,N);
+Relation(newGanttResourcePanel;getDisplayName;getTaskID,newResourceAssignment,type);
+Relation(newGanttResourcePanel;deleteRow;fireTableRowsDeleted,AbstractTableModel,int-int);
+Relation(newGanttResourcePanel;deleteRow;remove,ArrayList,int);
+Relation(newGanttResourcePanel;deleteRows;asList,Arrays,ProjectResource[]);
+Relation(newGanttResourcePanel;deleteRows;contains,Set,Object);
+Relation(newGanttResourcePanel;deleteRows;fireTableRowsDeleted,AbstractTableModel,int-int);
+Relation(newGanttResourcePanel;deleteRows;hasNext,Iterator,N);
+Relation(newGanttResourcePanel;deleteRows;iterator,ArrayList,N);
+Relation(newGanttResourcePanel;deleteRows;next,Iterator,N);
+Relation(newGanttResourcePanel;deleteRows;remove,Iterator,N);
+Relation(newGanttResourcePanel;NewProjectWizard;GanttTXTOpen,ParsingContext,type);
+Relation(newGanttResourcePanel;adjustmentValueChanged;getValue,AdjustmentEvent,N);
+Relation(newGanttResourcePanel;adjustmentValueChanged;repaint,Component,N);
+Relation(newGanttResourcePanel;adjustmentValueChanged;setScrollBar,ResourceLoadGraphicArea,int);
+Relation(GanttProject;showNewProjectWizard;createNewProject,newGanttResourcePanel,IGanttProject);
+Relation(newGanttResourcePanel;createNewProject;addProjectNamePage,NewProjectWizardWindow,IGanttProject);
+Relation(newGanttResourcePanel;createNewProject;addRoleSetPage,NewProjectWizardWindow,RoleSet[]);
+Relation(newGanttResourcePanel;createNewProject;getRoleManager,IGanttProject,N);
+Relation(newGanttResourcePanel;createNewProject;getRoleSets,RoleManager,N);
+Relation(newGanttResourcePanel;createNewProject;show,WizardImpl,N);
+Relation(newGanttResourcePanel;GanttResourcePanel;add,Container,Component-Object);
+Relation(newGanttResourcePanel;GanttResourcePanel;addAdjustmentListener,JScrollBar,AdjustmentListener);
+Relation(newGanttResourcePanel;GanttResourcePanel;addMouseListener,Component,MouseListener);
+Relation(newGanttResourcePanel;GanttResourcePanel;applyComponentOrientation,Container,ComponentOrientation);
+Relation(newGanttResourcePanel;GanttResourcePanel;columnAtPoint,JTable,Point);
+Relation(newGanttResourcePanel;GanttResourcePanel;getButton,MouseEvent,N);
+Relation(newGanttResourcePanel;GanttResourcePanel;getClickCount,MouseEvent,N);
+Relation(newGanttResourcePanel;GanttResourcePanel;getDefaultToolkit,Toolkit,N);
+Relation(newGanttResourcePanel;GanttResourcePanel;getInstance,GanttLanguage,N);
+Relation(newGanttResourcePanel;GanttResourcePanel;getPreferredSize,JComponent,N);
+Relation(newGanttResourcePanel;GanttResourcePanel;getVerticalScrollBar,JScrollPane,N);
+Relation(newGanttResourcePanel;GanttResourcePanel;getViewport,JScrollPane,N);
+Relation(newGanttResourcePanel;GanttResourcePanel;getWidth,Dimension,N);
+Relation(newGanttResourcePanel;GanttResourcePanel;getX,MouseEvent,N);
+Relation(newGanttResourcePanel;GanttResourcePanel;getY,MouseEvent,N);
+Relation(newGanttResourcePanel;GanttResourcePanel;propertiesHuman,newGanttResourcePanel,GanttProject);
+Relation(newGanttResourcePanel;GanttResourcePanel;rowAtPoint,JTable,Point);
+Relation(newGanttResourcePanel;GanttResourcePanel;setBackground,JComponent,Color);
+Relation(newGanttResourcePanel;GanttResourcePanel;setDividerLocation,JSplitPane,int);
+Relation(newGanttResourcePanel;GanttResourcePanel;setLayout,Container,LayoutManager);
+Relation(newGanttResourcePanel;GanttResourcePanel;setOneTouchExpandable,JSplitPane,boolean);
+Relation(newGanttResourcePanel;GanttResourcePanel;setPreferredSize,JComponent,Dimension);
+Relation(newGanttResourcePanel;GanttResourcePanel;setRightComponent,JSplitPane,Component);
+Relation(newGanttResourcePanel;GanttResourcePanel;setRowHeight,JTable,int);
+Relation(newGanttResourcePanel;GanttResourcePanel;setSelectionMode,JTable,int);
+Relation(newGanttResourcePanel;GanttTableModel;changeLanguage,GanttTableModel,GanttLanguage);
+Relation(newGanttResourcePanel;GanttTableModel;getChartHeader,newnewnewnewnewMutableTaskDependencyCollection,type);
+Relation(newGanttResourcePanel;addHumans;get,ArrayList,int);
+Relation(newGanttResourcePanel;addHumans;newHuman,newGanttResourcePanel,HumanResource);
+Relation(newGanttResourcePanel;addHumans;size,ArrayList,N);
+Relation(newGanttResourcePanel;changeLanguage;add,ArrayList,Object);
+Relation(newGanttResourcePanel;changeLanguage;clear,ArrayList,N);
+Relation(newGanttResourcePanel;changeLanguage;fireTableRowsUpdated,AbstractTableModel,int-int);
+Relation(newGanttResourcePanel;changeLanguage;fireTableStructureChanged,AbstractTableModel,N);
+Relation(newGanttResourcePanel;changeLanguage;getText,GanttLanguage,String);
+Relation(newGanttResourcePanel;changeLanguage;size,ArrayList,N);
+Relation(newGanttResourcePanel;changePeople;fireTableDataChanged,AbstractTableModel,N);
+Relation(newGanttResourcePanel;deleteHuman;deleteRow,GanttTableModel,int);
+Relation(newGanttResourcePanel;deleteHuman;get,ArrayList,int);
+Relation(newGanttResourcePanel;deleteHuman;getText,GanttLanguage,String);
+Relation(newGanttResourcePanel;deleteHuman;setAskForSave,GanttProject,boolean);
+Relation(newGanttResourcePanel;deleteHuman;show,Dialog,N);
+Relation(newGanttResourcePanel;deleteHuman;size,ArrayList,N);
+Relation(newGanttResourcePanel;deleteHuman;toString,ProjectResource,N);
+Relation(GanttProject;downDatas;downResource,newGanttResourcePanel,N);
+Relation(newGanttResourcePanel;downResource;changeSelection,JTable,int-int-boolean-boolean);
+Relation(newGanttResourcePanel;downResource;down,HumanResourceManager,int);
+Relation(newGanttResourcePanel;downResource;get,ArrayList,int);
+Relation(newGanttResourcePanel;downResource;getHumanResourceManager,GanttProject,N);
+Relation(newGanttResourcePanel;downResource;moveDown,GanttTableModel,int);
+Relation(newGanttResourcePanel;downResource;println,PrintStream,String);
+Relation(newGanttResourcePanel;downResource;size,ArrayList,N);
+Relation(newGanttResourcePanel;getColumnCount;size,ArrayList,N);
+Relation(newGanttResourcePanel;getColumnCount;GanttChartExportData,newnewMutableTaskDependencyCollection,type);
+end b182
+start b183
+Class(newMutableTaskDependencyCollection,N,N,public);
+Method(newMutableTaskDependencyCollection,HTMLSettingsPanel,N,Y,N,N,public);
+Method(newMutableTaskDependencyCollection,initialize,void,N,N,N,public);
+Method(newMutableTaskDependencyCollection,setUserInfo,void,Y,N,N,public);
+Parameter(GanttResourcePanel,getUserByNumber,id,int,declaration);
+Method(ResourceAssignmentCollectionImpl,getAssignment,ResourceAssignment,Y,N,N,public);
+Relation(newMutableTaskDependencyCollection;getAssignment;dependencyAdded,newCSVSettingsPanel,type);
+Relation(newMutableTaskDependencyCollection;getAssignment;close,newnewProgressBarPanel,type);
+Relation(newMutableTaskDependencyCollection;setUserInfo;PrjInfos,newnewnewJPaintList,type);
+Relation(newMutableTaskDependencyCollection;initialize;equals,String,Object);
+Relation(newMutableTaskDependencyCollection;initialize;getCSVOptions,GanttOptions,N);
+Relation(newMutableTaskDependencyCollection;initialize;setSelected,AbstractButton,boolean);
+Relation(newMutableTaskDependencyCollection;initialize;setSelectedIndex,JComboBox,int);
+Relation(newMutableTaskDependencyCollection;initialize;setText,JTextComponent,String);
+Relation(newMutableTaskDependencyCollection;initialize;setTopTimeUnit,newnewDeleteHumanAction,type);
+Relation(newMutableTaskDependencyCollection;initialize;getAlgorithmCollection,newnewDeleteHumanAction,type);
+Relation(newMutableTaskDependencyCollection;initialize;actionPerformed,newnewnewnewMutableTaskDependencyCollection,type);
+Relation(newMutableTaskDependencyCollection;initialize;GanttApplet,AbstractDocument,type);
+Relation(newMutableTaskDependencyCollection;HTMLSettingsPanel;add,Container,Component);
+Relation(newMutableTaskDependencyCollection;HTMLSettingsPanel;add,Container,Component-Object);
+Relation(newMutableTaskDependencyCollection;HTMLSettingsPanel;applyComponentOrientation,Container,ComponentOrientation);
+Relation(newMutableTaskDependencyCollection;HTMLSettingsPanel;correctLabel,GanttProject,String);
+Relation(newMutableTaskDependencyCollection;HTMLSettingsPanel;getComponentOrientation,GanttLanguage,N);
+Relation(newMutableTaskDependencyCollection;HTMLSettingsPanel;getText,GanttLanguage,String);
+Relation(newMutableTaskDependencyCollection;HTMLSettingsPanel;getText,JTextComponent,N);
+Relation(newMutableTaskDependencyCollection;HTMLSettingsPanel;setEditable,JTextComponent,boolean);
+Relation(newMutableTaskDependencyCollection;HTMLSettingsPanel;setFileSelectionMode,JFileChooser,int);
+Relation(newMutableTaskDependencyCollection;HTMLSettingsPanel;showDialog,JFileChooser,Component-String);
+Relation(newMutableTaskDependencyCollection;HTMLSettingsPanel;toString,File,N);
+Relation(newMutableTaskDependencyCollection;HTMLSettingsPanel;dependencyRemoved,DeprecatedProjectExportData,type);
+end b183
+start b184
+Class(newnewnewnewGanttTransferableTreePath,N,static,private);
+end b184
+start b185
+Class(newnewnewnewnewnewMutableTaskDependencyCollection,N,N,public);
+end b185
+start b186
+Class(newnewDeleteHumanAction,N,N,public);
+Method(newnewDeleteHumanAction,getAlgorithmCollection,AlgorithmCollection,N,N,N,public);
+Method(newnewDeleteHumanAction,PrjInfos,N,N,N,N,public);
+Relation(newnewDeleteHumanAction;PrjInfos;getDisplayName,newGanttResourcePanel,type);
+Relation(newnewDeleteHumanAction;PrjInfos;GanttDialogDate,ProgressBarPanel,type);
+Relation(newnewDeleteHumanAction;getAlgorithmCollection;setUserInfo,newMutableTaskDependencyCollection,type);
+end b186
+start b187
+Class(newnewnewMutableTaskDependencyCollection,N,N,public);
+Method(GanttXMLOpen,getContext,ParsingContext,N,N,N,public);
+Generalisation(newnewnewMutableTaskDependencyCollection,newnewBackAction);
+Generalisation(newnewnewMutableTaskDependencyCollection,newBackAction);
+Parameter(GanttResourcePanel,getNameByNumber,id,int,declaration);
+Relation(newnewnewMutableTaskDependencyCollection;getContext;GanttDialogDate,ProgressBarPanel,type);
+Relation(newnewnewMutableTaskDependencyCollection;getContext;main,newGanttTXTOpen,type);
+Relation(newnewnewMutableTaskDependencyCollection;getContext;taskRemoved,newnewTaskManagerImpl,type);
+end b187
+start b188
+Class(newnewDeleteHumanAction,N,N,public);
+Method(newnewDeleteHumanAction,getDate,GanttCalendar,N,N,N,public);
+end b188
+start b189
+Class(newnewnewnewProgressBarPanel,N,N,private);
+end b189
+start b190
+Class(newMutableTaskDependencyCollection,N,N,public);
+Method(newMutableTaskDependencyCollection,getTimeUnitManager,TimeUnitManager,N,N,N,public);
+Relation(newMutableTaskDependencyCollection;getTimeUnitManager;getPeople,newGanttResourcePanel,type);
+Relation(newMutableTaskDependencyCollection;getTimeUnitManager;addAssignment,newnewnewJPaintList,type);
+Relation(newMutableTaskDependencyCollection;getTimeUnitManager;GanttTXTOpen,ParsingContext,type);
+end b190
+start b191
+Class(newCSVSettingsPanel,N,N,public);
+end b191
+start b192
+Class(newnewnewnewGanttTransferableTreePath,N,static,private);
+Generalisation(newnewnewnewGanttTransferableTreePath,newnewnewMutableTaskDependencyCollection);
+end b192
+start b193
+Class(newParsingContext,N,N,public);
+end b193
+start b194
+Class(newnewJPaintList,N,N,public);
+end b194
+start b195
+Class(newPrjInfos,N,N,public);
+Method(newPrjInfos,isCellEditable,boolean,Y,N,N,public);
+end b195
+start b196
+Class(newnewAbstractDocument,abstract,N,public);
+end b196
+start b197
+Class(newnewJPaintList,N,N,public);
+end b197
+start b198
+Class(newnewJPaintList,N,N,public);
+Generalisation(newnewJPaintList,MouseOverHandler);
+Generalisation(newnewJPaintList,newnewResourceAssignment);
+Generalisation(newnewJPaintList,newnewGanttDialogDate);
+end b198
+start b199
+Class(newnewnewTaskManagerImpl,N,N,public);
+end b199
+start b200
+Class(newPrjInfos,N,N,public);
+Method(newPrjInfos,calculateTimeFrames,TimeFrame[],N,N,N,private);
+Relation(newPrjInfos;calculateTimeFrames;getUnitCount,TimeFrame,TimeUnit);
+Relation(newPrjInfos;calculateTimeFrames;getWidth,Dimension,N);
+Relation(newPrjInfos;calculateTimeFrames;actionPerformed,newnewnewnewMutableTaskDependencyCollection,type);
+end b200
+start b201
+Class(newnewTaskListenerAdapter,abstract,N,public);
+end b201
+start b202
+Class(newnewChartModelImpl,N,N,public);
+Generalisation(newnewChartModelImpl,newnewnewMutableTaskDependencyCollection);
+Parameter(AbstractDocument,TaskManagerImpl,alg2RecalculateTaskScheduleAlgorithm,local);
+end b202
+start b203
+Class(newnewProgressBarPanel,N,N,private);
+end b203
+start b204
+Attribute(GanttProject,prjInfos,newnewBackAction,N,public);
+Attribute(newnewBackAction,tfOther,JTextField,N,package);
+Class(newnewBackAction,N,N,public);
+end b204
+start b205
+Class(newGanttPrintable,N,N,public);
+end b205
+start b206
+Class(newParsingContext,N,N,public);
+Method(ResourceAssignmentCollectionImpl,auxAddAssignment,ResourceAssignment,Y,N,N,private);
+Relation(newParsingContext;auxAddAssignment;getResourcePhone,newTaskManagerImpl,type);
+Relation(newParsingContext;auxAddAssignment;createDependency,newTaskManagerImpl,type);
+Relation(newParsingContext;auxAddAssignment;HTMLSettingsPanel,newMutableTaskDependencyCollection,type);
+end b206
+start b207
+Class(newnewnewMutableTaskDependencyCollection,N,N,public);
+Generalisation(newnewnewMutableTaskDependencyCollection,GanttTXTOpen);
+end b207
+start b208
+Class(newnewAbstractDocument,abstract,N,public);
+end b208
+start b209
+Class(newnewProgressBarPanel,N,N,private);
+Generalisation(newnewProgressBarPanel,HTMLSettingsPanel);
+end b209
+start b210
+Attribute(newnewMutableTaskDependencyCollection,nbobj,int,N,package);
+Attribute(newnewMutableTaskDependencyCollection,myRoot,Task,N,private);
+Class(newnewMutableTaskDependencyCollection,N,N,public);
+Generalisation(newnewMutableTaskDependencyCollection,MouseOverHandler);
+end b210
+start b211
+Class(newGanttPrintable,N,N,public);
+end b211
+start b212
+Class(newnewnewnewnewGanttTransferableTreePath,N,static,private);
+end b212
+start b213
+Class(newnewnewTaskManagerImpl,N,N,public);
+end b213
+start b214
+Class(newnewnewBackAction,N,N,public);
+end b214
+start b215
+Attribute(newTaskManagerImpl,myBottomUnit,TimeUnit,N,private);
 Class(newTaskManagerImpl,N,N,public);
-Method(newTaskManagerImpl,getOrganization,String,N,N,N,public);
+Generalisation(newTaskManagerImpl,GanttResourcePanel);
 Method(newTaskManagerImpl,print,int,Y,N,N,public);
-Generalisation(newTaskManagerImpl,newPrjInfos);
-Method(newTaskManagerImpl,getAlgorithmCollection,AlgorithmCollection,N,N,N,public);
-Method(newTaskManagerImpl,fireTaskScheduleChanged,void,Y,N,N,package);
-Method(newTaskManagerImpl,fireTaskRemoved,void,Y,N,N,private);
-Parameter(newTaskManagerImpl,print,cptint,local);
-Parameter(newTaskManagerImpl,print,g2dGraphics2D,local);
-Parameter(newTaskManagerImpl,print,graphics,Graphics,declaration);
-Parameter(newTaskManagerImpl,print,heightint,local);
-Parameter(newTaskManagerImpl,print,iint,local);
-Parameter(newTaskManagerImpl,print,imghint,local);
-Parameter(newTaskManagerImpl,print,imgwint,local);
-Parameter(newTaskManagerImpl,print,jint,local);
-Parameter(newTaskManagerImpl,print,pageFormat,PageFormat,declaration);
-Parameter(newTaskManagerImpl,print,widthint,local);
-Parameter(GanttPanelDate,paintComponent,dString,local);
-Parameter(GanttChartExportData,resourcesRemoved,event,ResourceEvent,declaration);
-Parameter(newTaskManagerImpl,fireTaskScheduleChanged,oldStartDate,GanttCalendar,declaration);
-Parameter(newTaskManagerImpl,fireTaskScheduleChanged,oldFinishDate,GanttCalendar,declaration);
-Parameter(newTaskManagerImpl,fireTaskScheduleChanged,nextTaskListener,local);
-Parameter(newTaskManagerImpl,fireTaskScheduleChanged,eTaskScheduleEvent,local);
-Parameter(newTaskManagerImpl,fireTaskScheduleChanged,changedTask,Task,declaration);
-Parameter(newTaskManagerImpl,fireTaskRemoved,task,Task,declaration);
-Parameter(newTaskManagerImpl,fireTaskRemoved,oldSupertask,Task,declaration);
-Parameter(newTaskManagerImpl,fireTaskRemoved,nextTaskListener,local);
-Parameter(newTaskManagerImpl,fireTaskRemoved,eTaskHierarchyEvent,local);
-Relation(newTaskManagerImpl;fireTaskRemoved;get,List,int);
-Relation(newTaskManagerImpl;fireTaskRemoved;size,List,N);
-Relation(newTaskManagerImpl;fireTaskRemoved;taskRemoved,TaskListener,TaskHierarchyEvent);
-Relation(TaskImpl;setDuration;fireTaskScheduleChanged,newTaskManagerImpl,Task-GanttCalendar-GanttCalendar);
-Relation(TaskImpl;setEnd;fireTaskScheduleChanged,newTaskManagerImpl,Task-GanttCalendar-GanttCalendar);
-Relation(TaskImpl;setStart;fireTaskScheduleChanged,newTaskManagerImpl,Task-GanttCalendar-GanttCalendar);
-Relation(newTaskManagerImpl;fireTaskScheduleChanged;get,List,int);
-Relation(newTaskManagerImpl;fireTaskScheduleChanged;getEnd,Task,N);
-Relation(newTaskManagerImpl;fireTaskScheduleChanged;getStart,Task,N);
-Relation(newTaskManagerImpl;fireTaskScheduleChanged;size,List,N);
-Relation(newTaskManagerImpl;fireTaskScheduleChanged;taskScheduleChanged,TaskListener,TaskScheduleEvent);
-Relation(newTaskManagerImpl;getAlgorithmCollection;fireTaskRemoved,newTaskManagerImpl,type);
-Relation(newTaskManagerImpl;fireTaskRemoved;calculateTimeFrames,ChartModelImpl,type);
+Parameter(AbstractDocument,fireDependencyRemoved,eTaskDependencyEvent,local);
 Relation(newTaskManagerImpl;print;drawImage,Graphics,Image-int-int-ImageObserver);
 Relation(newTaskManagerImpl;print;getHeight,BufferedImage,N);
 Relation(newTaskManagerImpl;print;getImageableHeight,PageFormat,N);
-Relation(newTaskManagerImpl;print;getImageableWidth,PageFormat,N);
-Relation(newTaskManagerImpl;print;getImageableX,PageFormat,N);
 Relation(newTaskManagerImpl;print;getImageableY,PageFormat,N);
+Relation(newTaskManagerImpl;print;getSubimage,BufferedImage,int-int-int-int);
 Relation(newTaskManagerImpl;print;getWidth,BufferedImage,N);
-Relation(newTaskManagerImpl;print;translate,Graphics2D,double-double);
-Relation(newTaskManagerImpl;getOrganization;createNewProject,GanttDialogDate,type);
-end b66
-start b67
-Class(newnewBackAction,N,N,public);
-end b67
-start b68
-Attribute(newJPaintList,EMPTY_CONTEXT,ProjectResource[],N,private);
-Attribute(newJPaintList,myListeners,List,N,private);
-Attribute(newJPaintList,area,ResourceLoadGraphicArea,N,public);
-Attribute(newJPaintList,language,GanttLanguage,N,private);
-Attribute(newJPaintList,MENU_MASK,int,N,private);
-Class(newJPaintList,N,N,public);
-end b68
-start b69
-Attribute(newGanttApplet,appli,GanttProject,N,package);
-Class(newGanttApplet,N,N,public);
-Method(newGanttApplet,GanttPrintable,N,Y,N,N,public);
-Method(newGanttApplet,JPaintList,N,Y,N,N,public);
-Relation(newGanttApplet;JPaintList;setCellRenderer,JList,ListCellRenderer);
-Relation(newGanttApplet;JPaintList;setSelectedIndex,JList,int);
-end b69
-start b70
-Attribute(newnewnewParsingContext,cbTaskDuration,JCheckBox,N,package);
-Class(newnewnewParsingContext,N,N,public);
-Generalisation(newnewnewParsingContext,newTaskListenerAdapter);
-end b70
-start b71
-Class(newnewnewnewParsingContext,N,N,public);
-end b71
-start b72
-Attribute(WizardImpl,mynewRangeSearchFromKey,newRangeSearchFromKey,N,private);
-Class(newRangeSearchFromKey,N,N,package);
-end b72
-start b73
-Attribute(newGanttPanelDate,ddd,GanttDialogDateDay,N,private);
-Attribute(GanttApplet,panel,newGanttPanelDate,N,private);
-Attribute(newGanttPanelDate,myTree,GanttTree,N,package);
-Attribute(newGanttPanelDate,jtDate,JFormattedTextField,N,private);
-Attribute(newGanttPanelDate,myId2task,Map,N,private);
-Class(newGanttPanelDate,N,N,public);
-Method(newGanttPanelDate,actionPerformed,void,Y,N,N,public);
-Method(newGanttPanelDate,GanttPanelDate,N,Y,N,N,public);
-Method(newGanttPanelDate,GanttDialogDateDay,N,Y,N,N,public);
-Method(newGanttPanelDate,getURLPath,String,N,N,N,public);
-Method(newGanttPanelDate,getUsername,String,N,N,N,public);
-Method(newGanttPanelDate,acquireLock,boolean,N,N,N,public);
-Method(newGanttPanelDate,releaseLock,void,N,N,N,public);
-Parameter(newGanttChartExportData,GanttChartExportData,myImageFormat,String,declaration);
-Parameter(newGanttPanelDate,actionPerformed,evt,ActionEvent,declaration);
-Parameter(newGanttPanelDate,GanttPanelDate,tmpGregorianCalendar,local);
-Parameter(newGanttPanelDate,GanttPanelDate,hb1Box,local);
-Parameter(newGanttPanelDate,GanttPanelDate,date,GanttCalendar,declaration);
-Parameter(newGanttPanelDate,GanttDialogDateDay,language,GanttLanguage,declaration);
-Parameter(newGanttPanelDate,GanttDialogDateDay,date,GanttCalendar,declaration);
-Relation(newGanttPanelDate;GanttDialogDateDay;addMouseListener,Component,MouseListener);
-Relation(newGanttPanelDate;GanttDialogDateDay;clickFunction,GanttDialogDateDay,int-int);
-Relation(newGanttPanelDate;GanttDialogDateDay;getX,MouseEvent,N);
-Relation(newGanttPanelDate;GanttDialogDateDay;getY,MouseEvent,N);
-Relation(newGanttPanelDate;GanttPanelDate;Clone,GanttCalendar,N);
-Relation(newGanttPanelDate;GanttPanelDate;add,Container,Component);
-Relation(newGanttPanelDate;GanttPanelDate;add,Container,Component-Object);
-Relation(newGanttPanelDate;GanttPanelDate;addActionListener,AbstractButton,ActionListener);
-Relation(newGanttPanelDate;GanttPanelDate;addActionListener,JTextField,ActionListener);
-Relation(newGanttPanelDate;GanttPanelDate;changeDate,newGanttPanelDate,GregorianCalendar);
-Relation(newGanttPanelDate;GanttPanelDate;createHorizontalBox,Box,N);
-Relation(newGanttPanelDate;GanttPanelDate;createVerticalBox,Box,N);
-Relation(newGanttPanelDate;GanttPanelDate;getClass,Object,N);
-Relation(newGanttPanelDate;GanttPanelDate;getResource,Class<>,String);
-Relation(newGanttPanelDate;GanttPanelDate;getText,GanttLanguage,String);
-Relation(newGanttPanelDate;GanttPanelDate;getTime,Calendar,N);
-Relation(newGanttPanelDate;GanttPanelDate;getToolTip,GanttProject,String);
-Relation(newGanttPanelDate;GanttPanelDate;getValue,JFormattedTextField,N);
-Relation(newGanttPanelDate;GanttPanelDate;rollDate,GanttPanelDate,int-int);
-Relation(newGanttPanelDate;GanttPanelDate;setEditable,JTextComponent,boolean);
-Relation(newGanttPanelDate;GanttPanelDate;setTime,Calendar,Date);
-Relation(newGanttPanelDate;GanttPanelDate;setToolTipText,JComponent,String);
-Relation(newGanttPanelDate;GanttPanelDate;setValue,JFormattedTextField,Object);
-Relation(newGanttPanelDate;actionPerformed;createNewProject,GanttDialogDate,type);
-Relation(newGanttPanelDate;getURLPath;setUserInfo,HttpDocumentOutputStream,type);
-end b73
-start b74
-Attribute(newParsingContext,cbResRole,JCheckBox,N,package);
-Class(newParsingContext,N,N,public);
-end b74
-start b75
-Attribute(newTaskContainmentHierarchyFacadeImpl,myRoot,Task,N,private);
-Class(newTaskContainmentHierarchyFacadeImpl,N,static,private);
-end b75
-start b76
-Attribute(GanttProject,resp,newGanttTXTOpen,N,private);
+Relation(newTaskManagerImpl;print;getContext,newnewnewMutableTaskDependencyCollection,type);
+Relation(newTaskManagerImpl;print;calculateTimeFrames,newPrjInfos,type);
+Relation(newTaskManagerImpl;print;getRoot,newAbstractDocument,type);
+end b215
+start b216
+Class(newnewnewnewnewnewMutableTaskDependencyCollection,N,N,public);
+end b216
+start b217
+Class(newnewnewGanttTransferableTreePath,N,static,private);
+Generalisation(newnewnewGanttTransferableTreePath,newGanttApplet);
+Parameter(GanttResourcePanel,propertiesHuman,parent,GanttProject,declaration);
+end b217
+start b218
+Class(newGraphicPrimitive,N,static,package);
+Parameter(AbstractDocument,fireTaskAdded,nextTaskListener,local);
+end b218
+start b219
+Class(newnewnewProgressBarPanel,N,N,private);
+Method(newnewnewProgressBarPanel,getTask,GanttTask,Y,N,N,public);
+Generalisation(newnewnewProgressBarPanel,newnewnewGanttTransferableTreePath);
+Parameter(AbstractDocument,createConstraint,resultTaskDependencyConstraint,local);
+Relation(newnewnewProgressBarPanel;getTask;get,Map,Object);
+end b219
+start b220
+Class(newnewnewnewnewMutableTaskDependencyCollection,N,N,public);
+Generalisation(newnewnewnewnewMutableTaskDependencyCollection,NewProjectWizard);
+Parameter(GanttResourcePanel,moveUp,row,int,declaration);
+end b220
+start b221
 Class(newGanttTXTOpen,N,N,public);
-Method(newGanttTXTOpen,getDependencyCollection,TaskDependencyCollection,N,N,N,public);
-Relation(newGanttTXTOpen;getDependencyCollection;getLastError,newAbstractDocument,type);
-Relation(newGanttTXTOpen;getDependencyCollection;setTaskID,newGraphicPrimitive,type);
-Relation(newGanttTXTOpen;getDependencyCollection;initialize,GraphicPrimitive,type);
-Relation(newGanttTXTOpen;getDependencyCollection;adjustmentValueChanged,newHttpDocumentOutputStream,type);
-end b76
-start b77
-Attribute(GanttXFIGSaver,prjInfos,newPrjInfos,N,private);
-Class(newPrjInfos,N,N,public);
-Generalisation(newPrjInfos,newGanttPanelDate);
-Method(newPrjInfos,getDescription,String,N,N,N,public);
-Method(newPrjInfos,PrjInfos,N,Y,N,N,public);
-Relation(GanttProject;getDescription;getDescription,newPrjInfos,N);
-end b77
-start b78
-Attribute(newnewGanttTXTOpen,jbPrevYear,JButton,N,private);
-Attribute(newnewGanttTXTOpen,myOutputFile,File,N,package);
-Attribute(newnewGanttTXTOpen,fileLocation,String,N,private);
-Class(newnewGanttTXTOpen,N,N,public);
-end b78
-start b79
-Class(newTaskContainmentHierarchyFacadeImpl,N,static,private);
-Generalisation(newTaskContainmentHierarchyFacadeImpl,newParsingContext);
-end b79
-start b80
-Attribute(newnewRangeSearchFromKey,y,int,N,private);
-Class(newnewRangeSearchFromKey,N,N,package);
-Generalisation(newnewRangeSearchFromKey,newTaskContainmentHierarchyFacadeImpl);
-end b80
-start b81
-Attribute(TaskTagHandler,myContext,newGanttPanelDate,N,private);
-Attribute(newGanttPanelDate,ICON_URL,String,static,private);
-Attribute(newGanttPanelDate,jbNextYear,JButton,N,private);
-Attribute(newGanttPanelDate,jbNextMonth,JButton,N,private);
-Class(newGanttPanelDate,N,N,public);
-Method(newGanttPanelDate,getTaskName,boolean,N,N,N,public);
-Method(newGanttPanelDate,getDate,GanttCalendar,N,N,N,public);
-Method(newGanttPanelDate,clickFunction,void,Y,N,N,public);
-Method(newGanttPanelDate,changeDate,void,Y,N,N,private);
-Parameter(newGanttPanelDate,clickFunction,y,int,declaration);
-Parameter(newGanttPanelDate,clickFunction,x,int,declaration);
-Parameter(newGanttPanelDate,clickFunction,tmpdateGanttCalendar,local);
-Parameter(newGanttPanelDate,clickFunction,Yint,local);
-Parameter(newGanttPanelDate,clickFunction,Xint,local);
-Parameter(newGanttPanelDate,changeDate,newDate,GregorianCalendar,declaration);
-Relation(newGanttPanelDate;changeDate;get,Calendar,int);
-Relation(newGanttPanelDate;changeDate;getTime,Calendar,N);
-Relation(newGanttPanelDate;changeDate;repaint,Component,N);
-Relation(newGanttPanelDate;changeDate;setTime,Calendar,Date);
-Relation(newGanttPanelDate;changeDate;setValue,JFormattedTextField,Object);
-Relation(newGanttPanelDate;clickFunction;changeDate,newGanttPanelDate,GregorianCalendar);
-Relation(newGanttPanelDate;clickFunction;Clone,GanttCalendar,N);
-Relation(newGanttPanelDate;clickFunction;equals,String,Object);
-Relation(newGanttPanelDate;clickFunction;getDay,GanttLanguage,int);
-Relation(newGanttPanelDate;clickFunction;getWidth,JComponent,N);
-Relation(newGanttPanelDate;clickFunction;getdayWeek,GanttCalendar,N);
-Relation(newGanttPanelDate;clickFunction;go,GanttCalendar,int-int);
-Relation(newGanttPanelDate;clickFunction;repaint,Component,N);
-Relation(newGanttApplet;getDate;getDate,newGanttPanelDate,N);
-Relation(newGanttPanelDate;getDate;close,HttpDocumentOutputStream,type);
-Relation(newGanttPanelDate;getDate;getDescription,newPrjInfos,type);
-Relation(newGanttPanelDate;getTaskName;isSelected,AbstractButton,N);
-end b81
-start b82
-Class(newnewGanttPrintable,N,N,public);
-end b82
-start b83
-Class(newnewJPaintList,N,N,public);
-end b83
-start b84
-Class(newnewJPaintList,N,N,public);
-end b84
-start b85
-Class(newnewBackAction,N,N,public);
-end b85
-start b86
-Class(newnewProgressBarPanel,N,N,private);
-end b86
-start b87
-Class(newParsingContext,N,N,public);
-end b87
-start b88
-Attribute(newRangeSearchFromKey,myStartDate,Date,N,private);
-Class(newRangeSearchFromKey,N,N,package);
-end b88
-start b89
-Attribute(GanttProject,prjInfos,newnewBackAction,N,public);
-Class(newnewBackAction,N,N,public);
-Method(newnewBackAction,actionPerformed,void,Y,N,N,public);
-Parameter(CSVSettingsPanel,separatCharHasChange,csvOptionsCSVOptions,local);
-Relation(newnewBackAction;actionPerformed;getSource,EventObject,N);
-Relation(newnewBackAction;actionPerformed;getContext,newParsingContext,type);
-Relation(newnewBackAction;actionPerformed;taskRemoved,newProgressBarPanel,type);
-Relation(newnewBackAction;actionPerformed;getContext,newPrjInfos,N);
-Relation(newnewBackAction;actionPerformed;getDisplayName,newGanttResourcePanel,ProjectResource[]);
-Relation(newnewBackAction;actionPerformed;getLanguage,ResourceAction,N);
-Relation(newnewBackAction;actionPerformed;getProjectFrame,DeleteHumanAction,N);
-Relation(newnewBackAction;actionPerformed;getResources,ResourceContext,N);
-Relation(newnewBackAction;actionPerformed;getText,GanttLanguage,String);
-Relation(newnewBackAction;actionPerformed;setSelectedIndex,JTabbedPane,int);
-Relation(newnewBackAction;actionPerformed;show,Dialog,N);
-Relation(newnewBackAction;actionPerformed;actionPerformed,newnewBackAction,type);
-Relation(newnewBackAction;actionPerformed;getDescription,newPrjInfos,type);
-end b89
-start b90
-Attribute(GanttXMLOpen,myContext,newResourceView,N,private);
-Class(newResourceView,N,N,public);
-end b90
-start b91
-Attribute(newResourceAssignment,cbTaskResources,JCheckBox,N,package);
-Class(newResourceAssignment,N,N,public);
-Method(newResourceAssignment,getLoad,float,N,N,N,package);
-Method(newResourceAssignment,delete,void,N,N,N,package);
-Method(MutableResourceAssignmentCollection,addAssignment,ResourceAssignment,Y,N,N,package);
-Method(newResourceAssignment,HTMLSettingsPanel,N,Y,N,N,public);
-Method(newResourceAssignment,load,boolean,Y,N,N,public);
-Parameter(newResourceAssignment,HTMLSettingsPanel,fcJFileChooser,local);
-Parameter(newResourceAssignment,HTMLSettingsPanel,htmlThemeJPanel,local);
-Parameter(newResourceAssignment,HTMLSettingsPanel,parent,GanttProject,declaration);
-Parameter(newResourceAssignment,HTMLSettingsPanel,returnValint,local);
-Parameter(newResourceAssignment,load,br,BufferedReader,local);
-Relation(GanttProject;importcbk;load,newResourceAssignment,File);
-Relation(newResourceAssignment;load;addObject,GanttTree,Object-DefaultMutableTreeNode);
-Relation(newResourceAssignment;load;createTask,TaskManager,N);
-Relation(newResourceAssignment;load;equals,String,Object);
-Relation(newResourceAssignment;load;readLine,BufferedReader,N);
-Relation(newResourceAssignment;load;ready,BufferedReader,N);
-Relation(newResourceAssignment;load;registerTask,TaskManager,Task);
-Relation(newResourceAssignment;load;setColor,TaskImpl,Color);
-Relation(newResourceAssignment;load;setLength,GanttTask,int);
-Relation(newResourceAssignment;load;getContext,newGanttResourcePanel,type);
-Relation(newResourceAssignment;load;taskRemoved,newProgressBarPanel,type);
-Relation(newResourceAssignment;HTMLSettingsPanel;add,Container,Component);
-Relation(newResourceAssignment;HTMLSettingsPanel;add,Container,Component-Object);
-Relation(newResourceAssignment;HTMLSettingsPanel;addActionListener,AbstractButton,ActionListener);
-Relation(newResourceAssignment;HTMLSettingsPanel;correctLabel,GanttProject,String);
-Relation(newResourceAssignment;HTMLSettingsPanel;getClass,Object,N);
-Relation(newResourceAssignment;HTMLSettingsPanel;getComponentOrientation,GanttLanguage,N);
-Relation(newResourceAssignment;HTMLSettingsPanel;getInstance,GanttLanguage,N);
-Relation(newResourceAssignment;HTMLSettingsPanel;getResource,Class<>,String);
-Relation(newResourceAssignment;HTMLSettingsPanel;getSelectedFile,JFileChooser,N);
-Relation(newResourceAssignment;HTMLSettingsPanel;getText,GanttLanguage,String);
-Relation(newResourceAssignment;HTMLSettingsPanel;getText,JTextComponent,N);
-Relation(newResourceAssignment;HTMLSettingsPanel;setApproveButtonToolTipText,JFileChooser,String);
-Relation(newResourceAssignment;HTMLSettingsPanel;setColumns,JTextField,int);
-Relation(newResourceAssignment;HTMLSettingsPanel;setDialogTitle,JFileChooser,String);
-Relation(newResourceAssignment;HTMLSettingsPanel;setEditable,JTextComponent,boolean);
-Relation(newResourceAssignment;HTMLSettingsPanel;setFileSelectionMode,JFileChooser,int);
-Relation(newResourceAssignment;HTMLSettingsPanel;setText,JTextComponent,String);
-Relation(newResourceAssignment;HTMLSettingsPanel;showDialog,JFileChooser,Component-String);
-Relation(newResourceAssignment;HTMLSettingsPanel;toString,File,N);
-Relation(newResourceAssignment;HTMLSettingsPanel;dependencyAdded,newGanttPrintable,type);
-Relation(newResourceAssignment;addAssignment;getContext,newPrjInfos,type);
-Relation(ResourcesTableModel;updateAssignment;delete,newResourceAssignment,N);
-Relation(GanttXMLSaver;writeAllocations;getLoad,newResourceAssignment,N);
-Relation(ResourceAssignmentCollectionImpl;ResourceAssignmentCollectionImpl;getLoad,newResourceAssignment,N);
-Relation(ResourceAssignmentCollectionImpl;commit;getLoad,newResourceAssignment,N);
-Relation(ResourceLoadGraphicArea;calculateLoad;getLoad,newResourceAssignment,N);
-Relation(ResourcesTableModel;getValueAt;getLoad,newResourceAssignment,N);
-Relation(ResourcesTableModel;updateAssignment;getLoad,newResourceAssignment,N);
-end b91
-start b92
-Class(newnewnewJPaintList,N,N,public);
-end b92
-start b93
-Attribute(newRangeSearchFromKey,myProjectFrame,GanttProject,N,private);
-Class(newRangeSearchFromKey,N,N,package);
-end b93
-start b94
-Attribute(newnewPrjInfos,prj,GanttProject,N,package);
-Parameter(GanttApplet,main,args,String[],declaration);
-Class(newnewPrjInfos,N,N,public);
-Method(GanttProject,getResourcePanel,GanttResourcePanel,N,N,N,public);
-end b94
-start b95
-Class(newGanttApplet,N,N,public);
-Method(newGanttApplet,getDate,GanttCalendar,N,N,N,public);
-Method(newGanttApplet,GanttTableModel,N,Y,N,N,package);
-Parameter(newGanttResourcePanel,GanttResourcePanel,prj,GanttProject,declaration);
-Parameter(newGanttApplet,GanttTableModel,language,GanttLanguage,declaration);
-Relation(newGanttApplet;GanttTableModel;changeLanguage,GanttTableModel,GanttLanguage);
-Relation(newGanttApplet;getDate;setFixed,GanttCalendar,boolean);
-end b95
-start b96
+Method(newGanttTXTOpen,load,boolean,Y,N,N,public);
+Method(DependencyTagHandler,getContext,ParsingContext,N,N,N,private);
+Method(newGanttTXTOpen,main,void,Y,N,static,public);
+Relation(GanttProject;importcbk;load,newGanttTXTOpen,File);
+Relation(newGanttTXTOpen;load;getTaskColor,GanttGraphicArea,N);
+Relation(newGanttTXTOpen;load;readLine,BufferedReader,N);
+Relation(newGanttTXTOpen;load;ready,BufferedReader,N);
+Relation(newGanttTXTOpen;load;registerTask,TaskManager,Task);
+Relation(newGanttTXTOpen;load;setColor,TaskImpl,Color);
+Relation(newGanttTXTOpen;load;setName,TaskImpl,String);
+end b221
+start b222
 Class(newnewTaskManagerImpl,N,N,public);
-Method(newnewTaskManagerImpl,getConfig,TaskManagerConfig,N,N,N,public);
-Method(newnewTaskManagerImpl,getContainer,Task,Y,N,N,public);
-Method(newnewTaskManagerImpl,getDefaultColor,Color,N,N,N,public);
-Method(newnewTaskManagerImpl,applyChanges,boolean,Y,N,N,public);
-Relation(newnewTaskManagerImpl;applyChanges;askForApplyChanges,GeneralOptionPanel,N);
-Relation(newnewTaskManagerImpl;applyChanges;getOptions,GanttProject,N);
-Relation(newnewTaskManagerImpl;applyChanges;getXslDirectory,HTMLSettingsPanel,boolean);
-Relation(newnewTaskManagerImpl;applyChanges;isSelected,AbstractButton,N);
-Relation(newnewTaskManagerImpl;applyChanges;setXslDir,GanttOptions,String);
-Relation(newnewTaskManagerImpl;getContainer;getSupertask,Task,N);
-Relation(newnewTaskManagerImpl;getContainer;dependencyRemoved,newTaskListenerAdapter,type);
-Relation(TaskImpl;getColor;getConfig,newnewTaskManagerImpl,N);
-Relation(newnewTaskManagerImpl;getContainer;getDefaultColor,newnewTaskManagerImpl,type);
-end b96
-start b97
-Attribute(newPrjInfos,_sProjectName,String,N,public);
-Class(newPrjInfos,N,N,public);
-Method(newPrjInfos,deleteHuman,void,Y,N,N,public);
-Method(newPrjInfos,getName,String,N,N,N,public);
-Parameter(newPrjInfos,deleteHuman,gdiGanttDialogInfo,local);
-Parameter(newPrjInfos,deleteHuman,peopleHumanResource,local);
-Relation(GanttHTMLExport;save;getName,newPrjInfos,N);
-Relation(newPrjInfos;deleteHuman;deleteRow,GanttTableModel,int);
-Relation(newPrjInfos;deleteHuman;getText,GanttLanguage,String);
-Relation(newPrjInfos;deleteHuman;setAskForSave,GanttProject,boolean);
-Relation(newPrjInfos;deleteHuman;show,Dialog,N);
-Relation(newPrjInfos;deleteHuman;size,ArrayList,N);
-Relation(newPrjInfos;deleteHuman;toString,ProjectResource,N);
-end b97
-start b98
-Class(newnewnewGanttPrintable,N,N,public);
-end b98
-start b99
+Parameter(GanttResourcePanel,upResource,resManHumanResourceManager,local);
+end b222
+start b223
+Class(newnewDeleteHumanAction,N,N,public);
+Method(newnewDeleteHumanAction,setTopTimeUnit,void,Y,N,N,public);
+Relation(newTaskManagerImpl;getResourcePhone;setTopTimeUnit,newnewDeleteHumanAction,type);
+end b223
+start b224
+Class(newnewnewnewnewGanttTransferableTreePath,N,static,private);
+end b224
+start b225
+Class(newnewnewnewProgressBarPanel,N,N,private);
+end b225
+start b226
+Class(newnewProgressBarPanel,N,N,private);
+Method(newnewProgressBarPanel,setLoad,void,Y,N,N,package);
+Generalisation(newnewProgressBarPanel,ResourceAssignment);
+Method(newnewProgressBarPanel,close,void,N,N,N,public);
+Parameter(AbstractDocument,addTaskListener,listener,TaskListener,declaration);
+Relation(newnewProgressBarPanel;close;getChartUIConfiguration,newnewnewnewnewMutableTaskDependencyCollection,type);
+Relation(newnewProgressBarPanel;setLoad;setTree,newGanttTransferableTreePath,type);
+end b226
+start b227
+Class(newnewAbstractDocument,abstract,N,public);
+end b227
+start b228
+Class(newnewnewResourceAssignment,N,N,public);
+end b228
+start b229
+Attribute(GanttCSVExport,peop,newnewnewJPaintList,N,private);
 Class(newnewnewJPaintList,N,N,public);
-end b99
-start b100
-Attribute(newPrjInfos,cbResPhone,JCheckBox,N,package);
-Class(newPrjInfos,N,N,public);
-end b100
-start b101
-Class(newnewnewJPaintList,N,N,public);
-end b101
-start b102
-Class(newnewnewJPaintList,N,N,public);
-end b102
-start b103
-Class(newnewPrjInfos,N,N,public);
-end b103
-start b104
-Attribute(newGanttTransferableTreePath,myMainFrame,JFrame,N,private);
+Method(newnewnewJPaintList,clear,void,N,N,N,public);
+Method(newnewnewJPaintList,PrjInfos,N,Y,N,N,public);
+Method(ResourceAssignmentCollectionImpl,addAssignment,ResourceAssignment,Y,N,N,public);
+Method(newnewnewJPaintList,applyChanges,boolean,Y,N,N,public);
+Relation(newnewnewJPaintList;PrjInfos;getProjectFrame,TaskManagerImpl,type);
+Relation(newnewnewJPaintList;addAssignment;getResources,AbstractDocument,type);
+end b229
+start b230
+Class(newnewnewnewnewnewMutableTaskDependencyCollection,N,N,public);
+end b230
+start b231
+Class(newnewnewResourceAssignment,N,N,public);
+end b231
+start b232
+Class(newHttpDocumentOutputStream,N,N,package);
+end b232
+start b233
+Class(newnewnewChartModelImpl,N,N,public);
+Method(newnewnewChartModelImpl,ChartModelImpl,N,N,N,N,public);
+Relation(newnewnewChartModelImpl;ChartModelImpl;applyChanges,AbstractDocument,type);
+Relation(newnewnewChartModelImpl;ChartModelImpl;getOrganization,AbstractDocument,type);
+end b233
+start b234
+Class(newnewHTMLSettingsPanel,N,N,public);
+end b234
+start b235
+Class(newnewnewnewProgressBarPanel,N,N,private);
+end b235
+start b236
+Attribute(newnewnewnewGanttDialogDate,lang,GanttLanguage,N,package);
+Class(newnewnewnewGanttDialogDate,N,N,public);
+end b236
+start b237
+Class(newnewnewResourceAssignment,N,N,public);
+end b237
+start b238
+Class(newnewnewnewnewMutableTaskDependencyCollection,N,N,public);
+end b238
+start b239
+Class(newnewnewnewGanttDialogDate,N,N,public);
+Generalisation(newnewnewnewGanttDialogDate,newnewChartModelImpl);
+end b239
+start b240
+Class(newnewMutableTaskDependencyCollection,N,N,public);
+Method(newnewMutableTaskDependencyCollection,getRowCount,int,N,N,N,public);
+Relation(newnewMutableTaskDependencyCollection;getRowCount;size,ArrayList,N);
+Relation(newnewMutableTaskDependencyCollection;getRowCount;getDefaultColor,newDeleteHumanAction,type);
+Relation(newnewMutableTaskDependencyCollection;getRowCount;close,newnewProgressBarPanel,type);
+Relation(newnewMutableTaskDependencyCollection;getRowCount;acquireLock,GanttDialogDate,type);
+Relation(newnewMutableTaskDependencyCollection;getRowCount;setMaxID,newTaskListenerAdapter,type);
+end b240
+start b241
+Class(newnewnewMutableTaskDependencyCollection,N,N,public);
+Generalisation(newnewnewMutableTaskDependencyCollection,newGanttChartExportData);
+end b241
+start b242
+Attribute(newnewProgressBarPanel,y,int,N,private);
+Class(newnewProgressBarPanel,N,N,private);
+end b242
+start b243
+Class(newGanttApplet,N,N,public);
+Generalisation(newGanttApplet,NewProjectWizard);
+end b243
+start b244
+Class(newnewnewnewProgressBarPanel,N,N,private);
+end b244
+start b245
+Class(newnewChartModelImpl,N,N,public);
+end b245
+start b246
+Attribute(newnewnewBackAction,cbTextSeparator,JComboBox,N,package);
+Class(newnewnewBackAction,N,N,public);
+end b246
+start b247
+Attribute(newJPaintList,table,JTable,N,package);
+Class(newJPaintList,N,N,public);
+end b247
+start b248
+Class(newTaskListenerAdapter,abstract,N,public);
+Method(newTaskListenerAdapter,setMaxID,void,Y,N,N,private);
+Relation(newTaskListenerAdapter;setMaxID;getResources,AbstractDocument,type);
+end b248
+start b249
+Class(newnewnewBackAction,N,N,public);
+end b249
+start b250
+Attribute(newGanttDialogDate,colums,ArrayList,N,public);
+Class(newGanttDialogDate,N,N,public);
+Method(newGanttDialogDate,setTaskID,void,Y,N,N,public);
+Relation(newGanttDialogDate;setTaskID;clear,newMutableTaskDependencyCollection,type);
+end b250
+start b251
+Class(newnewHTMLSettingsPanel,N,N,public);
+Method(newnewHTMLSettingsPanel,getXslDirectory,String,Y,N,N,public);
+Relation(newnewHTMLSettingsPanel;getXslDirectory;getText,JTextComponent,N);
+Relation(newnewHTMLSettingsPanel;getXslDirectory;actionPerformed,newnewnewnewMutableTaskDependencyCollection,type);
+Relation(newnewHTMLSettingsPanel;getXslDirectory;setTree,newGanttTransferableTreePath,type);
+Relation(newnewHTMLSettingsPanel;getXslDirectory;setResourceActions,AbstractDocument,type);
+end b251
+start b252
+Class(newnewProgressBarPanel,N,N,private);
+Method(MutableResourceAssignmentCollection,addAssignment,ResourceAssignment,Y,N,N,package);
+Generalisation(newnewProgressBarPanel,newnewnewMutableTaskDependencyCollection);
+end b252
+start b253
+Class(newnewnewnewnewnewMutableTaskDependencyCollection,N,N,public);
+end b253
+start b254
 Class(newGanttTransferableTreePath,N,static,private);
-Generalisation(newGanttTransferableTreePath,newPrjInfos);
-end b104
-start b105
-Attribute(newGanttPanelDate,_sDescription,String,N,public);
-Class(newGanttPanelDate,N,N,public);
-Method(newGanttPanelDate,equals,boolean,Y,N,N,public);
-Method(newGanttPanelDate,mousePressed,void,Y,N,N,public);
-end b105
-start b106
-Attribute(newnewnewRangeSearchFromKey,myConfig,TaskManagerConfig,N,private);
-Class(newnewnewRangeSearchFromKey,N,N,package);
-end b106
+Method(newGanttTransferableTreePath,cancel,void,N,N,N,public);
+end b254
+start b255
+Class(newnewTaskContainmentHierarchyFacadeImpl,N,static,private);
+end b255
+start b256
+Class(newnewBackAction,N,N,public);
+end b256
+start b257
+Attribute(GanttXFIGSaver,prjInfos,newnewGanttChartExportData,N,private);
+Attribute(newnewGanttChartExportData,data,ArrayList,N,public);
+Class(newnewGanttChartExportData,N,N,public);
+Method(newnewGanttChartExportData,createFacede,TaskContainmentHierarchyFacade,N,N,N,public);
+end b257
+start b258
+Class(newnewnewGanttChartExportData,N,N,public);
+end b258
+start b259
+Attribute(newnewGanttDialogDate,jbPrevMonth,JButton,N,private);
+Class(newnewGanttDialogDate,N,N,public);
+end b259
+start b260
+Class(newResourceView,N,N,public);
+end b260
+start b261
+Attribute(TaskTagHandler,myContext,newnewGraphicPrimitive,N,private);
+Class(newnewGraphicPrimitive,N,static,package);
+end b261
+start b262
+Class(newnewTaskContainmentHierarchyFacadeImpl,N,static,private);
+end b262
+start b263
+Class(newnewBackAction,N,N,public);
+end b263
+start b264
+Class(newGanttTransferableTreePath,N,static,private);
+Method(newGanttTransferableTreePath,setTree,void,Y,N,N,public);
+Relation(newGanttTransferableTreePath;setTree;HTMLSettingsPanel,newMutableTaskDependencyCollection,type);
+end b264
+start b265
+Class(newResourceAssignment,N,N,public);
+Method(newResourceAssignment,setBounds,void,Y,N,N,public);
+Method(newResourceAssignment,getTaskID,int,N,N,N,public);
+Relation(newResourceAssignment;getTaskID;setTaskID,newGanttDialogDate,type);
+Relation(newResourceAssignment;setBounds;actionPerformed,newnewnewnewMutableTaskDependencyCollection,type);
+Relation(newResourceAssignment;setBounds;getResourcePhone,newTaskManagerImpl,type);
+end b265
+start b266
+Class(newResourceView,N,N,public);
+end b266
+start b267
+Class(newnewnewnewGanttTransferableTreePath,N,static,private);
+Method(newnewnewnewGanttTransferableTreePath,fireDependencyRemoved,void,Y,N,N,private);
+Method(newnewnewnewGanttTransferableTreePath,resourceAdded,void,Y,N,N,public);
+Relation(newnewnewnewGanttTransferableTreePath;fireDependencyRemoved;dependencyRemoved,TaskListener,TaskDependencyEvent);
+Relation(newnewnewnewGanttTransferableTreePath;fireDependencyRemoved;get,List,int);
+Relation(newnewnewnewGanttTransferableTreePath;fireDependencyRemoved;size,List,N);
+Relation(newnewnewnewGanttTransferableTreePath;fireDependencyRemoved;actionPerformed,newnewnewnewMutableTaskDependencyCollection,type);
+Relation(newnewnewnewGanttTransferableTreePath;fireDependencyRemoved;print,newTaskManagerImpl,type);
+end b267
+start b268
+Class(newnewTaskListenerAdapter,abstract,N,public);
+end b268
+start b269
+Class(newnewHTMLSettingsPanel,N,N,public);
+end b269
+start b270
+Class(newnewGanttDialogDate,N,N,public);
+Generalisation(newnewGanttDialogDate,newGanttChartExportData);
+end b270
+start b271
+Class(newHttpDocumentOutputStream,N,N,package);
+end b271
+start b272
+Attribute(newnewnewProgressBarPanel,_sWebLink,String,N,public);
+Class(newnewnewProgressBarPanel,N,N,private);
+Method(newnewnewProgressBarPanel,getSelectedPaint,Paint,N,N,N,public);
+Method(newnewnewProgressBarPanel,fireTaskAdded,void,Y,N,N,private);
+Relation(newnewnewProgressBarPanel;fireTaskAdded;get,List,int);
+Relation(newnewnewProgressBarPanel;fireTaskAdded;getSupertask,Task,N);
+Relation(newnewnewProgressBarPanel;fireTaskAdded;size,List,N);
+Relation(newnewnewProgressBarPanel;getSelectedPaint;getSelectedValue,JList,N);
+Relation(Shape;Shape;getSelectedPaint,newnewnewProgressBarPanel,N);
+Relation(newnewnewProgressBarPanel;getSelectedPaint;DeprecatedProjectExportData,newGanttResourcePanel,type);
+Relation(newnewnewProgressBarPanel;getSelectedPaint;getDate,newnewDeleteHumanAction,type);
+Relation(newnewnewProgressBarPanel;getSelectedPaint;print,newTaskManagerImpl,type);
+Relation(newnewnewProgressBarPanel;getSelectedPaint;resourcesRemoved,AbstractDocument,type);
+Relation(newnewnewProgressBarPanel;getSelectedPaint;GanttDialogDate,ProgressBarPanel,type);
+Relation(newnewnewProgressBarPanel;getSelectedPaint;getSelectedPaint,newnewnewProgressBarPanel,type);
+end b272
+start b273
+Attribute(newnewDeprecatedProjectExportData,myTimeFrames,TimeFrame[],N,private);
+Class(newnewDeprecatedProjectExportData,N,N,public);
+end b273
+start b274
+Class(newNewProjectWizard,N,N,public);
+end b274
+start b275
+Class(newPrjInfos,N,N,public);
+end b275
+start b276
+Class(newnewTaskManagerImpl,N,N,public);
+Method(newnewTaskManagerImpl,taskRemoved,void,Y,N,N,public);
+Relation(newnewTaskManagerImpl;taskRemoved;getTaskName,newnewnewnewMutableTaskDependencyCollection,type);
+Relation(newnewTaskManagerImpl;taskRemoved;GanttTXTOpen,ParsingContext,type);
+Relation(newnewTaskManagerImpl;taskRemoved;TaskManagerImpl,newnewnewnewnewnewMutableTaskDependencyCollection,type);
+end b276
+start b277
+Class(newDeleteHumanAction,N,N,public);
+Method(newDeleteHumanAction,getDefaultColor,Color,N,N,N,public);
+Relation(newDeleteHumanAction;getDefaultColor;getOrganization,AbstractDocument,type);
+Relation(newDeleteHumanAction;getDefaultColor;createLength,DeprecatedProjectExportData,type);
+end b277
+start b278
+Class(newnewnewnewnewnewMutableTaskDependencyCollection,N,N,public);
+end b278
+start b279
+Class(newnewDeleteHumanAction,N,N,public);
+end b279
+start b280
+Class(newnewnewChartModelImpl,N,N,public);
+end b280
+start b281
+Class(newnewnewnewnewnewMutableTaskDependencyCollection,N,N,public);
+Method(newnewnewnewnewnewMutableTaskDependencyCollection,TaskManagerImpl,N,Y,N,N,package);
+Relation(newnewnewnewnewnewMutableTaskDependencyCollection;TaskManagerImpl;clear,newTaskManagerImpl,N);
+Relation(newnewnewnewnewnewMutableTaskDependencyCollection;TaskManagerImpl;fireDependencyRemoved,newTaskManagerImpl,TaskDependency);
+Relation(newnewnewnewnewnewMutableTaskDependencyCollection;TaskManagerImpl;getTask,newnewnewProgressBarPanel,type);
+end b281
+start b282
+Class(newnewJPaintList,N,N,public);
+end b282
+start b283
+Class(newJPaintList,N,N,public);
+end b283
+start b284
+Class(newnewnewGanttTransferableTreePath,N,static,private);
+Generalisation(newnewnewGanttTransferableTreePath,newnewnewProgressBarPanel);
+end b284
+start b285
+Class(newGanttResourcePanel,N,N,public);
+Method(newGanttResourcePanel,mousePressed,void,Y,N,N,public);
+Method(newGanttResourcePanel,getUserByNumber,HumanResource,Y,N,N,public);
+Method(newGanttResourcePanel,getPeople,ArrayList,N,N,N,public);
+Method(newGanttResourcePanel,getNameByNumber,String,Y,N,N,public);
+Method(newGanttResourcePanel,getContext,ResourceContext,N,N,N,public);
+Method(newGanttResourcePanel,getColumnName,String,Y,N,N,public);
+Method(newGanttResourcePanel,getValueAt,Object,Y,N,N,public);
+Method(newGanttResourcePanel,actionPerformed,void,Y,N,N,public);
+Relation(newGanttResourcePanel;actionPerformed;getCodeBase,Applet,N);
+Relation(newGanttResourcePanel;actionPerformed;getInputStream,URLConnection,N);
+Relation(newGanttResourcePanel;actionPerformed;toString,URL,N);
+Relation(newGanttResourcePanel;actionPerformed;getContext,newGraphicPrimitive,type);
+Relation(newGanttResourcePanel;actionPerformed;calculateTimeFrames,newPrjInfos,type);
+Relation(newGanttResourcePanel;actionPerformed;getChartHeader,newnewnewnewnewMutableTaskDependencyCollection,type);
+Relation(newGanttResourcePanel;actionPerformed;setTree,newGanttTransferableTreePath,type);
+Relation(newGanttResourcePanel;getValueAt;get,ArrayList,int);
+Relation(newGanttResourcePanel;getValueAt;getName,Role,N);
+Relation(newGanttResourcePanel;getValueAt;getPhone,HumanResource,N);
+Relation(newGanttResourcePanel;getValueAt;getRole,HumanResource,N);
+Relation(newGanttResourcePanel;getValueAt;size,ArrayList,N);
+Relation(newGanttResourcePanel;getColumnName;get,ArrayList,int);
+Relation(newGanttResourcePanel;getColumnName;getAssignment,newMutableTaskDependencyCollection,type);
+Relation(GanttProject;addButtons;getContext,newGanttResourcePanel,N);
+Relation(newGanttResourcePanel;getNameByNumber;getName,ProjectResource,N);
+Relation(GanttCSVExport;beginToSave;getPeople,newGanttResourcePanel,N);
+Relation(GanttProject;downDatas;getPeople,newGanttResourcePanel,N);
+Relation(GanttXMLSaver;writeResources;getPeople,newGanttResourcePanel,N);
+Relation(newGanttResourcePanel;getUserByNumber;get,ArrayList,int);
+end b285
+start b286
+Class(newGanttResourcePanel,N,N,public);
+Method(newGanttResourcePanel,reset,void,N,N,N,public);
+Method(newGanttResourcePanel,propertiesHuman,void,Y,N,N,public);
+Method(newGanttResourcePanel,newHuman,void,Y,N,N,public);
+Method(newGanttResourcePanel,moveUp,boolean,Y,N,N,public);
+Relation(newGanttResourcePanel;moveUp;add,ArrayList,int-Object);
+Relation(newGanttResourcePanel;moveUp;fireTableDataChanged,AbstractTableModel,N);
+Relation(newGanttResourcePanel;moveUp;remove,ArrayList,int);
+Relation(newGanttResourcePanel;newHuman;addRow,GanttTableModel,HumanResource);
+Relation(GanttProject;addButtons;propertiesHuman,newGanttResourcePanel,GanttProject);
+Relation(newGanttResourcePanel;propertiesHuman;get,ArrayList,int);
+Relation(newGanttResourcePanel;propertiesHuman;getInstance,GanttLanguage,N);
+Relation(newGanttResourcePanel;propertiesHuman;getStatusBar,GanttProject,N);
+Relation(newGanttResourcePanel;propertiesHuman;getText,GanttLanguage,String);
+Relation(newGanttResourcePanel;propertiesHuman;result,GanttDialogPerson,N);
+Relation(newGanttResourcePanel;propertiesHuman;setAskForSave,GanttProject,boolean);
+Relation(newGanttResourcePanel;propertiesHuman;setFirstText,GanttStatusBar,String-int);
+Relation(newGanttResourcePanel;propertiesHuman;show,Dialog,N);
+Relation(newGanttResourcePanel;propertiesHuman;size,ArrayList,N);
+Relation(newGanttResourcePanel;propertiesHuman;updateRow,GanttTableModel,int-HumanResource);
+Relation(GanttProject;closeProject;reset,newGanttResourcePanel,N);
+Relation(GanttProject;openXMLStream;reset,newGanttResourcePanel,N);
+Relation(newGanttResourcePanel;reset;clear,ArrayList,N);
+Relation(newGanttResourcePanel;reset;fireTableRowsDeleted,AbstractTableModel,int-int);
+Relation(newGanttResourcePanel;reset;reset,GanttTableModel,N);
+Relation(newGanttResourcePanel;reset;size,ArrayList,N);
+Relation(newGanttResourcePanel;reset;getResources,AbstractDocument,type);
+end b286
+start b287
+Class(newnewMutableTaskDependencyCollection,N,N,public);
+Generalisation(newnewMutableTaskDependencyCollection,GanttDialogDate);
+end b287
+start b288
+Class(newnewTaskListenerAdapter,abstract,N,public);
+end b288
+start b289
+Class(newJPaintList,N,N,public);
+end b289
