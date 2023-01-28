@@ -35,6 +35,7 @@ def calculate_avg(package_classes_dict):
 def choose_packages(package_classes_dict):
     # value=list(package_classes_dict.values())
     average = int(calculate_avg(list(package_classes_dict.values())))
+    print("Average of classes = ", average)
     chosen_list = []
 
     # chosen_package_list = get_uniq_packages(package_classes_dict)

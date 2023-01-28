@@ -3,9 +3,6 @@ package c;
 // Class "A" moved here from package a.aa
 class A
 {
-    class B {
-    }
-
     public int f, c, a; /* printF , printF, */
     public int g; /* printF, printG */
     public string h; /* printH */

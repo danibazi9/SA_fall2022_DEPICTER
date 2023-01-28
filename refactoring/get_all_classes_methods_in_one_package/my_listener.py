@@ -1,8 +1,8 @@
 from antlr4 import CommonTokenStream
 from antlr4.TokenStreamRewriter import TokenStreamRewriter
 
-from codart.gen.javaLabeled.JavaParserLabeled import JavaParserLabeled
-from codart.gen.javaLabeled.JavaParserLabeledListener import JavaParserLabeledListener
+from gen.javaLabeled.JavaParserLabeled import JavaParserLabeled
+from gen.javaLabeled.JavaParserLabeledListener import JavaParserLabeledListener
 
 
 class MyListener(JavaParserLabeledListener):
@@ -29,13 +29,11 @@ class MyListener(JavaParserLabeledListener):
     def enterMethodDeclaration(self, ctx: JavaParserLabeled.MethodDeclarationContext):
         self.package_classes_dict[self.package_name][self.class_name].append(ctx.IDENTIFIER().getText())
 
-
     # Exit a parse tree produced by JavaParserLabeled#classDeclaration.
     def enterClassDeclaration(self, ctx: JavaParserLabeled.ClassDeclarationContext):
-        self.class_name=ctx.IDENTIFIER().getText() #######IDENTIFIER
+        self.class_name = ctx.IDENTIFIER().getText() #######IDENTIFIER
 
-        self.package_classes_dict[self.package_name] [self.class_name]=[]
-
+        self.package_classes_dict[self.package_name][self.class_name] = []
 
     # Enter a parse tree produced by JavaParserLabeled#packageDeclaration.
     def enterPackageDeclaration(self, ctx: JavaParserLabeled.PackageDeclarationContext):

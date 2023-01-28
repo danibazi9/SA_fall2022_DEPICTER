@@ -5,11 +5,11 @@ import os
 
 # from merge_package_heuristic import choose_packages
 from my_listener import MyListener
-from codart.gen.javaLabeled.JavaLexer import JavaLexer
-from codart.gen.javaLabeled.JavaParserLabeled import JavaParserLabeled
+from gen.javaLabeled.JavaLexer import JavaLexer
+from gen.javaLabeled.JavaParserLabeled import JavaParserLabeled
 
 package_classes_dict = {}
-directory = 'src/ganttproject-master/biz.ganttproject.core/src/main'
+directory = '../../src/ganttproject-master/biz.ganttproject.core/src/main'
 
 
 def main(args):

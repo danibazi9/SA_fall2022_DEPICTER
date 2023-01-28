@@ -4,11 +4,12 @@ import argparse
 import os
 
 from my_listener import MyListener
-from gen.javaLabeled import JavaLexer
-from gen.javaLabeled import JavaParserLabeled
+from gen.javaLabeled.JavaLexer import JavaLexer
+from gen.javaLabeled.JavaParserLabeled import JavaParserLabeled
+from merge_package_heuristic import choose_packages
 
 package_classes_dict = {}
-directory = 'src/ganttproject-master/biz.ganttproject.core/src/main'
+directory = '../../src/ganttproject-master/biz.ganttproject.core/src/main'
 
 
 def main(args):

@@ -3,7 +3,7 @@ from javaparser.ast.body.MethodDeclaration import MethodDeclaration
 from javaparser.ast.expr.MethodCallExpr import MethodCallExpr
 
 # Parse the Java source code
-cu = CompilationUnit.from_source("D:/univercity/Term 1 Arshad/Architecture software systems/DEPICTER/src/ganttproject-master/biz.ganttproject.app.libs/lib")
+cu = CompilationUnit.from_source("../src/ganttproject-master/biz.ganttproject.app.libs/lib")
 
 # Find all methods in the class
 methods = cu.find_all(MethodDeclaration)
