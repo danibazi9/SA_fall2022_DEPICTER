@@ -3,12 +3,13 @@ import networkx as nx
 from antlr4 import *
 from antlr4.TokenStreamRewriter import TokenStreamRewriter
 
-from gen.javaLabeled.JavaParserLabeled import JavaParserLabeled
-from gen.javaLabeled.JavaParserLabeledListener import JavaParserLabeledListener
+from gen.Java9_v2.Java9_v2Lexer import Java9_v2Lexer
+from gen.Java9_v2.Java9_v2Parser import Java9_v2Parser
+from gen.Java9_v2.Java9_v2Listener import Java9_v2Listener
 import graph_visualization
 
 
-class MoveMethodRecognizerListener(JavaParserLabeledListener):
+class MoveMethodRecognizerListener(Java9_v2Listener):
     """
     To detect whether class needs refactoring or not.
     """
@@ -76,14 +77,14 @@ class MoveMethodRecognizerListener(JavaParserLabeledListener):
             print('class_methods', class_methods)
             print('-' * 10)
 
-    # Enter a parse tree produced by JavaParserLabeled#classDeclaration.
-    def enterClassDeclaration(self, ctx: JavaParserLabeled.ClassDeclarationContext):
-        if ctx.IDENTIFIER().getText() != self.class_identifier:
+    # Enter a parse tree produced by Java9_v2Parser#normalClassDeclaration.
+    def enterNormalClassDeclaration(self, ctx: Java9_v2Parser.NormalClassDeclarationContext):
+        if ctx.identifier().getText() != self.class_identifier:
             return
         self.enter_class = True
 
-    # Exit a parse tree produced by JavaParserLabeled#classDeclaration.
-    def exitClassDeclaration(self, ctx: JavaParserLabeled.ClassDeclarationContext):
+    # Exit a parse tree produced by Java9_v2Parser#normalClassDeclaration.
+    def exitNormalClassDeclaration(self, ctx: Java9_v2Parser.NormalClassDeclarationContext):
         self.enter_class = False
         print("----------------------------")
         print("Class attributes and methods using each attribute ")
@@ -96,41 +97,43 @@ class MoveMethodRecognizerListener(JavaParserLabeledListener):
 
     # when exiting from a class attribute (field) declaration this method is invoked.
     # This method adds attributes of the target class to a dictionary
-    # Enter a parse tree produced by JavaParserLabeled#fieldDeclaration.
-    def enterFieldDeclaration(self, ctx: JavaParserLabeled.FieldDeclarationContext):
+    def enterFieldDeclaration(self, ctx: Java9_v2Parser.FieldDeclarationContext):
         if not self.enter_class:
             return
-        field_id = ctx.variableDeclarators().variableDeclarator(i=0).variableDeclaratorId().IDENTIFIER().getText()
+        field_id = ctx.variableDeclaratorList().variableDeclarator(i=0).variableDeclaratorId().identifier().getText()
         self.field_dict[field_id] = []
 
-    # Enter a parse tree produced by JavaParserLabeled#methodDeclaration.
-    def enterMethodDeclaration(self, ctx: JavaParserLabeled.MethodDeclarationContext):
+    # Enter a parse tree produced by Java9_v2Parser#methodDeclaration.
+    def enterMethodDeclaration(self, ctx: Java9_v2Parser.MethodDeclarationContext):
         if not self.enter_class:
             return
         m = []
-        m_name = ctx.IDENTIFIER().getText()
+        m_name = ctx.methodHeader().methodDeclarator().identifier().getText()
         self.method_no = self.method_no + 1
         m.append(m_name)
         m.append(self.method_no)
         self.method_name.append(m)
 
-    # Exit a parse tree produced by JavaParserLabeled#methodDeclaration.
-    def exitMethodDeclaration(self, ctx: JavaParserLabeled.MethodDeclarationContext):
+    # Exit a parse tree produced by Java9_v2Parser#methodDeclaration.
+    def exitMethodDeclaration(self, ctx: Java9_v2Parser.MethodDeclarationContext):
         if not self.enter_class:
             return
 
-    # Exit a parse tree produced by JavaParserLabeled#variableDeclaratorId.
-    def exitVariableDeclaratorId(self, ctx: JavaParserLabeled.VariableDeclaratorIdContext):
-        if self.enter_class and self.method_no != 0:
-            current_method = self.method_name[-1]
-            variable_name = ctx.IDENTIFIER().getText()
-            if variable_name not in self.field_dict:
-                return
-            if current_method not in self.field_dict[variable_name]:
-                self.field_dict[variable_name].append(current_method)
+    # Exit a parse tree produced by Java9_v2Parser#identifier.
+    def exitIdentifier(self, ctx: Java9_v2Parser.IdentifierContext):
+        if not self.enter_class:
+            return
+        if self.method_no == 0:
+            return
+        current_method = self.method_name[-1]
+        variable_name = ctx.getText()
+        if variable_name not in self.field_dict:
+            return
+        if current_method not in self.field_dict[variable_name]:
+            self.field_dict[variable_name].append(current_method)
 
 
-class MoveMethodRefactoringListener(JavaParserLabeledListener):
+class MoveMethodRefactoringListener(Java9_v2Listener):
     # implement move method class
     def __init__(self, common_token_stream: CommonTokenStream = None,
                  source_class_identifier: str = None, target_class_identifier: str = None,
@@ -174,10 +177,10 @@ class MoveMethodRefactoringListener(JavaParserLabeledListener):
         self.NEW_LINE = "\n"
         self.code = ""
 
-    # Enter a parse tree produced by JavaParserLabeled#classDeclaration.
-    def enterClassDeclaration(self, ctx: JavaParserLabeled.ClassDeclarationContext):
+    # Enter a parse tree produced by Java9_v2Parser#normalClassDeclarationContext.
+    def enterNormalClassDeclaration(self, ctx: Java9_v2Parser.NormalClassDeclarationContext):
         print("Refactoring started, please wait...")
-        class_identifier = ctx.IDENTIFIER().getText()
+        class_identifier = ctx.identifier().getText()
         if class_identifier == self.source_class_identifier:
             self.is_source_class = True
         else:
@@ -195,35 +198,36 @@ class MoveMethodRefactoringListener(JavaParserLabeledListener):
                 text=self.code
             )
 
-    # Exit a parse tree produced by JavaParserLabeled#classDeclaration.
-    def exitClassDeclaration(self, ctx: JavaParserLabeled.ClassDeclarationContext):
+    # Exit a parse tree produced by Java9_v2Parser#normalClassDeclaration.
+    def exitNormalClassDeclaration(self, ctx: Java9_v2Parser.NormalClassDeclarationContext):
         if self.is_source_class:
             self.is_source_class = False
         if self.is_target_class:
             self.is_target_class = False
 
-    # Enter a parse tree produced by JavaParserLabeled#variableDeclaratorId.
-    def enterVariableDeclaratorId(self, ctx: JavaParserLabeled.VariableDeclaratorIdContext):
+    # Enter a parse tree produced by Java9_v2Parser#variableDeclaratorId.
+    def enterVariableDeclaratorId(self, ctx: Java9_v2Parser.VariableDeclaratorIdContext):
         if not self.is_source_class:
             return None
-        field_identifier = ctx.IDENTIFIER().getText()
+        field_identifier = ctx.identifier().getText()
         if field_identifier in self.moved_fields:
             self.detected_field = field_identifier
 
-    def exitFieldDeclaration(self, ctx: JavaParserLabeled.FieldDeclarationContext):
+    def exitFieldDeclaration(self, ctx: Java9_v2Parser.FieldDeclarationContext):
         if not self.is_source_class:
             return None
-        field_names = ctx.variableDeclarators().getText().split(",")
+        field_names = ctx.variableDeclaratorList().getText().split(",")
         if self.detected_field in field_names:
-            field_type = ctx.typeType().getText()
-            self.code += f"{self.TAB}{field_type} {self.detected_field};{self.NEW_LINE}"
+            modifier = ctx.fieldModifier(0).getText()
+            field_type = ctx.unannType().getText()
+            self.code += f"{self.TAB}{modifier} {field_type} {self.detected_field};{self.NEW_LINE}"
             # delete field from source class
             field_names.remove(self.detected_field)
             if field_names:
                 self.token_stream_rewriter.replaceRange(
                     from_idx=ctx.start.tokenIndex,
                     to_idx=ctx.stop.tokenIndex,
-                    text=f"{field_type} {','.join(field_names)};"
+                    text=f"{modifier} {field_type} {','.join(field_names)};"
                 )
             else:
                 self.token_stream_rewriter.delete(
@@ -233,19 +237,19 @@ class MoveMethodRefactoringListener(JavaParserLabeledListener):
                 )
             self.detected_field = None
 
-    # Enter a parse tree produced by JavaParserLabeled#methodDeclaration.
-    def enterMethodDeclaration(self, ctx: JavaParserLabeled.MethodDeclarationContext):
+    # Enter a parse tree produced by Java9_v2Parser#methodDeclaration.
+    def enterMethodDeclarator(self, ctx: Java9_v2Parser.MethodDeclaratorContext):
         if not self.is_source_class:
             return None
-        method_identifier = ctx.IDENTIFIER().getText()
+        method_identifier = ctx.identifier().getText()
         if method_identifier in self.method_identifier:
             self.detected_method = method_identifier
 
-    # Exit a parse tree produced by JavaParserLabeled#methodDeclaration.
-    def exitMethodDeclaration(self, ctx: JavaParserLabeled.MethodDeclarationContext):
+    # Exit a parse tree produced by Java9_v2Parser#methodDeclaration.
+    def exitMethodDeclaration(self, ctx: Java9_v2Parser.MethodDeclarationContext):
         if not self.is_source_class:
             return None
-        method_identifier_get = ctx.IDENTIFIER().getText()
+        method_identifier_get = ctx.methodHeader().methodDeclarator().identifier().getText()
         if self.detected_method == method_identifier_get:
             start_index = ctx.start.tokenIndex
             stop_index = ctx.stop.tokenIndex

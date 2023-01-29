@@ -2,6 +2,7 @@
 public class A
 {
     public int f; /* printF , printF, */
+     /* printF , printG, */
     public string h; /* printH */
 
     // Method 1
@@ -27,6 +28,7 @@ public class A
 
 class B {
 
+	public string g;
 
 
 	// Method moved to class B
