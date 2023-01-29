@@ -1,4 +1,4 @@
-# SA_G2_DEPICTER
+# SA_fall2022_DEPICTER
 
 **"Software Architecture" course project, Dr. Mehrdad Ashtiani, Fall 2022**
 
