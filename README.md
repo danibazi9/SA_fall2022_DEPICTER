@@ -14,6 +14,8 @@ Project contributors:
 
 You can access the paper using [this link](https://github.com/Parisa78/AS_G2_Depicter/blob/main/2022_DEPICTER_A_Design-Principle_Guided_and_Heuristic-Rule_Constrained_Software_Refactoring_Approach.pdf).
 
+You can also access the final project report via these links: [English](https://github.com/danibazi9/SA_fall2022_DEPICTER/blob/main/SA_G2_DEPICTER_Report_ENG.pdf) | [Persian](https://github.com/danibazi9/SA_fall2022_DEPICTER/blob/main/SA_G2_DEPICTER_Report.pdf)
+
 ## Abstract
 
 As we know, the more suitable design patterns a software uses, the higher its scalability, readability and maintainability. The quality of software design is affected by the software evolution cycle. This may be due to the addition of new features or possible future bugs. This made the developers turn to **code refactoring**.
